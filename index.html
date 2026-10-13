@@ -6,465 +6,185 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#142D4E">
+<meta name="theme-color" content="#071b33">
 
-<title>EB Doc</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>EB Doc | العناية بالجلد</title>
 
 <style>
 
 :root {
 
-  --navy: #142D4E;
+  --bg:#071b33;
 
-  --blue: #247BA8;
+  --panel:#102943;
 
-  --light: #EAF4FB;
+  --panel2:#173650;
 
-  --bg: #F3F7FB;
+  --blue:#42bde8;
 
-  --text: #26384D;
+  --teal:#55ddc0;
 
-  --muted: #718096;
+  --text:#f2f7fc;
 
-  --border: #DCE5EF;
+  --muted:#afc2d4;
 
-}
-
-* { box-sizing: border-box; }
-
-body {
-
-  margin: 0;
-
-  font-family: Cairo, sans-serif;
-
-  background: var(--bg);
-
-  color: var(--text);
+  --border:#294760;
 
 }
 
-button, input, select, textarea { font: inherit; }
+*{box-sizing:border-box}
 
-button { cursor: pointer; }
+body{
 
-.hidden { display: none !important; }
+  margin:0;background:var(--bg);color:var(--text);
 
-header {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 
-  background: var(--navy);
-
-  color: white;
-
-  padding: 14px 18px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  position: sticky;
-
-  top: 0;
-
-  z-index: 10;
+  line-height:1.8;
 
 }
 
-.brand {
+button,input{font:inherit}
 
-  display: flex;
+button{cursor:pointer}
 
-  align-items: center;
+header{
 
-  gap: 12px;
+  padding:20px 18px;background:#0b223c;
 
-}
+  border-bottom:1px solid var(--border);
 
-.logo {
+  display:flex;justify-content:space-between;align-items:center;
 
-  background: var(--blue);
-
-  width: 44px;
-
-  height: 44px;
-
-  border-radius: 14px;
-
-  display: grid;
-
-  place-items: center;
-
-  font-size: 22px;
+  position:sticky;top:0;z-index:5;
 
 }
 
-.brand h1 { margin: 0; font-size: 21px; }
+.logo{font-size:23px;font-weight:800;color:var(--blue)}
 
-.brand small { color: #C6D8E9; }
+.logo span{color:var(--teal)}
 
-button {
+.small{font-size:12px;color:var(--muted)}
 
-  border: 0;
+main{max-width:850px;margin:auto;padding:18px}
 
-  border-radius: 12px;
+.card{
 
-  padding: 11px 15px;
+  background:var(--panel);border:1px solid var(--border);
 
-  font-weight: 700;
-
-}
-
-.primary {
-
-  background: var(--navy);
-
-  color: white;
+  border-radius:18px;padding:18px;margin-bottom:15px;
 
 }
 
-.light-btn {
+h1,h2,h3{line-height:1.5}
 
-  background: var(--light);
+h1{font-size:27px;margin:8px 0}
 
-  color: var(--navy);
+h2{font-size:21px;margin-top:0}
 
-}
+p{color:#d7e4ef}
 
-.container {
+.muted{color:var(--muted)}
 
-  width: min(1100px, 100%);
+.hero{
 
-  margin: auto;
+  background:linear-gradient(135deg,#123957,#102943 70%);
 
-  padding: 20px 15px 100px;
-
-}
-
-.hero {
-
-  background: linear-gradient(135deg, var(--navy), var(--blue));
-
-  color: white;
-
-  padding: 25px;
-
-  border-radius: 22px;
-
-  margin-bottom: 18px;
+  border:1px solid #27607b;padding:23px;border-radius:22px;margin-bottom:18px;
 
 }
 
-.hero h2 { font-size: 25px; margin: 8px 0; }
+.pill{display:inline-block;background:#123f50;color:var(--teal);
 
-.hero p { line-height: 1.9; font-size: 13px; }
+  padding:4px 11px;border-radius:30px;font-size:12px}
 
-.card {
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 
-  background: white;
+.tile{
 
-  border: 1px solid var(--border);
+  text-align:right;background:var(--panel);color:var(--text);
 
-  border-radius: 18px;
-
-  padding: 18px;
-
-  margin-bottom: 15px;
+  border:1px solid var(--border);border-radius:16px;padding:16px;
 
 }
 
-h2, h3 { color: var(--navy); }
+.tile b{display:block;font-size:16px;margin:6px 0}
 
-h2 { font-size: 21px; }
+.tile .emoji{font-size:25px}
 
-h3 { font-size: 16px; }
+button.primary{
 
-.muted {
+  border:0;background:var(--blue);color:#06192b;
 
-  color: var(--muted);
-
-  font-size: 12px;
-
-  line-height: 2;
+  border-radius:12px;padding:12px 17px;font-weight:750;
 
 }
 
-.grid {
+button.secondary{
 
-  display: grid;
+  background:var(--panel2);color:var(--text);
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 12px;
+  border:1px solid var(--border);border-radius:11px;padding:10px 13px;
 
 }
 
-.menu-card {
+input{
 
-  background: white;
+  display:block;width:100%;padding:13px;margin:8px 0 14px;
 
-  border: 1px solid var(--border);
+  border-radius:11px;border:1px solid var(--border);
 
-  border-radius: 17px;
-
-  padding: 16px;
-
-  text-align: right;
-
-  color: var(--text);
-
-  min-height: 130px;
+  background:#081d32;color:white;
 
 }
 
-.menu-card i {
+label{font-size:14px;color:var(--muted)}
 
-  display: block;
+nav{
 
-  font-size: 24px;
-
-  color: var(--blue);
-
-  margin-bottom: 12px;
+  display:flex;gap:8px;overflow-x:auto;padding:10px 0 16px;
 
 }
 
-.menu-card strong {
+nav button{white-space:nowrap}
 
-  display: block;
+.page{display:none}
 
-  color: var(--navy);
+.page.active{display:block}
 
-}
+ul{padding-right:22px}
 
-.menu-card small {
+li{margin:7px 0}
 
-  display: block;
+.notice{
 
-  margin-top: 6px;
+  border-right:4px solid var(--teal);
 
-  color: var(--muted);
-
-  line-height: 1.8;
+  padding:10px 13px;background:#102e40;border-radius:8px;
 
 }
 
-.page { display: none; }
+.warning{
 
-.page.active { display: block; }
+  border-right:4px solid #f4bd62;
 
-.field { margin: 15px 0; }
-
-label {
-
-  display: block;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  margin-bottom: 7px;
+  padding:10px 13px;background:#382e22;border-radius:8px;
 
 }
 
-input, select, textarea {
+footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
 
-  width: 100%;
+#app{display:none}
 
-  padding: 12px;
+a{color:var(--blue)}
 
-  border: 1px solid var(--border);
+@media(max-width:420px){
 
-  border-radius: 11px;
+  main{padding:12px}.grid{gap:9px}.tile{padding:12px}
 
-  background: white;
-
-  color: var(--text);
-
-}
-
-input[type="range"] { padding: 0; }
-
-textarea { min-height: 85px; resize: vertical; }
-
-.full { width: 100%; }
-
-.notice {
-
-  padding: 13px;
-
-  background: var(--light);
-
-  border-radius: 12px;
-
-  font-size: 12px;
-
-  line-height: 2;
-
-  margin: 14px 0;
-
-}
-
-.warning {
-
-  background: #FFF3E5;
-
-  border: 1px solid #F0DDB9;
-
-}
-
-.fabric-icon {
-
-  font-size: 25px;
-
-  color: var(--blue);
-
-  margin-bottom: 8px;
-
-}
-
-.log-item {
-
-  padding: 12px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 12px;
-
-  margin-top: 10px;
-
-  overflow-wrap: anywhere;
-
-}
-
-.log-item small {
-
-  display: block;
-
-  color: var(--muted);
-
-  line-height: 1.8;
-
-}
-
-.bottom-nav {
-
-  position: fixed;
-
-  bottom: 0;
-
-  right: 0;
-
-  left: 0;
-
-  z-index: 20;
-
-  display: flex;
-
-  justify-content: space-around;
-
-  background: var(--navy);
-
-  padding: 10px 2px;
-
-  padding-bottom: calc(10px + env(safe-area-inset-bottom));
-
-}
-
-.bottom-nav button {
-
-  flex: 1;
-
-  color: #B8C9DB;
-
-  background: transparent;
-
-  padding: 6px 2px;
-
-  font-size: 10px;
-
-}
-
-.bottom-nav i {
-
-  display: block;
-
-  font-size: 18px;
-
-  margin-bottom: 5px;
-
-}
-
-.bottom-nav button.active { color: #8FD5FA; }
-
-#login-screen {
-
-  min-height: 100vh;
-
-  display: grid;
-
-  place-items: center;
-
-  padding: 20px;
-
-  background: linear-gradient(145deg, var(--navy), var(--blue));
-
-}
-
-.login-card {
-
-  background: white;
-
-  width: min(420px, 100%);
-
-  border-radius: 23px;
-
-  padding: 25px;
-
-}
-
-.login-card h1 {
-
-  text-align: center;
-
-  color: var(--navy);
-
-}
-
-.login-card p {
-
-  text-align: center;
-
-  color: var(--muted);
-
-  font-size: 12px;
-
-  line-height: 1.9;
-
-}
-
-@media (min-width: 800px) {
-
-  .container { padding-bottom: 40px; }
-
-  .bottom-nav { display: none; }
-
-  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-}
-
-@media (max-width: 380px) {
-
-  .grid { grid-template-columns: 1fr; }
-
-  .hero { padding: 18px; }
+  h1{font-size:24px}
 
 }
 
@@ -474,791 +194,359 @@ textarea { min-height: 85px; resize: vertical; }
 
 <body>
 
-<!-- شاشة الدخول -->
-
-<section id="login-screen">
-
-  <div class="login-card">
-
-    <div class="logo" style="margin:auto;color:white">
-
-      <i class="fa-solid fa-notes-medical"></i>
-
-    </div>
-
-    <h1>EB Doc</h1>
-
-    <p>مساحة رقمية لدعم العناية بالبشرة الحساسة</p>
-
-    <form id="login-form">
-
-      <div class="field">
-
-        <label for="email">البريد الإلكتروني</label>
-
-        <input id="email" type="email" required placeholder="example@email.com">
-
-      </div>
-
-      <div class="field">
-
-        <label for="password">كلمة المرور</label>
-
-        <input id="password" type="password" required minlength="6" placeholder="6 أحرف على الأقل">
-
-      </div>
-
-      <button class="primary full" type="submit">
-
-        الدخول إلى التطبيق
-
-      </button>
-
-    </form>
-
-    <button class="light-btn full" style="margin-top:10px" onclick="enterApp()">
-
-      تجربة التطبيق دون حساب
-
-    </button>
-
-    <p>
-
-      هذه نسخة تجريبية. تسجيل الدخول ليس نظام حسابات حقيقيًا،
-
-      فلا تدخلي معلومات شخصية أو طبية حساسة.
-
-    </p>
-
-  </div>
-
-</section>
-
-<!-- التطبيق -->
-
-<div id="app" class="hidden">
-
 <header>
 
-  <div class="brand">
+  <div>
 
-    <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
+    <div class="logo">EB <span>Doc</span></div>
 
-    <div>
-
-      <h1>EB Doc</h1>
-
-      <small>الرعاية والعناية اليومية</small>
-
-    </div>
+    <div class="small">رفيقك للعناية بالجلد الحساس</div>
 
   </div>
 
-  <button style="background:#A9323B;color:white" onclick="showEmergency()">
-
-    <i class="fa-solid fa-kit-medical"></i>
-
-    الطوارئ
-
-  </button>
+  <button class="secondary" onclick="logout()" id="logoutBtn" hidden>خروج</button>
 
 </header>
 
-<div class="container">
+<main>
 
-<!-- الرئيسية -->
-
-<section id="home" class="page active">
+<section id="login">
 
   <div class="hero">
 
-    <span>رعاية لطيفة • معلومات منظمة</span>
+    <span class="pill">منصة توعوية صحية</span>
 
-    <h2>أهلًا بك في EB Doc 💙</h2>
+    <h1>أهلًا بك في EB Doc</h1>
 
-    <p>
-
-      نظّمي ملاحظاتك اليومية، واستعرضي معلومات عن الأقمشة
-
-      والعناية بالبشرة، وجهّزي أسئلتك لمناقشتها مع فريق الرعاية.
-
-    </p>
-
-  </div>
-
-  <div class="grid">
-
-    <button class="menu-card" onclick="go('assessment')">
-
-      <i class="fa-solid fa-stethoscope"></i>
-
-      <strong>تقييم الأعراض</strong>
-
-      <small>سجّلي مستوى الألم والحكة وشدة الأعراض.</small>
-
-    </button>
-
-    <button class="menu-card" onclick="go('fabrics')">
-
-      <i class="fa-solid fa-shirt"></i>
-
-      <strong>الأقمشة والملابس</strong>
-
-      <small>تعرّفي على خيارات الملابس الناعمة.</small>
-
-    </button>
-
-    <button class="menu-card" onclick="go('care')">
-
-      <i class="fa-solid fa-bandage"></i>
-
-      <strong>العناية والضمادات</strong>
-
-      <small>معلومات عامة عن العناية اللطيفة.</small>
-
-    </button>
-
-    <button class="menu-card" onclick="go('tracker')">
-
-      <i class="fa-solid fa-calendar-check"></i>
-
-      <strong>السجل اليومي</strong>
-
-      <small>دوّني الراحة والأعراض والملاحظات.</small>
-
-    </button>
-
-  </div>
-
-  <div class="card" style="margin-top:16px">
-
-    <h3>ما هو انحلال البشرة الفقاعي؟</h3>
-
-    <p class="muted">
-
-      انحلال البشرة الفقاعي (EB) مجموعة حالات نادرة قد تجعل الجلد
-
-      هشًا وسهل التضرر. تختلف الاحتياجات من شخص لآخر، لذلك يجب
-
-      تحديد خطة العناية مع مختص صحي.
-
-    </p>
-
-    <div class="notice">
-
-      التطبيق للتثقيف وتنظيم الملاحظات فقط، ولا يشخّص الأمراض
-
-      أو يستبدل الطبيب.
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- التقييم -->
-
-<section id="assessment" class="page">
-
-  <div class="hero">
-
-    <h2>تقييم الأعراض</h2>
-
-    <p>سجّلي الأعراض لتنظيمها ومناقشتها مع المختص.</p>
+    <p>مساحة منظمة للمعلومات والنصائح العامة حول العناية بالجلد شديد الهشاشة.</p>
 
   </div>
 
   <div class="card">
 
-    <form id="assessment-form">
+    <h2>تسجيل الدخول</h2>
 
-      <div class="field">
+    <p class="muted">أنشئي اسمًا للدخول إلى التطبيق على هذا الجهاز.</p>
 
-        <label for="severity">شدة الأعراض حسب ملاحظتك</label>
+    <form onsubmit="login(event)">
 
-        <select id="severity">
+      <label for="username">الاسم</label>
 
-          <option>خفيفة</option>
+      <input id="username" required maxlength="40" placeholder="اكتبي اسمك">
 
-          <option>متوسطة</option>
+      <label for="password">رمز دخول من اختيارك</label>
 
-          <option>شديدة أو مقلقة</option>
+      <input id="password" type="password" required minlength="4" placeholder="4 أحرف أو أرقام على الأقل">
 
-        </select>
-
-      </div>
-
-      <div class="field">
-
-        <label for="itch">مستوى الحكة: <span id="itch-value">3</span>/10</label>
-
-        <input id="itch" type="range" min="0" max="10" value="3"
-
-          oninput="document.getElementById('itch-value').textContent=this.value">
-
-      </div>
-
-      <div class="field">
-
-        <label for="pain">مستوى الألم: <span id="pain-value">2</span>/10</label>
-
-        <input id="pain" type="range" min="0" max="10" value="2"
-
-          oninput="document.getElementById('pain-value').textContent=this.value">
-
-      </div>
-
-      <div class="field">
-
-        <label for="assessment-notes">ملاحظات إضافية</label>
-
-        <textarea id="assessment-notes" placeholder="اكتبي ملاحظات أو أسئلة للطبيب"></textarea>
-
-      </div>
-
-      <button class="primary full" type="submit">إنشاء ملخص الأعراض</button>
+      <button class="primary" style="width:100%">دخول إلى التطبيق</button>
 
     </form>
 
-    <div id="assessment-result" class="notice hidden"></div>
+    <p class="small">نسخة تجريبية: بيانات الدخول تُحفظ محليًا على الجهاز، وليست نظام حسابات آمنًا.</p>
 
   </div>
 
 </section>
 
-<!-- الأقمشة -->
-
-<section id="fabrics" class="page">
+<div id="app">
 
   <div class="hero">
 
-    <h2>الأقمشة والملابس</h2>
+    <span class="pill">مساحة العناية الشخصية</span>
 
-    <p>اختاري ما يناسب راحتك وقللي مصادر الاحتكاك.</p>
+    <h1>مرحبًا، <span id="welcome"></span> 👋</h1>
+
+    <p>اختاري القسم الذي تحتاجينه، وارجعي دائمًا إلى فريقك الطبي عند وجود مشكلة جلدية.</p>
 
   </div>
 
-  <div class="grid">
+  <nav>
+
+    <button class="secondary" onclick="showPage('home')">الرئيسية</button>
+
+    <button class="secondary" onclick="showPage('skin')">العناية بالجلد</button>
+
+    <button class="secondary" onclick="showPage('clothes')">الملابس</button>
+
+    <button class="secondary" onclick="showPage('products')">المرطبات</button>
+
+    <button class="secondary" onclick="showPage('alerts')">التنبيهات</button>
+
+    <button class="secondary" onclick="showPage('sources')">المصادر</button>
+
+  </nav>
+
+  <section id="home" class="page active">
+
+    <div class="grid">
+
+      <button class="tile" onclick="showPage('skin')"><span class="emoji">🩹</span><b>العناية بالجلد</b><span class="small">تقليل الاحتكاك والعناية اليومية</span></button>
+
+      <button class="tile" onclick="showPage('clothes')"><span class="emoji">👕</span><b>الملابس والأقمشة</b><span class="small">اختيار ملابس مريحة</span></button>
+
+      <button class="tile" onclick="showPage('products')"><span class="emoji">🧴</span><b>المرطبات والمنتجات</b><span class="small">ما الذي يجب الانتباه إليه؟</span></button>
+
+      <button class="tile" onclick="showPage('alerts')"><span class="emoji">🔔</span><b>التنبيهات المهمة</b><span class="small">متى أطلب المساعدة؟</span></button>
+
+    </div>
+
+    <div class="card" style="margin-top:16px">
+
+      <h2>تذكير اليوم 💧</h2>
+
+      <p>اتبعي خطة العناية التي وضعها الطبيب، واختاري الملابس التي لا تسبب لك احتكاكًا أو ألمًا.</p>
+
+      <div class="notice">لا توجد خطة واحدة تناسب الجميع؛ تختلف الاحتياجات بحسب حالة الجلد ونوع المرض.</div>
+
+    </div>
+
+  </section>
+
+  <section id="skin" class="page">
 
     <div class="card">
 
-      <div class="fabric-icon"><i class="fa-solid fa-gem"></i></div>
+      <h2>🩹 أساسيات العناية بالجلد</h2>
 
-      <h3>الحرير الطبيعي</h3>
+      <ul>
 
-      <p class="muted">
+        <li>التعامل مع الجلد بلطف وتجنب الفرك أو الحك القوي.</li>
 
-        قد يفضّل بعض الأشخاص الأقمشة الناعمة التي تقلل الاحتكاك.
+        <li>تجنبي الحرارة الزائدة والأنشطة التي تسبب احتكاكًا مؤلمًا.</li>
 
-        تحققي من ملمس القماش وملاءمته لبشرتك.
+        <li>استخدمي مستحضرات لطيفة وغير معطرة إذا كانت مناسبة لك.</li>
 
-      </p>
+        <li>لا تستخدمي لاصقًا طبيًا مباشرة على الجلد الهش دون توجيه طبي.</li>
+
+        <li>اتبعي تعليمات الطبيب بشأن تنظيف الجروح وتغيير الضمادات.</li>
+
+      </ul>
 
     </div>
 
     <div class="card">
 
-      <div class="fabric-icon"><i class="fa-solid fa-leaf"></i></div>
+      <h2>🧼 النظافة اليومية</h2>
 
-      <h3>أقمشة البامبو</h3>
+      <p>استخدمي طريقة تنظيف لطيفة تناسب حالتك، وجففي الجلد بالتربيت الخفيف بدل الفرك. اسألي الطبيب عن درجة حرارة الماء والمنتجات المناسبة لك.</p>
 
-      <p class="muted">
+      <div class="warning">لا تفتحي الفقاعات أو تعالجي الجروح بمواد منزلية من دون تعليمات طبية.</div>
 
-        تختلف نعومة الأقمشة بحسب طريقة تصنيعها. اختاري نسيجًا
+    </div>
 
-        مريحًا وتوقفي عن استخدامه إذا سبب تهيجًا.
+  </section>
 
-      </p>
+  <section id="clothes" class="page">
+
+    <div class="card">
+
+      <h2>👕 كيف أختار الملابس؟</h2>
+
+      <ul>
+
+        <li>ابحثي عن قماش ناعم وملمس مريح على بشرتك.</li>
+
+        <li>اختاري ملابس مناسبة لا تضغط على المناطق الحساسة.</li>
+
+        <li>انتبهي إلى الدرزات الداخلية والملصقات والحواف الخشنة.</li>
+
+        <li>جربي الملابس الجديدة لفترة قصيرة، وتوقفي عن استخدامها إذا سببت احتكاكًا.</li>
+
+        <li>اختاري خامة ودرجة دفء تناسبان الجو وتقللان التعرق المزعج.</li>
+
+      </ul>
+
+      <div class="notice">القطن الناعم قد يكون مريحًا لبعض الأشخاص، لكن لا توجد خامة مثالية للجميع؛ الراحة الفعلية أهم من اسم القماش.</div>
 
     </div>
 
     <div class="card">
 
-      <div class="fabric-icon"><i class="fa-solid fa-feather"></i></div>
+      <h2>قبل شراء أي قطعة</h2>
 
-      <h3>القطن الناعم</h3>
+      <p>تحققي من نعومة القماش، ومكان الدرزات، وسهولة ارتداء القطعة وخلعها، وإمكانية إرجاعها إذا سببت تهيجًا.</p>
 
-      <p class="muted">
+    </div>
 
-        قد يكون خيارًا يوميًا مناسبًا إذا كان لا يسبب تهيجًا.
+  </section>
 
-        اختاري خياطات ناعمة وابتعدي عن الحواف الخشنة.
+  <section id="products" class="page">
 
-      </p>
+    <div class="card">
+
+      <h2>🧴 المرطبات والمنتجات</h2>
+
+      <p>قد تساعد المرطبات على تقليل الجفاف، لكن اختيار المنتج يعتمد على حالة الجلد وتوصية الطبيب.</p>
+
+      <ul>
+
+        <li>تحققي من قائمة المكونات قبل الاستخدام.</li>
+
+        <li>قد تكون المنتجات الخالية من العطر أقل تسببًا بالتهيج لبعض الأشخاص.</li>
+
+        <li>لا تضعي منتجًا جديدًا على جرح مفتوح إلا إذا أوصى به مختص.</li>
+
+        <li>تجنبي استخدام الأحماض والمقشرات أو الخلطات على الجلد المتضرر دون توجيه طبي.</li>
+
+        <li>أوقفي المنتج واطلبي المشورة إذا سبب تهيجًا جديدًا.</li>
+
+      </ul>
 
     </div>
 
     <div class="card">
 
-      <div class="fabric-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+      <h2>كيف أقيّم المنتج؟</h2>
 
-      <h3>الأحذية</h3>
+      <p>اسم المنتج وحده لا يكفي. راجعي المكونات، والغرض من الاستخدام، ومدى ملاءمته لحالتك، واسألي الطبيب أو الصيدلي قبل استخدامه على مناطق مصابة.</p>
 
-      <p class="muted">
-
-        اختاري أحذية مريحة لا تضغط على الجلد، واستشيري المختص
-
-        إذا تكررت الجروح في القدمين.
-
-      </p>
+      <div class="warning">هذا القسم لا يقدم وصفة علاجية ولا يضمن أن منتجًا معينًا آمن لحالتك.</div>
 
     </div>
 
-  </div>
+  </section>
 
-  <div class="notice">
+  <section id="alerts" class="page">
 
-    لا يوجد قماش واحد يناسب الجميع. هذه الخيارات ليست علاجًا،
+    <div class="card">
 
-    والأفضل مناقشة احتياجاتك مع فريق الرعاية.
+      <h2>🔔 متى أطلب المساعدة؟</h2>
 
-  </div>
+      <p>اطلبي تقييمًا طبيًا عند ظهور علامات جديدة أو تدهور واضح في حالة الجلد.</p>
 
-</section>
+      <ul>
 
-<!-- العناية -->
+        <li>زيادة الاحمرار أو السخونة أو التورم حول منطقة مصابة.</li>
 
-<section id="care" class="page">
+        <li>ألم متزايد أو إفرازات غير معتادة أو رائحة جديدة من الجرح.</li>
 
-  <div class="hero">
+        <li>حمى أو شعور عام بالتعب مع مشكلة جلدية.</li>
 
-    <h2>العناية والضمادات</h2>
+        <li>صعوبة في الأكل أو الشرب أو البلع، أو ظهور أعراض جديدة مقلقة.</li>
 
-    <p>معلومات عامة تساعدك على مناقشة خيارات العناية مع المختص.</p>
+      </ul>
 
-  </div>
+      <div class="warning"><b>حالة طارئة:</b> صعوبة التنفس أو النزيف الشديد أو التدهور السريع تستلزم طلب الإسعاف فورًا.</div>
 
-  <div class="card">
+    </div>
 
-    <h3><i class="fa-solid fa-bandage"></i> الضمادات غير الملتصقة</h3>
+    <div class="card">
 
-    <p class="muted">
+      <h2>📝 ملاحظاتي</h2>
 
-      قد يوصي المختص بضمادات مصممة لتقليل التصاق الضماد بالجرح
+      <p class="muted">اكتبي أسئلة تودين طرحها على الطبيب. تُحفظ الملاحظات على هذا الجهاز فقط.</p>
 
-      عند تغييره. يحدد المختص النوع المناسب للحالة.
+      <textarea id="notes" rows="5" style="width:100%;background:#081d32;color:white;border:1px solid var(--border);border-radius:12px;padding:12px" placeholder="اكتبي ملاحظاتك هنا..."></textarea>
 
-    </p>
+      <button class="primary" onclick="saveNotes()">حفظ الملاحظات</button>
 
-  </div>
+      <span id="saveStatus" class="small"></span>
 
-  <div class="card">
+    </div>
 
-    <h3><i class="fa-solid fa-droplet"></i> المراهم الواقية</h3>
+  </section>
 
-    <p class="muted">
+  <section id="sources" class="page">
 
-      قد تناسب بعض المستحضرات الخالية من العطر بعض الحالات،
+    <div class="card">
 
-      لكن يجب التأكد من ملاءمتها للجرح والمنطقة مع المختص.
+      <h2>📚 مصادر للتثقيف الصحي</h2>
 
-    </p>
+      <p>يمكنك الرجوع إلى الجهات التالية للقراءة عن انحلال البشرة الفقاعي (EB). المعلومات داخل التطبيق توعوية وليست بديلًا عن التقييم الطبي.</p>
 
-  </div>
+      <ul>
 
-  <div class="card">
+        <li><a href="https://www.debra.org/" target="_blank" rel="noopener">DEBRA International</a> — معلومات ودعم للأشخاص المصابين بـ EB.</li>
 
-    <h3><i class="fa-solid fa-shield-virus"></i> المطهرات والمضادات</h3>
+        <li><a href="https://www.nhs.uk/conditions/epidermolysis-bullosa/" target="_blank" rel="noopener">NHS: Epidermolysis bullosa</a> — معلومات عامة عن الحالة.</li>
 
-    <p class="muted">
+        <li><a href="https://medlineplus.gov/" target="_blank" rel="noopener">MedlinePlus</a> — معلومات صحية مبسطة.</li>
 
-      لا تستخدمي مطهرات أو مضادات حيوية على الجروح بشكل روتيني
+      </ul>
 
-      دون إرشاد طبي؛ فقد تسبب بعض المنتجات تهيجًا.
+      <div class="notice">تحققي من تاريخ المعلومات، وناقشي التوصيات العلاجية مع الطبيب المختص.</div>
 
-    </p>
+    </div>
 
-  </div>
-
-  <div class="notice warning">
-
-    لا تثقبي الفقاعات أو تزيلي الجلد اعتمادًا على التطبيق.
-
-    اتبعي خطة فريق الرعاية المتخصص.
-
-  </div>
-
-  <div class="card">
-
-    <h3>متى أطلب المساعدة الطبية؟</h3>
-
-    <p class="muted">
-
-      اطلبي تقييمًا طبيًا عند زيادة الألم أو الاحمرار أو التورم،
-
-      أو ظهور إفرازات غير معتادة أو ارتفاع الحرارة.
-
-      صعوبة التنفس أو البلع تستدعي مساعدة طارئة فورًا.
-
-    </p>
-
-  </div>
-
-</section>
-
-<!-- السجل -->
-
-<section id="tracker" class="page">
-
-  <div class="hero">
-
-    <h2>السجل اليومي</h2>
-
-    <p>دوّني ملاحظاتك لتتذكري التغيّرات والأسئلة التي تريدين طرحها.</p>
-
-  </div>
-
-  <div class="card">
-
-    <form id="log-form">
-
-      <div class="field">
-
-        <label for="log-date">التاريخ</label>
-
-        <input id="log-date" type="date" required>
-
-      </div>
-
-      <div class="field">
-
-        <label for="fabric">القماش المستخدم</label>
-
-        <select id="fabric">
-
-          <option>حرير طبيعي</option>
-
-          <option>أقمشة البامبو</option>
-
-          <option>قطن ناعم</option>
-
-          <option>نوع آخر</option>
-
-        </select>
-
-      </div>
-
-      <div class="field">
-
-        <label for="comfort">مستوى الراحة</label>
-
-        <select id="comfort">
-
-          <option>مريح</option>
-
-          <option>بعض الانزعاج</option>
-
-          <option>احتكاك أو تهيج</option>
-
-        </select>
-
-      </div>
-
-      <div class="field">
-
-        <label for="log-notes">ملاحظات</label>
-
-        <textarea id="log-notes" maxlength="500" placeholder="ملاحظات اليوم"></textarea>
-
-      </div>
-
-      <button class="primary full" type="submit">حفظ السجل</button>
-
-    </form>
-
-  </div>
-
-  <div class="card">
-
-    <h3>السجلات السابقة</h3>
-
-    <div id="logs"></div>
-
-    <button class="light-btn full" onclick="clearLogs()">مسح جميع السجلات</button>
-
-    <p class="muted">
-
-      تُحفظ السجلات على هذا الجهاز في هذه النسخة التجريبية.
-
-      لا تدخلي معلومات طبية أو شخصية شديدة الحساسية.
-
-    </p>
-
-  </div>
-
-</section>
+  </section>
 
 </div>
 
-<!-- التنقل السفلي -->
+</main>
 
-<nav class="bottom-nav">
-
-  <button class="active" data-page="home" onclick="go('home')">
-
-    <i class="fa-solid fa-house"></i>الرئيسية
-
-  </button>
-
-  <button data-page="assessment" onclick="go('assessment')">
-
-    <i class="fa-solid fa-stethoscope"></i>التقييم
-
-  </button>
-
-  <button data-page="fabrics" onclick="go('fabrics')">
-
-    <i class="fa-solid fa-shirt"></i>الأقمشة
-
-  </button>
-
-  <button data-page="care" onclick="go('care')">
-
-    <i class="fa-solid fa-bandage"></i>العناية
-
-  </button>
-
-  <button data-page="tracker" onclick="go('tracker')">
-
-    <i class="fa-solid fa-calendar-check"></i>السجل
-
-  </button>
-
-</nav>
-
-</div>
+<footer>EB Doc © 2026 — منصة تثقيفية للعناية بالجلد</footer>
 
 <script>
 
-// الدخول التجريبي
+const $ = id => document.getElementById(id);
 
-document.getElementById('login-form').addEventListener('submit', function(e) {
+function login(event){
 
-  e.preventDefault();
+  event.preventDefault();
 
-  enterApp();
+  const name = $("username").value.trim();
 
-});
+  const password = $("password").value;
 
-function enterApp() {
+  if(!name || password.length < 4) return;
 
-  document.getElementById('login-screen').classList.add('hidden');
+  localStorage.setItem("ebdoc_name",name);
 
-  document.getElementById('app').classList.remove('hidden');
+  localStorage.setItem("ebdoc_demo_login","true");
 
-  renderLogs();
-
-  go('home');
+  startApp();
 
 }
 
-// التنقل بين الصفحات
+function startApp(){
 
-function go(page) {
+  const name = localStorage.getItem("ebdoc_name");
 
-  document.querySelectorAll('.page').forEach(function(section) {
+  if(!name || localStorage.getItem("ebdoc_demo_login") !== "true") return;
 
-    section.classList.toggle('active', section.id === page);
+  $("login").style.display = "none";
 
-  });
+  $("app").style.display = "block";
 
-  document.querySelectorAll('[data-page]').forEach(function(button) {
+  $("logoutBtn").hidden = false;
 
-    button.classList.toggle('active', button.dataset.page === page);
+  $("welcome").textContent = name;
 
-  });
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  $("notes").value = localStorage.getItem("ebdoc_notes") || "";
 
 }
 
-// إنشاء ملخص الأعراض
+function logout(){
 
-document.getElementById('assessment-form').addEventListener('submit', function(e) {
+  localStorage.removeItem("ebdoc_demo_login");
 
-  e.preventDefault();
+  $("app").style.display = "none";
 
-  const severity = document.getElementById('severity').value;
+  $("login").style.display = "block";
 
-  const itch = document.getElementById('itch').value;
-
-  const pain = document.getElementById('pain').value;
-
-  const notes = document.getElementById('assessment-notes').value.trim();
-
-  const result = document.getElementById('assessment-result');
-
-  result.textContent =
-
-    'شدة الأعراض: ' + severity +
-
-    ' | الحكة: ' + itch + '/10' +
-
-    ' | الألم: ' + pain + '/10' +
-
-    (notes ? ' | الملاحظات: ' + notes : '') +
-
-    '. هذا الملخص للتوثيق فقط وليس تشخيصًا أو خطة علاج.';
-
-  result.classList.remove('hidden');
-
-});
-
-// السجل اليومي
-
-document.getElementById('log-date').value =
-
-  new Date().toLocaleDateString('en-CA');
-
-function getLogs() {
-
-  try {
-
-    return JSON.parse(localStorage.getItem('ebdoc-logs') || '[]');
-
-  } catch {
-
-    return [];
-
-  }
+  $("logoutBtn").hidden = true;
 
 }
 
-document.getElementById('log-form').addEventListener('submit', function(e) {
+function showPage(id){
 
-  e.preventDefault();
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 
-  const entry = {
+  $(id).classList.add("active");
 
-    id: Date.now(),
-
-    date: document.getElementById('log-date').value,
-
-    fabric: document.getElementById('fabric').value,
-
-    comfort: document.getElementById('comfort').value,
-
-    notes: document.getElementById('log-notes').value.trim()
-
-  };
-
-  const logs = getLogs();
-
-  logs.unshift(entry);
-
-  localStorage.setItem('ebdoc-logs', JSON.stringify(logs));
-
-  document.getElementById('log-notes').value = '';
-
-  renderLogs();
-
-  alert('تم حفظ السجل على هذا الجهاز.');
-
-});
-
-function renderLogs() {
-
-  const container = document.getElementById('logs');
-
-  container.replaceChildren();
-
-  const logs = getLogs();
-
-  if (logs.length === 0) {
-
-    const empty = document.createElement('p');
-
-    empty.className = 'muted';
-
-    empty.textContent = 'لم تتم إضافة سجلات بعد.';
-
-    container.appendChild(empty);
-
-    return;
-
-  }
-
-  logs.forEach(function(entry) {
-
-    const item = document.createElement('div');
-
-    item.className = 'log-item';
-
-    const title = document.createElement('strong');
-
-    title.textContent = entry.fabric + ' — ' + entry.comfort;
-
-    const date = document.createElement('small');
-
-    date.textContent = entry.date;
-
-    const notes = document.createElement('small');
-
-    notes.textContent = entry.notes || 'لا توجد ملاحظات إضافية.';
-
-    const remove = document.createElement('button');
-
-    remove.className = 'light-btn';
-
-    remove.textContent = 'حذف';
-
-    remove.style.marginTop = '8px';
-
-    remove.addEventListener('click', function() {
-
-      const remaining = getLogs().filter(function(x) {
-
-        return x.id !== entry.id;
-
-      });
-
-      localStorage.setItem('ebdoc-logs', JSON.stringify(remaining));
-
-      renderLogs();
-
-    });
-
-    item.append(title, date, notes, remove);
-
-    container.appendChild(item);
-
-  });
+  window.scrollTo({top:0,behavior:"smooth"});
 
 }
 
-function clearLogs() {
+function saveNotes(){
 
-  if (confirm('هل تريدين حذف جميع السجلات؟')) {
+  localStorage.setItem("ebdoc_notes",$("notes").value);
 
-    localStorage.removeItem('ebdoc-logs');
-
-    renderLogs();
-
-  }
+  $("saveStatus").textContent = " — تم الحفظ على هذا الجهاز";
 
 }
 
-// إرشادات الطوارئ
-
-function showEmergency() {
-
-  alert(
-
-    'إرشادات مهمة:\n\n' +
-
-    'لا تثقبي الفقاعات أو تزيلي الجلد اعتمادًا على التطبيق. ' +
-
-    'اتبعي خطة فريق الرعاية المتخصص.\n\n' +
-
-    'اطلبي تقييمًا طبيًا عند زيادة الألم أو الاحمرار أو التورم، ' +
-
-    'أو ظهور إفرازات غير معتادة أو ارتفاع الحرارة. ' +
-
-    'صعوبة التنفس أو البلع تستدعي الاتصال بالطوارئ فورًا.'
-
-  );
-
-}
+startApp();
 
 </script>
 
