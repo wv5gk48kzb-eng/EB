@@ -1,16 +1,15 @@
-تفضل كود index.html الكامل والتفاعلي لمشروع EB Doc، مصمماً بنفس هيكلية وأسلوب الشاشات ثلاثية الأبعاد الموضحة في الصورة (شاشة الدخول، الرئيسية بحالة البشرة، والتوصيات المقسمة)، ولكن بالألوان الكحلية، الزرقاء، والتركوازية:
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>EB Doc - دليلك للاهتمام بالبشرة الهشة</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Cairo & Tajawal -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -31,16 +30,10 @@
                         cyan: {
                             400: '#22d3ee',
                             500: '#06b6d4',
-                        },
-                        medical: {
-                            bg: '#f0f4f8',
-                            card: '#ffffff',
-                            accent: '#e0f2fe',
                         }
                     },
                     fontFamily: {
                         cairo: ['Cairo', 'sans-serif'],
-                        tajawal: ['Tajawal', 'sans-serif'],
                     }
                 }
             }
@@ -49,8 +42,13 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #0a192f;
+            background-color: #f8fafc;
             color: #1e293b;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
         }
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
@@ -59,64 +57,58 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        .app-container {
-            max-width: 430px;
+        .app-wrapper {
+            width: 100%;
+            max-width: 500px;
             min-height: 100vh;
-            margin: 0 auto;
             background-color: #f8fafc;
             position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
+            box-shadow: 0 0 25px rgba(0,0,0,0.08);
         }
     </style>
 </head>
-<body class="bg-navy-950 flex justify-center items-center min-h-screen p-0 md:p-4">
+<body>
 
-    <!-- App Frame Container -->
-    <div class="app-container w-full overflow-hidden flex flex-col justify-between">
+    <!-- App Main Wrapper -->
+    <div class="app-wrapper overflow-hidden">
 
         <!-- 1. LOGIN SCREEN -->
-        <div id="screen-login" class="flex-1 flex flex-col justify-between p-6 bg-gradient-to-b from-slate-50 via-teal-50/20 to-cyan-50 relative overflow-hidden">
-            <!-- Background Decorative Elements -->
-            <div class="absolute -top-12 -right-12 w-40 h-40 bg-teal-200/30 rounded-full blur-2xl"></div>
-            <div class="absolute top-1/3 -left-12 w-48 h-48 bg-cyan-200/30 rounded-full blur-2xl"></div>
+        <div id="screen-login" class="flex-1 flex flex-col justify-between p-6 bg-gradient-to-b from-slate-50 via-teal-50/20 to-cyan-50 min-h-screen">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 w-40 h-40 bg-teal-200/20 rounded-full blur-2xl pointer-events-none"></div>
 
-            <!-- Header Status Bar Simulation -->
-            <div class="flex justify-between items-center text-xs text-slate-500 font-sans px-2 pt-1 mb-4 z-10">
+            <!-- Header Status Bar -->
+            <div class="flex justify-between items-center text-xs text-slate-500 font-sans pt-1 mb-2">
                 <span>9:41</span>
                 <div class="flex items-center gap-1.5">
-                    <i class="fa-solid font-bold fa-signal"></i>
+                    <i class="fa-solid fa-signal"></i>
                     <i class="fa-solid fa-wifi"></i>
                     <i class="fa-solid fa-battery-full text-sm"></i>
                 </div>
             </div>
 
             <!-- App Brand & Header -->
-            <div class="text-center my-auto py-4 z-10">
-                <div class="inline-flex justify-center items-center w-20 h-20 bg-gradient-to-tr from-navy-900 via-teal-600 to-cyan-400 rounded-full shadow-lg shadow-teal-500/20 mb-3 p-1">
+            <div class="text-center my-auto py-6">
+                <div class="inline-flex justify-center items-center w-20 h-20 bg-gradient-to-tr from-navy-900 via-teal-600 to-cyan-400 rounded-full shadow-lg shadow-teal-500/20 mb-4 p-1">
                     <div class="w-full h-full bg-white rounded-full flex justify-center items-center text-teal-600 text-3xl">
                         <i class="fa-solid fa-hand-holding-heart"></i>
                     </div>
                 </div>
                 <h1 class="text-3xl font-extrabold text-navy-900 tracking-wide">EB Doc</h1>
                 <p class="text-xs text-teal-700 font-semibold mt-1">معاً لبشرة أكثر أماناً ورعاية</p>
-                <div class="mt-6">
-                    <h2 class="text-xl font-bold text-slate-800">دليلك للاهتمام بالبشرة الهشة</h2>
-                </div>
+                <h2 class="text-lg font-bold text-slate-800 mt-6">دليلك للاهتمام بالبشرة الهشة</h2>
             </div>
 
             <!-- Login Form -->
-            <div class="space-y-3 my-auto z-10">
+            <div class="space-y-3 my-auto w-full">
                 <div class="relative">
                     <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-teal-600">
                         <i class="fa-regular fa-envelope"></i>
                     </span>
                     <input type="text" id="username-input" placeholder="البريد الإلكتروني أو اسم المستخدم" 
-                        class="w-full py-3.5 pr-11 pl-11 text-sm bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 shadow-sm transition text-slate-700 placeholder-slate-400">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
-                        <i class="fa-regular fa-user"></i>
-                    </span>
+                        class="w-full py-3.5 pr-11 pl-11 text-sm bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-teal-500 shadow-sm transition text-slate-700 placeholder-slate-400">
                 </div>
 
                 <div class="relative">
@@ -124,13 +116,10 @@
                         <i class="fa-solid fa-lock"></i>
                     </span>
                     <input type="password" placeholder="كلمة المرور" 
-                        class="w-full py-3.5 pr-11 pl-11 text-sm bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200 shadow-sm transition text-slate-700 placeholder-slate-400">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 cursor-pointer">
-                        <i class="fa-regular fa-eye"></i>
-                    </span>
+                        class="w-full py-3.5 pr-11 pl-11 text-sm bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-teal-500 shadow-sm transition text-slate-700 placeholder-slate-400">
                 </div>
 
-                <button onclick="loginUser()" class="w-full py-3.5 bg-gradient-to-r from-navy-900 via-teal-700 to-teal-600 text-white font-bold rounded-2xl shadow-lg shadow-navy-900/20 hover:opacity-95 transition flex justify-center items-center gap-2 mt-4">
+                <button onclick="loginUser()" class="w-full py-3.5 bg-gradient-to-r from-navy-900 via-teal-700 to-teal-600 text-white font-bold rounded-2xl shadow-lg shadow-navy-900/10 hover:opacity-95 transition flex justify-center items-center gap-2 mt-4">
                     <span>تسجيل الدخول</span>
                     <i class="fa-solid fa-arrow-left text-xs"></i>
                 </button>
@@ -148,329 +137,24 @@
 
                 <!-- Language Selector Buttons -->
                 <div class="grid grid-cols-2 gap-3">
-                    <button class="py-2 px-3 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 flex justify-center items-center gap-2 hover:border-teal-400 transition">
+                    <button class="py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 flex justify-center items-center gap-2">
                         <i class="fa-solid fa-globe text-teal-600"></i>
                         <span>العربية</span>
                     </button>
-                    <button class="py-2 px-3 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-500 flex justify-center items-center gap-2 hover:border-teal-400 transition">
+                    <button class="py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-500 flex justify-center items-center gap-2">
                         <i class="fa-solid fa-globe text-slate-400"></i>
                         <span>English</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Footer Medical Illustration / Note -->
-            <div class="text-center pt-4 z-10">
-                <p class="text-[11px] text-slate-400">تطبيق يهتم باحتياجات أبطال البشرة الهشة EB</p>
+            <!-- Footer Note -->
+            <div class="text-center pt-4 pb-2">
+                <p class="text-[11px] text-slate-400">تطبيق يهتم بااحتياجات أبطال البشرة الهشة EB</p>
             </div>
         </div>
 
         <!-- 2. MAIN APP HOME SCREEN -->
-        <div id="screen-home" class="flex-1 flex-col hidden bg-slate-50 pb-20">
+        <div id="screen-home" class="flex-1 flex-col hidden bg-slate-50 pb-24">
             <!-- App Header -->
-            <div class="bg-navy-900 text-white pt-4 pb-6 px-5 rounded-b-3xl shadow-md relative">
-                <div class="flex justify-between items-center mb-4 text-xs opacity-80">
-                    <span>9:41</span>
-                    <div class="flex gap-1.5">
-                        <i class="fa-solid fa-wifi"></i>
-                        <i class="fa-solid fa-battery-full"></i>
-                    </div>
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-xs text-teal-300">مرحباً بك في EB Doc 👋</p>
-                        <h2 id="user-display-name" class="text-lg font-bold text-white mt-0.5">البطل العزيز</h2>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button class="w-9 h-9 bg-navy-800/80 border border-teal-500/30 rounded-full flex justify-center items-center text-teal-300 relative">
-                            <i class="fa-regular fa-bell text-sm"></i>
-                            <span class="w-2 h-2 bg-teal-400 rounded-full absolute top-2 right-2"></span>
-                        </button>
-                        <button onclick="logoutUser()" class="w-9 h-9 bg-navy-800/80 border border-teal-500/30 rounded-full flex justify-center items-center text-slate-300">
-                            <i class="fa-regular fa-user text-sm"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Skin Status Card (Matching Prompt Reference) -->
-                <div class="mt-5 bg-white text-slate-800 rounded-2xl p-4 shadow-lg border border-teal-100 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-teal-50 border border-teal-200 rounded-2xl flex justify-center items-center text-teal-600 text-xl">
-                            <i class="fa-solid fa-shield-heart"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xs text-slate-500 font-semibold">حالة البشرة الآن</h4>
-                            <p class="text-sm font-bold text-navy-900">تحتاج إلى عناية إضافية اليوم</p>
-                            <!-- Progress Bar -->
-                            <div class="w-32 bg-slate-100 rounded-full h-2 mt-2 overflow-hidden">
-                                <div class="bg-gradient-to-r from-teal-500 to-cyan-400 h-2 rounded-full" style="width: 65%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-left">
-                        <span class="text-xs font-bold text-teal-600">65%</span>
-                        <i class="fa-solid fa-chevron-left text-slate-300 text-xs mr-1"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Welcome Slogan Banner -->
-            <div class="px-5 mt-4 text-center">
-                <p class="text-xs text-slate-500 font-medium bg-teal-50/80 py-2 px-3 rounded-xl border border-teal-100/60 inline-block">
-                    نحن هنا لمساعدتك في حماية بشرتك والعناية بها بأفضل الطرق 💙
-                </p>
-            </div>
-
-            <!-- Main Categories Grid (4 Cards like Reference Image) -->
-            <div class="p-5 grid grid-cols-2 gap-4">
-                <!-- Clothes Category Card -->
-                <div onclick="navigateTo('screen-recommendations', 'clothes')" class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col items-center text-center group">
-                    <div class="w-14 h-14 bg-cyan-50 rounded-2xl flex justify-center items-center text-cyan-600 text-2xl mb-3 group-hover:scale-105 transition">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                    <h3 class="font-bold text-navy-900 text-sm">الملابس المناسبة</h3>
-                    <p class="text-[11px] text-slate-400 mt-1">اختر ما يناسب بشرتك</p>
-                    <div class="w-6 h-6 bg-slate-50 rounded-full flex justify-center items-center text-slate-400 mt-3 group-hover:bg-cyan-500 group-hover:text-white transition">
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                    </div>
-                </div>
-
-                <!-- Skincare Category Card -->
-                <div onclick="navigateTo('screen-recommendations', 'care')" class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col items-center text-center group">
-                    <div class="w-14 h-14 bg-teal-50 rounded-2xl flex justify-center items-center text-teal-600 text-2xl mb-3 group-hover:scale-105 transition">
-                        <i class="fa-solid fa-pump-soap"></i>
-                    </div>
-                    <h3 class="font-bold text-navy-900 text-sm">العناية بالبشرة</h3>
-                    <p class="text-[11px] text-slate-400 mt-1">روتين آمن وفعال</p>
-                    <div class="w-6 h-6 bg-slate-50 rounded-full flex justify-center items-center text-slate-400 mt-3 group-hover:bg-teal-500 group-hover:text-white transition">
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                    </div>
-                </div>
-
-                <!-- Nutrition Category Card -->
-                <div onclick="navigateTo('screen-recommendations', 'food')" class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col items-center text-center group">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex justify-center items-center text-emerald-600 text-2xl mb-3 group-hover:scale-105 transition">
-                        <i class="fa-solid fa-apple-whole"></i>
-                    </div>
-                    <h3 class="font-bold text-navy-900 text-sm">الغذاء المناسب</h3>
-                    <p class="text-[11px] text-slate-400 mt-1">أطعمة تدعم صحتك</p>
-                    <div class="w-6 h-6 bg-slate-50 rounded-full flex justify-center items-center text-slate-400 mt-3 group-hover:bg-emerald-500 group-hover:text-white transition">
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                    </div>
-                </div>
-
-                <!-- Protection Category Card -->
-                <div onclick="navigateTo('screen-recommendations', 'protection')" class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col items-center text-center group">
-                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex justify-center items-center text-blue-600 text-2xl mb-3 group-hover:scale-105 transition">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 class="font-bold text-navy-900 text-sm">حماية البشرة</h3>
-                    <p class="text-[11px] text-slate-400 mt-1">نصائح وإرشادات للوقاية</p>
-                    <div class="w-6 h-6 bg-slate-50 rounded-full flex justify-center items-center text-slate-400 mt-3 group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Start Now Call-to-Action Button -->
-            <div class="px-5 mt-2">
-                <button onclick="navigateTo('screen-recommendations', 'all')" class="w-full py-3.5 bg-gradient-to-r from-navy-900 via-teal-700 to-teal-600 text-white font-bold rounded-2xl shadow-md flex justify-center items-center gap-2">
-                    <span>ابدأ استكشاف الدليل الكامل</span>
-                    <i class="fa-solid fa-arrow-left text-xs"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- 3. RECOMMENDATIONS SCREEN -->
-        <div id="screen-recommendations" class="flex-1 flex-col hidden bg-slate-50 pb-20">
-            <!-- Top App Header -->
-            <div class="bg-white px-5 pt-4 pb-3 border-b border-slate-100 sticky top-0 z-20">
-                <div class="flex justify-between items-center mb-3 text-xs text-slate-400">
-                    <span>9:41</span>
-                    <div class="flex gap-1.5">
-                        <i class="fa-solid fa-wifi"></i>
-                        <i class="fa-solid fa-battery-full"></i>
-                    </div>
-                </div>
-                <div class="flex items-center justify-between">
-                    <button onclick="navigateTo('screen-home')" class="w-8 h-8 rounded-full bg-slate-100 flex justify-center items-center text-slate-600">
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </button>
-                    <h3 class="text-base font-bold text-navy-900">التوصيات والإرشادات</h3>
-                    <button class="w-8 h-8 rounded-full bg-slate-100 flex justify-center items-center text-slate-600">
-                        <i class="fa-solid fa-sliders text-xs"></i>
-                    </button>
-                </div>
-
-                <!-- Category Tabs Filter (As in Screen 3) -->
-                <div class="flex gap-2 mt-4 overflow-x-auto hide-scrollbar pb-1">
-                    <button onclick="filterCategory('clothes')" id="tab-clothes" class="category-tab py-2 px-4 rounded-xl text-xs font-bold whitespace-nowrap bg-teal-600 text-white transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-shirt"></i>
-                        <span>الملابس</span>
-                    </button>
-                    <button onclick="filterCategory('care')" id="tab-care" class="category-tab py-2 px-4 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-pump-soap"></i>
-                        <span>العناية</span>
-                    </button>
-                    <button onclick="filterCategory('food')" id="tab-food" class="category-tab py-2 px-4 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-apple-whole"></i>
-                        <span>الغذاء</span>
-                    </button>
-                    <button onclick="filterCategory('protection')" id="tab-protection" class="category-tab py-2 px-4 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <span>الحماية</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- List of Recommendations -->
-            <div class="p-5 space-y-3" id="recommendations-list">
-                
-                <!-- Recommendation Item 1 -->
-                <div class="rec-card clothes bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-14 h-14 bg-cyan-50 rounded-xl flex justify-center items-center text-cyan-600 text-2xl shrink-0">
-                            <i class="fa-solid fa-vest"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded-md">الملابس</span>
-                            <h4 class="text-xs font-bold text-navy-900 mt-1">ملابس قطنية واسعة خالية من الخياطة</h4>
-                            <p class="text-[11px] text-slate-400 mt-0.5">تقلل من الاحتكاك المباشر وتخفف التهيّج</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-left text-slate-300 text-xs ml-1"></i>
-                </div>
-
-                <!-- Recommendation Item 2 -->
-                <div class="rec-card care bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-14 h-14 bg-teal-50 rounded-xl flex justify-center items-center text-teal-600 text-2xl shrink-0">
-                            <i class="fa-solid fa-jar"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md">العناية</span>
-                            <h4 class="text-xs font-bold text-navy-900 mt-1">مرطب لطيف خالي من العطور</h4>
-                            <p class="text-[11px] text-slate-400 mt-0.5">يحافظ على مرونة البشرة ويقلل الجفاف</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-left text-slate-300 text-xs ml-1"></i>
-                </div>
-
-                <!-- Recommendation Item 3 -->
-                <div class="rec-card food bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-14 h-14 bg-emerald-50 rounded-xl flex justify-center items-center text-emerald-600 text-2xl shrink-0">
-                            <i class="fa-solid fa-fish"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">الغذاء</span>
-                            <h4 class="text-xs font-bold text-navy-900 mt-1">أطعمة غنية بالأوميغا 3 والبروتين</h4>
-                            <p class="text-[11px] text-slate-400 mt-0.5">كالأسماك والمكسرات لدعم التئام انسجة الجلد</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-left text-slate-300 text-xs ml-1"></i>
-                </div>
-
-                <!-- Recommendation Item 4 -->
-                <div class="rec-card protection bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex justify-center items-center text-blue-600 text-2xl shrink-0">
-                            <i class="fa-solid fa-bandage"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md">الحماية</span>
-                            <h4 class="text-xs font-bold text-navy-900 mt-1">استخدام ضمادات السيليكون غير اللاصقة</h4>
-                            <p class="text-[11px] text-slate-400 mt-0.5">لحماية الجروح وتجنب ألم نزع الضمادات</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-left text-slate-300 text-xs ml-1"></i>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 4. BOTTOM NAVIGATION BAR (Visible on Home & Recommendations) -->
-        <div id="bottom-nav" class="hidden fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white border-t border-slate-100 py-2 px-6 flex justify-between items-center z-30 shadow-lg">
-            <button onclick="navigateTo('screen-home')" class="nav-btn flex flex-col items-center gap-1 text-teal-600 font-bold">
-                <i class="fa-solid fa-house text-lg"></i>
-                <span class="text-[10px]">الرئيسية</span>
-            </button>
-            <button onclick="navigateTo('screen-recommendations', 'all')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-teal-600 transition">
-                <i class="fa-solid fa-star text-lg"></i>
-                <span class="text-[10px]">التوصيات</span>
-            </button>
-            <button onclick="alert('المعلومات الطبية والموسوعة متاحة قريباً')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-teal-600 transition">
-                <i class="fa-solid fa-book-medical text-lg"></i>
-                <span class="text-[10px]">المعلومات الطبية</span>
-            </button>
-            <button onclick="alert('المصادر والمراجع')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-teal-600 transition">
-                <i class="fa-solid fa-book-open text-lg"></i>
-                <span class="text-[10px]">المصادر</span>
-            </button>
-        </div>
-
-    </div>
-
-    <!-- JavaScript Navigation & Functionality Logic -->
-    <script>
-        function loginUser() {
-            const username = document.getElementById('username-input').value.trim();
-            if(username) {
-                document.getElementById('user-display-name').innerText = username;
-            }
-            document.getElementById('screen-login').classList.add('hidden');
-            document.getElementById('screen-home').classList.remove('hidden');
-            document.getElementById('screen-home').classList.add('flex');
-            document.getElementById('bottom-nav').classList.remove('hidden');
-        }
-
-        function logoutUser() {
-            document.getElementById('screen-home').classList.add('hidden');
-            document.getElementById('screen-recommendations').classList.add('hidden');
-            document.getElementById('bottom-nav').classList.add('hidden');
-            document.getElementById('screen-login').classList.remove('hidden');
-        }
-
-        function navigateTo(screenId, categoryFilter = 'all') {
-            document.getElementById('screen-home').classList.add('hidden');
-            document.getElementById('screen-recommendations').classList.add('hidden');
-
-            const targetScreen = document.getElementById(screenId);
-            targetScreen.classList.remove('hidden');
-            targetScreen.classList.add('flex');
-
-            if (screenId === 'screen-recommendations') {
-                filterCategory(categoryFilter);
-            }
-        }
-
-        function filterCategory(category) {
-            const allCards = document.querySelectorAll('.rec-card');
-            const allTabs = document.querySelectorAll('.category-tab');
-
-            // Update tab button styles
-            allTabs.forEach(tab => {
-                tab.classList.remove('bg-teal-600', 'text-white');
-                tab.classList.add('bg-slate-100', 'text-slate-600');
-            });
-
-            const activeTab = document.getElementById(`tab-${category}`);
-            if (activeTab) {
-                activeTab.classList.remove('bg-slate-100', 'text-slate-600');
-                activeTab.classList.add('bg-teal-600', 'text-white');
-            }
-
-            // Filter cards display
-            allCards.forEach(card => {
-                if (category === 'all' || card.classList.contains(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
-
+            
