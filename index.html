@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EB Doc - منصة العناية بالبشرة والأقمشة الطبية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            dark: '#0f2c59',     /* أزرق كحلي طبي داكن */
+                            primary: '#1d5d9b',  /* أزرق طبي أساسي */
+                            accent: '#75c2f6',   /* أزرق سماوي فاتح */
+                            light: '#f4f9f9',    /* خلفية مريحة جداً */
+                            mint: '#e8f1f5'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f9f9;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="bg-medical-dark text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-medical-dark font-bold text-xl shadow">
+                    <i class="fa-solid font-bold fa-user-doctor"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-wide">EB Doc</h1>
+                    <p class="text-xs text-medical-accent font-medium">المرجع الطبي الشامل للتحلل الفقاعي</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-2 space-x-reverse text-xs bg-medical-primary px-3 py-1.5 rounded-full border border-medical-accent/30">
+                <i class="fa-solid fa-shield-halved text-medical-accent"></i>
+                <span>مناسب للأطفال والكبار</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- Navigation Tabs -->
+        <div class="flex bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100 mb-6 overflow-x-auto">
+            <button onclick="switchTab('fabrics')" id="btn-fabrics" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse bg-medical-primary text-white shadow-sm">
+                <i class="fa-solid fa-shirt"></i>
+                <span>الأقمشة والملابس</span>
+            </button>
+            <button onclick="switchTab('assessment')" id="btn-assessment" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>تقييم البشرة</span>
+            </button>
+            <button onclick="switchTab('care')" id="btn-care" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
+                <i class="fa-solid fa-bandage"></i>
+                <span>الضمادات والعناية</span>
+            </button>
+            <button onclick="switchTab('tracker')" id="btn-tracker" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>سجل الراحة</span>
+            </button>
+        </div>
+
+        <!-- TAB 1: FABRICS & CLOTHING -->
+        <section id="tab-fabrics" class="tab-content active space-y-6">
+            <div class="bg-gradient-to-r from-medical-dark to-medical-primary text-white p-6 rounded-2xl shadow-md flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold mb-1">دليل الأقمشة والملابس الآمنة</h2>
+                    <p class="text-sm text-medical-accent opacity-90">اختيار النسيج المناسب يقلل من الاحتكاك ويحمي طبقات الجلد الرقيقة.</p>
+                </div>
+                <i class="fa-solid fa-feather-pointed text-4xl text-medical-accent opacity-60 hidden sm:block"></i>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Silk Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
+                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-medical-dark">الحرير الطبيعي 100%</h3>
+                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">الخيار الأول للأمان</span>
+                    </div>
+                    <div class="p-5 text-sm space-y-3">
+                        <p class="text-gray-600 leading-relaxed">يمتاز بألياف فائقة النعومة تمنع أي حكة أو احتكاك مباشر مع البثور أو التقرحات.</p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fa-solid fa-check text-green-500"></i>
+                                <span>خالي من الوبر والألياف الخشنة</span>
+                            </li>
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fa-solid fa-check text-green-500"></i>
+                                <span>يحافظ على رطوبة البشرة الطبيعية</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bamboo Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
+                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-medical-dark">أقمشة البامبو</h3>
+                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">مضاد بكتيري طبيعي</span>
+                    </div>
+                    <div class="p-5 text-sm space-y-3">
+                        <p class="text-gray-600 leading-relaxed">نسيج ناعم ومسامي وامتصاصه عالٍ جداً للرطوبة، مما يحافظ على جفاف وراحة الجلد.</p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fa-solid fa-check text-green-500"></i>
+                                <span>تهوية ممتازة وتقليل التعرق</span>
+                            </li>
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fa-solid fa-check text-green-500"></i>
+                                <span>مرونة ممتازة للملابس الداخلية</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Organic Cotton Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
+                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-medical-dark">القطن العضوي الناعم</h3>
+                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">لليوميات والاستخدام العام</span>
+                    </div>
+                    <div class="p-5 text-sm space-y-3">
+                        <p class="text-gray-600 leading-relaxed">خالي تماماً من المواد الكيميائية والأصباغ القاسية، ويفضل دائماً أن تكون الخياطة مقلوبة للخارج.</p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fa-solid fa-check text-green-500"></i>
+                                <span>بدون خياطة داخلية بارزة</span>
+                            </li>
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fa-solid fa-check text-green-500"></i>
+                                <span>مستدام ومريح للاستعمال اليومي</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Banner -->
+            <div class="bg-white p-5 rounded-2xl border-r-4 border-medical-primary shadow-sm text-sm space-y-2">
+                <h4 class="font-bold text-medical-dark text-base flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>توصيات اختيار الملابس وتجهيزها:</span>
+                </h4>
+                <p class="text-gray-600">• استخدم ملابس ذات درزات مقلوبة (Seams Outside) لمنع الاحتكاك مع الجلد.</p>
+                <p class="text-gray-600">• يفضل اختيار الملابس ذات السحابات الأمامية أو الأزرار بدلاً من الملابس التي تُرتدى عبر الرأس.</p>
+            </div>
+        </section>
+
+        <!-- TAB 2: SKIN ASSESSMENT -->
+        <section id="tab-assessment" class="tab-content space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold text-medical-dark">استبيان تقييم راحة البشرة</h2>
+                    <p class="text-xs text-gray-500 mt-1">أجب عن الأسئلة التالية للحصول على التوصية الطبية المناسبة لدرجة العناية:</p>
+                </div>
+
+                <form id="assessment-form" onsubmit="calculateAssessment(event)" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">1. كم درجة الشعور بالحكة أو الألم اليوم؟</label>
+                        <select id="q1" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
+                            <option value="1">خفيف جداً / لا يوجد ألم</option>
+                            <option value="2">متوسط (إزعاج بسيط أثناء الحركة)</option>
+                            <option value="3">شديد (صعوبة في ارتداء الملابس أو النوم)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">2. هل يوجد بثور أو تقرحات جديدة اليوم؟</label>
+                        <select id="q2" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
+                            <option value="1">لا يوجد بثور جديدة</option>
+                            <option value="2">بثرة إلى بثرتين بسيطة</option>
+                            <option value="3">عدة بثور تحتاج إلى عناية وضمادات</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">3. نوع القماش أو الملابس المستعملة حالياً:</label>
+                        <select id="q3" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
+                            <option value="1">حرير طبيعي / بامبو ناعم</option>
+                            <option value="2">قطن عادي ناعم</option>
+                            <option value="3">أقمشة مصنعة أو تحتوي على خياطة بارزة</option>
+                        
