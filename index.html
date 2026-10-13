@@ -1,219 +1,1267 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EB Doc - منصة العناية بالبشرة والأقمشة الطبية</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts (Cairo) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        medical: {
-                            dark: '#0f2c59',     /* أزرق كحلي طبي داكن */
-                            primary: '#1d5d9b',  /* أزرق طبي أساسي */
-                            accent: '#75c2f6',   /* أزرق سماوي فاتح */
-                            light: '#f4f9f9',    /* خلفية مريحة جداً */
-                            mint: '#e8f1f5'
-                        }
-                    },
-                    fontFamily: {
-                        cairo: ['Cairo', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f4f9f9;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#142D4E">
+
+<title>EB Doc</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+:root {
+
+  --navy: #142D4E;
+
+  --blue: #247BA8;
+
+  --light: #EAF4FB;
+
+  --bg: #F3F7FB;
+
+  --text: #26384D;
+
+  --muted: #718096;
+
+  --border: #DCE5EF;
+
+}
+
+* { box-sizing: border-box; }
+
+body {
+
+  margin: 0;
+
+  font-family: Cairo, sans-serif;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+}
+
+button, input, select, textarea { font: inherit; }
+
+button { cursor: pointer; }
+
+.hidden { display: none !important; }
+
+header {
+
+  background: var(--navy);
+
+  color: white;
+
+  padding: 14px 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 10;
+
+}
+
+.brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+.logo {
+
+  background: var(--blue);
+
+  width: 44px;
+
+  height: 44px;
+
+  border-radius: 14px;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: 22px;
+
+}
+
+.brand h1 { margin: 0; font-size: 21px; }
+
+.brand small { color: #C6D8E9; }
+
+button {
+
+  border: 0;
+
+  border-radius: 12px;
+
+  padding: 11px 15px;
+
+  font-weight: 700;
+
+}
+
+.primary {
+
+  background: var(--navy);
+
+  color: white;
+
+}
+
+.light-btn {
+
+  background: var(--light);
+
+  color: var(--navy);
+
+}
+
+.container {
+
+  width: min(1100px, 100%);
+
+  margin: auto;
+
+  padding: 20px 15px 100px;
+
+}
+
+.hero {
+
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+
+  color: white;
+
+  padding: 25px;
+
+  border-radius: 22px;
+
+  margin-bottom: 18px;
+
+}
+
+.hero h2 { font-size: 25px; margin: 8px 0; }
+
+.hero p { line-height: 1.9; font-size: 13px; }
+
+.card {
+
+  background: white;
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  margin-bottom: 15px;
+
+}
+
+h2, h3 { color: var(--navy); }
+
+h2 { font-size: 21px; }
+
+h3 { font-size: 16px; }
+
+.muted {
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 2;
+
+}
+
+.grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+}
+
+.menu-card {
+
+  background: white;
+
+  border: 1px solid var(--border);
+
+  border-radius: 17px;
+
+  padding: 16px;
+
+  text-align: right;
+
+  color: var(--text);
+
+  min-height: 130px;
+
+}
+
+.menu-card i {
+
+  display: block;
+
+  font-size: 24px;
+
+  color: var(--blue);
+
+  margin-bottom: 12px;
+
+}
+
+.menu-card strong {
+
+  display: block;
+
+  color: var(--navy);
+
+}
+
+.menu-card small {
+
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  line-height: 1.8;
+
+}
+
+.page { display: none; }
+
+.page.active { display: block; }
+
+.field { margin: 15px 0; }
+
+label {
+
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  margin-bottom: 7px;
+
+}
+
+input, select, textarea {
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 11px;
+
+  background: white;
+
+  color: var(--text);
+
+}
+
+input[type="range"] { padding: 0; }
+
+textarea { min-height: 85px; resize: vertical; }
+
+.full { width: 100%; }
+
+.notice {
+
+  padding: 13px;
+
+  background: var(--light);
+
+  border-radius: 12px;
+
+  font-size: 12px;
+
+  line-height: 2;
+
+  margin: 14px 0;
+
+}
+
+.warning {
+
+  background: #FFF3E5;
+
+  border: 1px solid #F0DDB9;
+
+}
+
+.fabric-icon {
+
+  font-size: 25px;
+
+  color: var(--blue);
+
+  margin-bottom: 8px;
+
+}
+
+.log-item {
+
+  padding: 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  margin-top: 10px;
+
+  overflow-wrap: anywhere;
+
+}
+
+.log-item small {
+
+  display: block;
+
+  color: var(--muted);
+
+  line-height: 1.8;
+
+}
+
+.bottom-nav {
+
+  position: fixed;
+
+  bottom: 0;
+
+  right: 0;
+
+  left: 0;
+
+  z-index: 20;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  background: var(--navy);
+
+  padding: 10px 2px;
+
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+
+}
+
+.bottom-nav button {
+
+  flex: 1;
+
+  color: #B8C9DB;
+
+  background: transparent;
+
+  padding: 6px 2px;
+
+  font-size: 10px;
+
+}
+
+.bottom-nav i {
+
+  display: block;
+
+  font-size: 18px;
+
+  margin-bottom: 5px;
+
+}
+
+.bottom-nav button.active { color: #8FD5FA; }
+
+#login-screen {
+
+  min-height: 100vh;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 20px;
+
+  background: linear-gradient(145deg, var(--navy), var(--blue));
+
+}
+
+.login-card {
+
+  background: white;
+
+  width: min(420px, 100%);
+
+  border-radius: 23px;
+
+  padding: 25px;
+
+}
+
+.login-card h1 {
+
+  text-align: center;
+
+  color: var(--navy);
+
+}
+
+.login-card p {
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.9;
+
+}
+
+@media (min-width: 800px) {
+
+  .container { padding-bottom: 40px; }
+
+  .bottom-nav { display: none; }
+
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+}
+
+@media (max-width: 380px) {
+
+  .grid { grid-template-columns: 1fr; }
+
+  .hero { padding: 18px; }
+
+}
+
+</style>
+
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Navbar -->
-    <header class="bg-medical-dark text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-medical-dark font-bold text-xl shadow">
-                    <i class="fa-solid font-bold fa-user-doctor"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-extrabold tracking-wide">EB Doc</h1>
-                    <p class="text-xs text-medical-accent font-medium">المرجع الطبي الشامل للتحلل الفقاعي</p>
-                </div>
-            </div>
-            <div class="hidden md:flex items-center space-x-2 space-x-reverse text-xs bg-medical-primary px-3 py-1.5 rounded-full border border-medical-accent/30">
-                <i class="fa-solid fa-shield-halved text-medical-accent"></i>
-                <span>مناسب للأطفال والكبار</span>
-            </div>
-        </div>
-    </header>
+<body>
 
-    <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+<!-- شاشة الدخول -->
 
-        <!-- Navigation Tabs -->
-        <div class="flex bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100 mb-6 overflow-x-auto">
-            <button onclick="switchTab('fabrics')" id="btn-fabrics" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse bg-medical-primary text-white shadow-sm">
-                <i class="fa-solid fa-shirt"></i>
-                <span>الأقمشة والملابس</span>
-            </button>
-            <button onclick="switchTab('assessment')" id="btn-assessment" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
-                <i class="fa-solid fa-notes-medical"></i>
-                <span>تقييم البشرة</span>
-            </button>
-            <button onclick="switchTab('care')" id="btn-care" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
-                <i class="fa-solid fa-bandage"></i>
-                <span>الضمادات والعناية</span>
-            </button>
-            <button onclick="switchTab('tracker')" id="btn-tracker" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
-                <i class="fa-solid fa-calendar-check"></i>
-                <span>سجل الراحة</span>
-            </button>
-        </div>
+<section id="login-screen">
 
-        <!-- TAB 1: FABRICS & CLOTHING -->
-        <section id="tab-fabrics" class="tab-content active space-y-6">
-            <div class="bg-gradient-to-r from-medical-dark to-medical-primary text-white p-6 rounded-2xl shadow-md flex justify-between items-center">
-                <div>
-                    <h2 class="text-xl font-bold mb-1">دليل الأقمشة والملابس الآمنة</h2>
-                    <p class="text-sm text-medical-accent opacity-90">اختيار النسيج المناسب يقلل من الاحتكاك ويحمي طبقات الجلد الرقيقة.</p>
-                </div>
-                <i class="fa-solid fa-feather-pointed text-4xl text-medical-accent opacity-60 hidden sm:block"></i>
-            </div>
+  <div class="login-card">
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Silk Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
-                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
-                            <i class="fa-solid fa-gem"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-medical-dark">الحرير الطبيعي 100%</h3>
-                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">الخيار الأول للأمان</span>
-                    </div>
-                    <div class="p-5 text-sm space-y-3">
-                        <p class="text-gray-600 leading-relaxed">يمتاز بألياف فائقة النعومة تمنع أي حكة أو احتكاك مباشر مع البثور أو التقرحات.</p>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>خالي من الوبر والألياف الخشنة</span>
-                            </li>
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>يحافظ على رطوبة البشرة الطبيعية</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="logo" style="margin:auto;color:white">
 
-                <!-- Bamboo Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
-                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
-                            <i class="fa-solid fa-leaf"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-medical-dark">أقمشة البامبو</h3>
-                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">مضاد بكتيري طبيعي</span>
-                    </div>
-                    <div class="p-5 text-sm space-y-3">
-                        <p class="text-gray-600 leading-relaxed">نسيج ناعم ومسامي وامتصاصه عالٍ جداً للرطوبة، مما يحافظ على جفاف وراحة الجلد.</p>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>تهوية ممتازة وتقليل التعرق</span>
-                            </li>
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>مرونة ممتازة للملابس الداخلية</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+      <i class="fa-solid fa-notes-medical"></i>
 
-                <!-- Organic Cotton Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
-                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
-                            <i class="fa-solid fa-cloud"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-medical-dark">القطن العضوي الناعم</h3>
-                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">لليوميات والاستخدام العام</span>
-                    </div>
-                    <div class="p-5 text-sm space-y-3">
-                        <p class="text-gray-600 leading-relaxed">خالي تماماً من المواد الكيميائية والأصباغ القاسية، ويفضل دائماً أن تكون الخياطة مقلوبة للخارج.</p>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>بدون خياطة داخلية بارزة</span>
-                            </li>
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>مستدام ومريح للاستعمال اليومي</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    </div>
 
-            <!-- Tips Banner -->
-            <div class="bg-white p-5 rounded-2xl border-r-4 border-medical-primary shadow-sm text-sm space-y-2">
-                <h4 class="font-bold text-medical-dark text-base flex items-center space-x-2 space-x-reverse">
-                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
-                    <span>توصيات اختيار الملابس وتجهيزها:</span>
-                </h4>
-                <p class="text-gray-600">• استخدم ملابس ذات درزات مقلوبة (Seams Outside) لمنع الاحتكاك مع الجلد.</p>
-                <p class="text-gray-600">• يفضل اختيار الملابس ذات السحابات الأمامية أو الأزرار بدلاً من الملابس التي تُرتدى عبر الرأس.</p>
-            </div>
-        </section>
+    <h1>EB Doc</h1>
 
-        <!-- TAB 2: SKIN ASSESSMENT -->
-        <section id="tab-assessment" class="tab-content space-y-6">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <div class="mb-6">
-                    <h2 class="text-xl font-bold text-medical-dark">استبيان تقييم راحة البشرة</h2>
-                    <p class="text-xs text-gray-500 mt-1">أجب عن الأسئلة التالية للحصول على التوصية الطبية المناسبة لدرجة العناية:</p>
-                </div>
+    <p>مساحة رقمية لدعم العناية بالبشرة الحساسة</p>
 
-                <form id="assessment-form" onsubmit="calculateAssessment(event)" class="space-y-5">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">1. كم درجة الشعور بالحكة أو الألم اليوم؟</label>
-                        <select id="q1" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
-                            <option value="1">خفيف جداً / لا يوجد ألم</option>
-                            <option value="2">متوسط (إزعاج بسيط أثناء الحركة)</option>
-                            <option value="3">شديد (صعوبة في ارتداء الملابس أو النوم)</option>
-                        </select>
-                    </div>
+    <form id="login-form">
 
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">2. هل يوجد بثور أو تقرحات جديدة اليوم؟</label>
-                        <select id="q2" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
-                            <option value="1">لا يوجد بثور جديدة</option>
-                            <option value="2">بثرة إلى بثرتين بسيطة</option>
-                            <option value="3">عدة بثور تحتاج إلى عناية وضمادات</option>
-                        </select>
-                    </div>
+      <div class="field">
 
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">3. نوع القماش أو الملابس المستعملة حالياً:</label>
-                        <select id="q3" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
-                            <option value="1">حرير طبيعي / بامبو ناعم</option>
-                            <option value="2">قطن عادي ناعم</option>
-                            <option value="3">أقمشة مصنعة أو تحتوي على خياطة بارزة</option>
-                        
+        <label for="email">البريد الإلكتروني</label>
+
+        <input id="email" type="email" required placeholder="example@email.com">
+
+      </div>
+
+      <div class="field">
+
+        <label for="password">كلمة المرور</label>
+
+        <input id="password" type="password" required minlength="6" placeholder="6 أحرف على الأقل">
+
+      </div>
+
+      <button class="primary full" type="submit">
+
+        الدخول إلى التطبيق
+
+      </button>
+
+    </form>
+
+    <button class="light-btn full" style="margin-top:10px" onclick="enterApp()">
+
+      تجربة التطبيق دون حساب
+
+    </button>
+
+    <p>
+
+      هذه نسخة تجريبية. تسجيل الدخول ليس نظام حسابات حقيقيًا،
+
+      فلا تدخلي معلومات شخصية أو طبية حساسة.
+
+    </p>
+
+  </div>
+
+</section>
+
+<!-- التطبيق -->
+
+<div id="app" class="hidden">
+
+<header>
+
+  <div class="brand">
+
+    <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
+
+    <div>
+
+      <h1>EB Doc</h1>
+
+      <small>الرعاية والعناية اليومية</small>
+
+    </div>
+
+  </div>
+
+  <button style="background:#A9323B;color:white" onclick="showEmergency()">
+
+    <i class="fa-solid fa-kit-medical"></i>
+
+    الطوارئ
+
+  </button>
+
+</header>
+
+<div class="container">
+
+<!-- الرئيسية -->
+
+<section id="home" class="page active">
+
+  <div class="hero">
+
+    <span>رعاية لطيفة • معلومات منظمة</span>
+
+    <h2>أهلًا بك في EB Doc 💙</h2>
+
+    <p>
+
+      نظّمي ملاحظاتك اليومية، واستعرضي معلومات عن الأقمشة
+
+      والعناية بالبشرة، وجهّزي أسئلتك لمناقشتها مع فريق الرعاية.
+
+    </p>
+
+  </div>
+
+  <div class="grid">
+
+    <button class="menu-card" onclick="go('assessment')">
+
+      <i class="fa-solid fa-stethoscope"></i>
+
+      <strong>تقييم الأعراض</strong>
+
+      <small>سجّلي مستوى الألم والحكة وشدة الأعراض.</small>
+
+    </button>
+
+    <button class="menu-card" onclick="go('fabrics')">
+
+      <i class="fa-solid fa-shirt"></i>
+
+      <strong>الأقمشة والملابس</strong>
+
+      <small>تعرّفي على خيارات الملابس الناعمة.</small>
+
+    </button>
+
+    <button class="menu-card" onclick="go('care')">
+
+      <i class="fa-solid fa-bandage"></i>
+
+      <strong>العناية والضمادات</strong>
+
+      <small>معلومات عامة عن العناية اللطيفة.</small>
+
+    </button>
+
+    <button class="menu-card" onclick="go('tracker')">
+
+      <i class="fa-solid fa-calendar-check"></i>
+
+      <strong>السجل اليومي</strong>
+
+      <small>دوّني الراحة والأعراض والملاحظات.</small>
+
+    </button>
+
+  </div>
+
+  <div class="card" style="margin-top:16px">
+
+    <h3>ما هو انحلال البشرة الفقاعي؟</h3>
+
+    <p class="muted">
+
+      انحلال البشرة الفقاعي (EB) مجموعة حالات نادرة قد تجعل الجلد
+
+      هشًا وسهل التضرر. تختلف الاحتياجات من شخص لآخر، لذلك يجب
+
+      تحديد خطة العناية مع مختص صحي.
+
+    </p>
+
+    <div class="notice">
+
+      التطبيق للتثقيف وتنظيم الملاحظات فقط، ولا يشخّص الأمراض
+
+      أو يستبدل الطبيب.
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- التقييم -->
+
+<section id="assessment" class="page">
+
+  <div class="hero">
+
+    <h2>تقييم الأعراض</h2>
+
+    <p>سجّلي الأعراض لتنظيمها ومناقشتها مع المختص.</p>
+
+  </div>
+
+  <div class="card">
+
+    <form id="assessment-form">
+
+      <div class="field">
+
+        <label for="severity">شدة الأعراض حسب ملاحظتك</label>
+
+        <select id="severity">
+
+          <option>خفيفة</option>
+
+          <option>متوسطة</option>
+
+          <option>شديدة أو مقلقة</option>
+
+        </select>
+
+      </div>
+
+      <div class="field">
+
+        <label for="itch">مستوى الحكة: <span id="itch-value">3</span>/10</label>
+
+        <input id="itch" type="range" min="0" max="10" value="3"
+
+          oninput="document.getElementById('itch-value').textContent=this.value">
+
+      </div>
+
+      <div class="field">
+
+        <label for="pain">مستوى الألم: <span id="pain-value">2</span>/10</label>
+
+        <input id="pain" type="range" min="0" max="10" value="2"
+
+          oninput="document.getElementById('pain-value').textContent=this.value">
+
+      </div>
+
+      <div class="field">
+
+        <label for="assessment-notes">ملاحظات إضافية</label>
+
+        <textarea id="assessment-notes" placeholder="اكتبي ملاحظات أو أسئلة للطبيب"></textarea>
+
+      </div>
+
+      <button class="primary full" type="submit">إنشاء ملخص الأعراض</button>
+
+    </form>
+
+    <div id="assessment-result" class="notice hidden"></div>
+
+  </div>
+
+</section>
+
+<!-- الأقمشة -->
+
+<section id="fabrics" class="page">
+
+  <div class="hero">
+
+    <h2>الأقمشة والملابس</h2>
+
+    <p>اختاري ما يناسب راحتك وقللي مصادر الاحتكاك.</p>
+
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <div class="fabric-icon"><i class="fa-solid fa-gem"></i></div>
+
+      <h3>الحرير الطبيعي</h3>
+
+      <p class="muted">
+
+        قد يفضّل بعض الأشخاص الأقمشة الناعمة التي تقلل الاحتكاك.
+
+        تحققي من ملمس القماش وملاءمته لبشرتك.
+
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="fabric-icon"><i class="fa-solid fa-leaf"></i></div>
+
+      <h3>أقمشة البامبو</h3>
+
+      <p class="muted">
+
+        تختلف نعومة الأقمشة بحسب طريقة تصنيعها. اختاري نسيجًا
+
+        مريحًا وتوقفي عن استخدامه إذا سبب تهيجًا.
+
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="fabric-icon"><i class="fa-solid fa-feather"></i></div>
+
+      <h3>القطن الناعم</h3>
+
+      <p class="muted">
+
+        قد يكون خيارًا يوميًا مناسبًا إذا كان لا يسبب تهيجًا.
+
+        اختاري خياطات ناعمة وابتعدي عن الحواف الخشنة.
+
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="fabric-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+
+      <h3>الأحذية</h3>
+
+      <p class="muted">
+
+        اختاري أحذية مريحة لا تضغط على الجلد، واستشيري المختص
+
+        إذا تكررت الجروح في القدمين.
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="notice">
+
+    لا يوجد قماش واحد يناسب الجميع. هذه الخيارات ليست علاجًا،
+
+    والأفضل مناقشة احتياجاتك مع فريق الرعاية.
+
+  </div>
+
+</section>
+
+<!-- العناية -->
+
+<section id="care" class="page">
+
+  <div class="hero">
+
+    <h2>العناية والضمادات</h2>
+
+    <p>معلومات عامة تساعدك على مناقشة خيارات العناية مع المختص.</p>
+
+  </div>
+
+  <div class="card">
+
+    <h3><i class="fa-solid fa-bandage"></i> الضمادات غير الملتصقة</h3>
+
+    <p class="muted">
+
+      قد يوصي المختص بضمادات مصممة لتقليل التصاق الضماد بالجرح
+
+      عند تغييره. يحدد المختص النوع المناسب للحالة.
+
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <h3><i class="fa-solid fa-droplet"></i> المراهم الواقية</h3>
+
+    <p class="muted">
+
+      قد تناسب بعض المستحضرات الخالية من العطر بعض الحالات،
+
+      لكن يجب التأكد من ملاءمتها للجرح والمنطقة مع المختص.
+
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <h3><i class="fa-solid fa-shield-virus"></i> المطهرات والمضادات</h3>
+
+    <p class="muted">
+
+      لا تستخدمي مطهرات أو مضادات حيوية على الجروح بشكل روتيني
+
+      دون إرشاد طبي؛ فقد تسبب بعض المنتجات تهيجًا.
+
+    </p>
+
+  </div>
+
+  <div class="notice warning">
+
+    لا تثقبي الفقاعات أو تزيلي الجلد اعتمادًا على التطبيق.
+
+    اتبعي خطة فريق الرعاية المتخصص.
+
+  </div>
+
+  <div class="card">
+
+    <h3>متى أطلب المساعدة الطبية؟</h3>
+
+    <p class="muted">
+
+      اطلبي تقييمًا طبيًا عند زيادة الألم أو الاحمرار أو التورم،
+
+      أو ظهور إفرازات غير معتادة أو ارتفاع الحرارة.
+
+      صعوبة التنفس أو البلع تستدعي مساعدة طارئة فورًا.
+
+    </p>
+
+  </div>
+
+</section>
+
+<!-- السجل -->
+
+<section id="tracker" class="page">
+
+  <div class="hero">
+
+    <h2>السجل اليومي</h2>
+
+    <p>دوّني ملاحظاتك لتتذكري التغيّرات والأسئلة التي تريدين طرحها.</p>
+
+  </div>
+
+  <div class="card">
+
+    <form id="log-form">
+
+      <div class="field">
+
+        <label for="log-date">التاريخ</label>
+
+        <input id="log-date" type="date" required>
+
+      </div>
+
+      <div class="field">
+
+        <label for="fabric">القماش المستخدم</label>
+
+        <select id="fabric">
+
+          <option>حرير طبيعي</option>
+
+          <option>أقمشة البامبو</option>
+
+          <option>قطن ناعم</option>
+
+          <option>نوع آخر</option>
+
+        </select>
+
+      </div>
+
+      <div class="field">
+
+        <label for="comfort">مستوى الراحة</label>
+
+        <select id="comfort">
+
+          <option>مريح</option>
+
+          <option>بعض الانزعاج</option>
+
+          <option>احتكاك أو تهيج</option>
+
+        </select>
+
+      </div>
+
+      <div class="field">
+
+        <label for="log-notes">ملاحظات</label>
+
+        <textarea id="log-notes" maxlength="500" placeholder="ملاحظات اليوم"></textarea>
+
+      </div>
+
+      <button class="primary full" type="submit">حفظ السجل</button>
+
+    </form>
+
+  </div>
+
+  <div class="card">
+
+    <h3>السجلات السابقة</h3>
+
+    <div id="logs"></div>
+
+    <button class="light-btn full" onclick="clearLogs()">مسح جميع السجلات</button>
+
+    <p class="muted">
+
+      تُحفظ السجلات على هذا الجهاز في هذه النسخة التجريبية.
+
+      لا تدخلي معلومات طبية أو شخصية شديدة الحساسية.
+
+    </p>
+
+  </div>
+
+</section>
+
+</div>
+
+<!-- التنقل السفلي -->
+
+<nav class="bottom-nav">
+
+  <button class="active" data-page="home" onclick="go('home')">
+
+    <i class="fa-solid fa-house"></i>الرئيسية
+
+  </button>
+
+  <button data-page="assessment" onclick="go('assessment')">
+
+    <i class="fa-solid fa-stethoscope"></i>التقييم
+
+  </button>
+
+  <button data-page="fabrics" onclick="go('fabrics')">
+
+    <i class="fa-solid fa-shirt"></i>الأقمشة
+
+  </button>
+
+  <button data-page="care" onclick="go('care')">
+
+    <i class="fa-solid fa-bandage"></i>العناية
+
+  </button>
+
+  <button data-page="tracker" onclick="go('tracker')">
+
+    <i class="fa-solid fa-calendar-check"></i>السجل
+
+  </button>
+
+</nav>
+
+</div>
+
+<script>
+
+// الدخول التجريبي
+
+document.getElementById('login-form').addEventListener('submit', function(e) {
+
+  e.preventDefault();
+
+  enterApp();
+
+});
+
+function enterApp() {
+
+  document.getElementById('login-screen').classList.add('hidden');
+
+  document.getElementById('app').classList.remove('hidden');
+
+  renderLogs();
+
+  go('home');
+
+}
+
+// التنقل بين الصفحات
+
+function go(page) {
+
+  document.querySelectorAll('.page').forEach(function(section) {
+
+    section.classList.toggle('active', section.id === page);
+
+  });
+
+  document.querySelectorAll('[data-page]').forEach(function(button) {
+
+    button.classList.toggle('active', button.dataset.page === page);
+
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+}
+
+// إنشاء ملخص الأعراض
+
+document.getElementById('assessment-form').addEventListener('submit', function(e) {
+
+  e.preventDefault();
+
+  const severity = document.getElementById('severity').value;
+
+  const itch = document.getElementById('itch').value;
+
+  const pain = document.getElementById('pain').value;
+
+  const notes = document.getElementById('assessment-notes').value.trim();
+
+  const result = document.getElementById('assessment-result');
+
+  result.textContent =
+
+    'شدة الأعراض: ' + severity +
+
+    ' | الحكة: ' + itch + '/10' +
+
+    ' | الألم: ' + pain + '/10' +
+
+    (notes ? ' | الملاحظات: ' + notes : '') +
+
+    '. هذا الملخص للتوثيق فقط وليس تشخيصًا أو خطة علاج.';
+
+  result.classList.remove('hidden');
+
+});
+
+// السجل اليومي
+
+document.getElementById('log-date').value =
+
+  new Date().toLocaleDateString('en-CA');
+
+function getLogs() {
+
+  try {
+
+    return JSON.parse(localStorage.getItem('ebdoc-logs') || '[]');
+
+  } catch {
+
+    return [];
+
+  }
+
+}
+
+document.getElementById('log-form').addEventListener('submit', function(e) {
+
+  e.preventDefault();
+
+  const entry = {
+
+    id: Date.now(),
+
+    date: document.getElementById('log-date').value,
+
+    fabric: document.getElementById('fabric').value,
+
+    comfort: document.getElementById('comfort').value,
+
+    notes: document.getElementById('log-notes').value.trim()
+
+  };
+
+  const logs = getLogs();
+
+  logs.unshift(entry);
+
+  localStorage.setItem('ebdoc-logs', JSON.stringify(logs));
+
+  document.getElementById('log-notes').value = '';
+
+  renderLogs();
+
+  alert('تم حفظ السجل على هذا الجهاز.');
+
+});
+
+function renderLogs() {
+
+  const container = document.getElementById('logs');
+
+  container.replaceChildren();
+
+  const logs = getLogs();
+
+  if (logs.length === 0) {
+
+    const empty = document.createElement('p');
+
+    empty.className = 'muted';
+
+    empty.textContent = 'لم تتم إضافة سجلات بعد.';
+
+    container.appendChild(empty);
+
+    return;
+
+  }
+
+  logs.forEach(function(entry) {
+
+    const item = document.createElement('div');
+
+    item.className = 'log-item';
+
+    const title = document.createElement('strong');
+
+    title.textContent = entry.fabric + ' — ' + entry.comfort;
+
+    const date = document.createElement('small');
+
+    date.textContent = entry.date;
+
+    const notes = document.createElement('small');
+
+    notes.textContent = entry.notes || 'لا توجد ملاحظات إضافية.';
+
+    const remove = document.createElement('button');
+
+    remove.className = 'light-btn';
+
+    remove.textContent = 'حذف';
+
+    remove.style.marginTop = '8px';
+
+    remove.addEventListener('click', function() {
+
+      const remaining = getLogs().filter(function(x) {
+
+        return x.id !== entry.id;
+
+      });
+
+      localStorage.setItem('ebdoc-logs', JSON.stringify(remaining));
+
+      renderLogs();
+
+    });
+
+    item.append(title, date, notes, remove);
+
+    container.appendChild(item);
+
+  });
+
+}
+
+function clearLogs() {
+
+  if (confirm('هل تريدين حذف جميع السجلات؟')) {
+
+    localStorage.removeItem('ebdoc-logs');
+
+    renderLogs();
+
+  }
+
+}
+
+// إرشادات الطوارئ
+
+function showEmergency() {
+
+  alert(
+
+    'إرشادات مهمة:\n\n' +
+
+    'لا تثقبي الفقاعات أو تزيلي الجلد اعتمادًا على التطبيق. ' +
+
+    'اتبعي خطة فريق الرعاية المتخصص.\n\n' +
+
+    'اطلبي تقييمًا طبيًا عند زيادة الألم أو الاحمرار أو التورم، ' +
+
+    'أو ظهور إفرازات غير معتادة أو ارتفاع الحرارة. ' +
+
+    'صعوبة التنفس أو البلع تستدعي الاتصال بالطوارئ فورًا.'
+
+  );
+
+}
+
+</script>
+
+</body>
+
+</html>
