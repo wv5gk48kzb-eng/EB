@@ -1,555 +1,984 @@
 <!DOCTYPE html>
-
-<html lang="ar" dir="rtl">
-
+<html lang="ar" dir="rtl" class="h-full">
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color" content="#071b33">
-
-<title>EB Doc | العناية بالجلد</title>
-
-<style>
-
-:root {
-
-  --bg:#071b33;
-
-  --panel:#102943;
-
-  --panel2:#173650;
-
-  --blue:#42bde8;
-
-  --teal:#55ddc0;
-
-  --text:#f2f7fc;
-
-  --muted:#afc2d4;
-
-  --border:#294760;
-
-}
-
-*{box-sizing:border-box}
-
-body{
-
-  margin:0;background:var(--bg);color:var(--text);
-
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-
-  line-height:1.8;
-
-}
-
-button,input{font:inherit}
-
-button{cursor:pointer}
-
-header{
-
-  padding:20px 18px;background:#0b223c;
-
-  border-bottom:1px solid var(--border);
-
-  display:flex;justify-content:space-between;align-items:center;
-
-  position:sticky;top:0;z-index:5;
-
-}
-
-.logo{font-size:23px;font-weight:800;color:var(--blue)}
-
-.logo span{color:var(--teal)}
-
-.small{font-size:12px;color:var(--muted)}
-
-main{max-width:850px;margin:auto;padding:18px}
-
-.card{
-
-  background:var(--panel);border:1px solid var(--border);
-
-  border-radius:18px;padding:18px;margin-bottom:15px;
-
-}
-
-h1,h2,h3{line-height:1.5}
-
-h1{font-size:27px;margin:8px 0}
-
-h2{font-size:21px;margin-top:0}
-
-p{color:#d7e4ef}
-
-.muted{color:var(--muted)}
-
-.hero{
-
-  background:linear-gradient(135deg,#123957,#102943 70%);
-
-  border:1px solid #27607b;padding:23px;border-radius:22px;margin-bottom:18px;
-
-}
-
-.pill{display:inline-block;background:#123f50;color:var(--teal);
-
-  padding:4px 11px;border-radius:30px;font-size:12px}
-
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-
-.tile{
-
-  text-align:right;background:var(--panel);color:var(--text);
-
-  border:1px solid var(--border);border-radius:16px;padding:16px;
-
-}
-
-.tile b{display:block;font-size:16px;margin:6px 0}
-
-.tile .emoji{font-size:25px}
-
-button.primary{
-
-  border:0;background:var(--blue);color:#06192b;
-
-  border-radius:12px;padding:12px 17px;font-weight:750;
-
-}
-
-button.secondary{
-
-  background:var(--panel2);color:var(--text);
-
-  border:1px solid var(--border);border-radius:11px;padding:10px 13px;
-
-}
-
-input{
-
-  display:block;width:100%;padding:13px;margin:8px 0 14px;
-
-  border-radius:11px;border:1px solid var(--border);
-
-  background:#081d32;color:white;
-
-}
-
-label{font-size:14px;color:var(--muted)}
-
-nav{
-
-  display:flex;gap:8px;overflow-x:auto;padding:10px 0 16px;
-
-}
-
-nav button{white-space:nowrap}
-
-.page{display:none}
-
-.page.active{display:block}
-
-ul{padding-right:22px}
-
-li{margin:7px 0}
-
-.notice{
-
-  border-right:4px solid var(--teal);
-
-  padding:10px 13px;background:#102e40;border-radius:8px;
-
-}
-
-.warning{
-
-  border-right:4px solid #f4bd62;
-
-  padding:10px 13px;background:#382e22;border-radius:8px;
-
-}
-
-footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
-
-#app{display:none}
-
-a{color:var(--blue)}
-
-@media(max-width:420px){
-
-  main{padding:12px}.grid{gap:9px}.tile{padding:12px}
-
-  h1{font-size:24px}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EB Doc - دليل ورعاية مرضى الفقاع الفقاعي</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0a1128',
+                            800: '#1c2541',
+                            700: '#273469',
+                            600: '#303f9f',
+                        },
+                        teal: {
+                            500: '#14b8a6',
+                            400: '#2dd4bf',
+                            300: '#5eead4',
+                            100: '#ccfbf1',
+                        },
+                        softbg: '#f4f7fb'
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #0a1128; color: #1e293b; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(10, 17, 40, 0.92); backdrop-filter: blur(10px); }
+        .active-tab { color: #14b8a6; border-bottom: 3px solid #14b8a6; font-weight: bold; }
+        .custom-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); }
+    </style>
 </head>
+<body class="h-full bg-navy-900 flex justify-center items-center p-0 md:p-4">
 
-<body>
+    <!-- Application Main Frame (Mobile/App View) -->
+    <div id="app-container" class="w-full max-w-md md:max-w-4xl h-full md:h-[92vh] bg-softbg md:rounded-3xl shadow-2xl overflow-hidden flex flex-col relative">
 
-<header>
+        <!-- Top Header Navigation -->
+        <header class="glass-header text-white px-5 py-4 flex justify-between items-center z-20 shrink-0 border-b border-navy-800">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-blue-600 flex items-center justify-center text-white shadow-lg font-bold text-lg">
+                    EB
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-wide text-white leading-tight">EB Doc</h1>
+                    <p class="text-xs text-teal-300 font-medium">رعاية متخصصة للفقاع الفقاعي</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="openRemindersModal()" class="relative p-2 rounded-xl bg-navy-800/80 text-teal-300 hover:bg-navy-700 transition">
+                    <i class="fa-solid font-bold fa-bell text-lg"></i>
+                    <span id="reminder-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button onclick="openProfileModal()" class="p-2 rounded-xl bg-navy-800/80 text-white hover:bg-navy-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-user-circle text-teal-400 text-xl"></i>
+                    <span id="user-display-name" class="text-xs font-semibold hidden sm:inline">الملف الشخصي</span>
+                </button>
+            </div>
+        </header>
 
-  <div>
+        <!-- Global Search Bar Header -->
+        <div class="bg-navy-800 px-4 py-3 shrink-0 shadow-inner">
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-slate-400"></i>
+                <input type="text" id="global-search" onkeyup="handleSearch()" placeholder="ابحث عن منتج، ضمادة، مكون، أو نصيحة طبية..." class="w-full pr-10 pl-4 py-2 bg-navy-900/80 text-white placeholder-slate-400 text-xs sm:text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 border border-slate-700">
+            </div>
+        </div>
 
-    <div class="logo">EB <span>Doc</span></div>
+        <!-- Main Content Scrollable Area -->
+        <main class="flex-1 overflow-y-auto no-scrollbar p-4 space-y-6 pb-24" id="main-content">
+            
+            <!-- Dynamic Alert Banner for User Profile Sensitivity -->
+            <div id="sensitivity-banner" class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-4 text-white border-right-4 border-teal-400 shadow-md flex items-start gap-3">
+                <div class="p-3 bg-teal-500/20 text-teal-300 rounded-xl mt-1">
+                    <i class="fa-solid fa-shield-heart text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between items-center">
+                        <h2 class="font-bold text-sm text-teal-300" id="profile-banner-type">نوع الحالة: غير محدد</h2>
+                        <span class="text-[10px] bg-teal-500/30 text-teal-200 px-2 py-0.5 rounded-full" id="profile-banner-level">حساسية خفيفة</span>
+                    </div>
+                    <p class="text-xs text-slate-300 mt-1 leading-relaxed" id="profile-banner-desc">قم بتسجيل وتخصيص حالة حساسيتك لعرض المنتجات والضمادات الأنسب لك.</p>
+                </div>
+            </div>
 
-    <div class="small">رفيقك للعناية بالجلد الحساس</div>
+            <!-- SECTION 1: HOME & QUICK ACCESS -->
+            <section id="sec-home" class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-bolt text-teal-500"></i> الوصول السريع
+                    </h2>
+                </div>
 
-  </div>
+                <div class="grid grid-cols-4 gap-2">
+                    <button onclick="switchTab('products')" class="flex flex-col items-center p-3 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center border border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center mb-1 text-lg">
+                            <i class="fa-solid fa-box-tissue"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-700">الضمادات</span>
+                    </button>
+                    <button onclick="switchTab('fabrics')" class="flex flex-col items-center p-3 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center border border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-1 text-lg">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-700">الملابس</span>
+                    </button>
+                    <button onclick="switchTab('medical')" class="flex flex-col items-center p-3 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center border border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-1 text-lg">
+                            <i class="fa-solid fa-book-medical"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-700">الموسوعة</span>
+                    </button>
+                    <button onclick="openCompareModal()" class="flex flex-col items-center p-3 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center border border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-1 text-lg">
+                            <i class="fa-solid fa-[#14b8a6] fa-code-compare text-amber-600"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-700">المقارنة</span>
+                    </button>
+                </div>
 
-  <button class="secondary" onclick="logout()" id="logoutBtn" hidden>خروج</button>
+                <!-- Featured Section: Emergency Care Rules -->
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-amber-900 flex items-center gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-2xl text-amber-600"></i>
+                    <div>
+                        <h3 class="font-bold text-xs text-amber-800">قاعدة ذهبية للغيار</h3>
+                        <p class="text-[11px] text-amber-700 mt-0.5">تجنب الشد أو السحب المباشر للضمادات. استخدم بخاخ السيليكون المزيل للواصق دائماً.</p>
+                    </div>
+                </div>
 
-</header>
+                <!-- Featured Recommended Products Carousel / List -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="font-bold text-navy-900 text-sm">موصى به لحالتك</h2>
+                        <button onclick="switchTab('products')" class="text-xs font-semibold text-teal-600 hover:underline">عرض الكل</button>
+                    </div>
+                    <div id="home-recommended-products" class="grid grid-cols-2 gap-3">
+                        <!-- Populated Dynamic JS -->
+                    </div>
+                </div>
+            </section>
 
-<main>
+            <!-- SECTION 2: PRODUCTS DIRECTORY -->
+            <section id="sec-products" class="space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-packing text-teal-500"></i> دليل المنتجات والمستلزمات
+                    </h2>
+                    <span id="products-count" class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold">0</span>
+                </div>
 
-<section id="login">
+                <!-- Category Filters -->
+                <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                    <button onclick="filterProducts('all')" class="cat-btn bg-navy-800 text-white text-xs px-3 py-1.5 rounded-xl font-bold shrink-0">الكل</button>
+                    <button onclick="filterProducts('dressings')" class="cat-btn bg-white text-slate-600 text-xs px-3 py-1.5 rounded-xl font-semibold border shrink-0">ضمادات غير لاصقة</button>
+                    <button onclick="filterProducts('creams')" class="cat-btn bg-white text-slate-600 text-xs px-3 py-1.5 rounded-xl font-semibold border shrink-0">مرطبات وكريمات</button>
+                    <button onclick="filterProducts('cleansers')" class="cat-btn bg-white text-slate-600 text-xs px-3 py-1.5 rounded-xl font-semibold border shrink-0">مطهرات آمنة</button>
+                </div>
 
-  <div class="hero">
+                <!-- Product Grid List -->
+                <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Populated via Javascript -->
+                </div>
+            </section>
 
-    <span class="pill">منصة توعوية صحية</span>
+            <!-- SECTION 3: FABRICS & CLOTHING -->
+            <section id="sec-fabrics" class="space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-shirt text-blue-500"></i> الأقمشة والملابس الآمنة
+                    </h2>
+                </div>
+                
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 text-blue-900 text-xs space-y-1">
+                    <p class="font-bold text-sm"><i class="fa-solid fa-circle-info text-blue-600"></i> اختيار ملابس مرضى EB</p>
+                    <p class="text-slate-600">يجب أن تكون الأقمشة فائقة النعومة، خالية من الأزرار أو السحابات الداخلية الحادة، ويفضل دائماً الخياطة المقلوبة أو الخارجية (Seamless).</p>
+                </div>
 
-    <h1>أهلًا بك في EB Doc</h1>
+                <div id="fabrics-list" class="space-y-3">
+                    <!-- Populated via Javascript -->
+                </div>
+            </section>
 
-    <p>مساحة منظمة للمعلومات والنصائح العامة حول العناية بالجلد شديد الهشاشة.</p>
+            <!-- SECTION 4: MEDICAL ENCYCLOPEDIA & NUTRITION -->
+            <section id="sec-medical" class="space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-book-medical text-indigo-500"></i> الموسوعة الطبية والتغذية
+                    </h2>
+                </div>
 
-  </div>
+                <!-- Sub Tab Navigation -->
+                <div class="flex border-b border-slate-200 text-xs font-bold text-slate-500">
+                    <button onclick="switchMedicalTab('ingredients')" id="med-tab-ingredients" class="px-4 py-2 active-tab">دليل المكونات</button>
+                    <button onclick="switchMedicalTab('nutrition')" id="med-tab-nutrition" class="px-4 py-2">التغذية السليمة</button>
+                    <button onclick="switchMedicalTab('woundcare')" id="med-tab-woundcare" class="px-4 py-2">العناية بالجروح</button>
+                </div>
 
-  <div class="card">
+                <!-- Medical Sub Sections -->
+                <div id="med-sub-ingredients" class="space-y-3">
+                    <!-- Ingredients Safe vs Avoid List -->
+                </div>
 
-    <h2>تسجيل الدخول</h2>
+                <div id="med-sub-nutrition" class="space-y-3 hidden">
+                    <!-- Nutrition Advice List -->
+                </div>
 
-    <p class="muted">أنشئي اسمًا للدخول إلى التطبيق على هذا الجهاز.</p>
+                <div id="med-sub-woundcare" class="space-y-3 hidden">
+                    <!-- Wound Care Tips List -->
+                </div>
+            </section>
 
-    <form onsubmit="login(event)">
+            <!-- SECTION 5: FAVORITES -->
+            <section id="sec-favorites" class="space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-red-500"></i> المفضلة
+                    </h2>
+                </div>
 
-      <label for="username">الاسم</label>
+                <div id="favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Populated via Javascript -->
+                </div>
+            </section>
 
-      <input id="username" required maxlength="40" placeholder="اكتبي اسمك">
+            <!-- SECTION 6: NOTES & REMINDERS -->
+            <section id="sec-reminders" class="space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-amber-500"></i> التذكيرات والملاحظات
+                    </h2>
+                    <button onclick="openAddReminderModal()" class="bg-teal-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl hover:bg-teal-600 transition flex items-center gap-1">
+                        <i class="fa-solid fa-plus"></i> إضافة تذكير
+                    </button>
+                </div>
 
-      <label for="password">رمز دخول من اختيارك</label>
+                <div id="reminders-list" class="space-y-3">
+                    <!-- Populated via JS -->
+                </div>
+            </section>
 
-      <input id="password" type="password" required minlength="4" placeholder="4 أحرف أو أرقام على الأقل">
+        </main>
 
-      <button class="primary" style="width:100%">دخول إلى التطبيق</button>
-
-    </form>
-
-    <p class="small">نسخة تجريبية: بيانات الدخول تُحفظ محليًا على الجهاز، وليست نظام حسابات آمنًا.</p>
-
-  </div>
-
-</section>
-
-<div id="app">
-
-  <div class="hero">
-
-    <span class="pill">مساحة العناية الشخصية</span>
-
-    <h1>مرحبًا، <span id="welcome"></span> 👋</h1>
-
-    <p>اختاري القسم الذي تحتاجينه، وارجعي دائمًا إلى فريقك الطبي عند وجود مشكلة جلدية.</p>
-
-  </div>
-
-  <nav>
-
-    <button class="secondary" onclick="showPage('home')">الرئيسية</button>
-
-    <button class="secondary" onclick="showPage('skin')">العناية بالجلد</button>
-
-    <button class="secondary" onclick="showPage('clothes')">الملابس</button>
-
-    <button class="secondary" onclick="showPage('products')">المرطبات</button>
-
-    <button class="secondary" onclick="showPage('alerts')">التنبيهات</button>
-
-    <button class="secondary" onclick="showPage('sources')">المصادر</button>
-
-  </nav>
-
-  <section id="home" class="page active">
-
-    <div class="grid">
-
-      <button class="tile" onclick="showPage('skin')"><span class="emoji">🩹</span><b>العناية بالجلد</b><span class="small">تقليل الاحتكاك والعناية اليومية</span></button>
-
-      <button class="tile" onclick="showPage('clothes')"><span class="emoji">👕</span><b>الملابس والأقمشة</b><span class="small">اختيار ملابس مريحة</span></button>
-
-      <button class="tile" onclick="showPage('products')"><span class="emoji">🧴</span><b>المرطبات والمنتجات</b><span class="small">ما الذي يجب الانتباه إليه؟</span></button>
-
-      <button class="tile" onclick="showPage('alerts')"><span class="emoji">🔔</span><b>التنبيهات المهمة</b><span class="small">متى أطلب المساعدة؟</span></button>
+        <!-- Navigation Bottom Bar (Mobile First) -->
+        <nav class="bg-navy-900 text-slate-400 border-t border-navy-800 flex justify-around items-center py-2 px-2 shrink-0 z-20">
+            <button onclick="switchTab('home')" id="nav-home" class="flex flex-col items-center gap-1 text-teal-400 font-bold transition">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px]">الرئيسية</span>
+            </button>
+            <button onclick="switchTab('products')" id="nav-products" class="flex flex-col items-center gap-1 hover:text-white transition">
+                <i class="fa-solid fa-boxes-packing text-lg"></i>
+                <span class="text-[10px]">المنتجات</span>
+            </button>
+            <button onclick="switchTab('fabrics')" id="nav-fabrics" class="flex flex-col items-center gap-1 hover:text-white transition">
+                <i class="fa-solid fa-shirt text-lg"></i>
+                <span class="text-[10px]">الملابس</span>
+            </button>
+            <button onclick="switchTab('medical')" id="nav-medical" class="flex flex-col items-center gap-1 hover:text-white transition">
+                <i class="fa-solid fa-book-medical text-lg"></i>
+                <span class="text-[10px]">الموسوعة</span>
+            </button>
+            <button onclick="switchTab('favorites')" id="nav-favorites" class="flex flex-col items-center gap-1 hover:text-white transition">
+                <i class="fa-solid fa-heart text-lg"></i>
+                <span class="text-[10px]">المفضلة</span>
+            </button>
+            <button onclick="switchTab('reminders')" id="nav-reminders" class="flex flex-col items-center gap-1 hover:text-white transition">
+                <i class="fa-solid fa-bell text-lg"></i>
+                <span class="text-[10px]">التذكيرات</span>
+            </button>
+        </nav>
 
     </div>
 
-    <div class="card" style="margin-top:16px">
+    <!-- MODAL 1: USER PROFILE & SENSITIVITY CONFIGURATION -->
+    <div id="modal-profile" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-center items-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProfileModal()" class="absolute left-4 top-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-navy-800 text-teal-400 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold mb-2 shadow-md">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+                <h3 class="font-bold text-navy-900 text-lg">تخصيص ملف حساسية البشرة</h3>
+                <p class="text-xs text-slate-500">اختر تفاصيل حالة EB للحصول على توصيات دقيقة لسلامتك</p>
+            </div>
 
-      <h2>تذكير اليوم 💧</h2>
+            <form id="profile-form" onsubmit="saveUserProfile(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">اسم المستخدم / المريض</label>
+                    <input type="text" id="user-name-input" placeholder="أدخل اسمك" required class="w-full border rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-teal-400 focus:outline-none">
+                </div>
 
-      <p>اتبعي خطة العناية التي وضعها الطبيب، واختاري الملابس التي لا تسبب لك احتكاكًا أو ألمًا.</p>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">نوع EB (نوع الفقاع الفقاعي)</label>
+                    <select id="user-eb-type" class="w-full border rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-teal-400 focus:outline-none">
+                        <option value="Simplex">EB Simplex (البسيط - الخفيف)</option>
+                        <option value="Dystrophic">Dystrophic EB (الضموري - المتوسط/الشديد)</option>
+                        <option value="Junctional">Junctional EB (المفصلي - شديد الحساسية)</option>
+                    </select>
+                </div>
 
-      <div class="notice">لا توجد خطة واحدة تناسب الجميع؛ تختلف الاحتياجات بحسب حالة الجلد ونوع المرض.</div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">درجة حساسية الجلد والتهيّج</label>
+                    <select id="user-sensitivity-level" class="w-full border rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-teal-400 focus:outline-none">
+                        <option value="خفيفة">حساسية خفيفة (سطحية)</option>
+                        <option value="متوسطة">حساسية متوسطة (تكون فقاعات متكرر)</option>
+                        <option value="شديدة">حساسية شديدة جداً (جلد شديد الهشاشة)</option>
+                    </select>
+                </div>
 
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">مناطق التهيّج الأكثر إصابة</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="flex items-center gap-2 border p-2 rounded-xl cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="area" value="الأقدام والساقين" class="accent-teal-500"> الأقدام والساقين
+                        </label>
+                        <label class="flex items-center gap-2 border p-2 rounded-xl cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="area" value="الذراعين واليدين" class="accent-teal-500"> الذراعين واليدين
+                        </label>
+                        <label class="flex items-center gap-2 border p-2 rounded-xl cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="area" value="الظهر والرقبة" class="accent-teal-500"> الظهر والرقبة
+                        </label>
+                        <label class="flex items-center gap-2 border p-2 rounded-xl cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="area" value="الفم والأغشية" class="accent-teal-500"> الفم والأغشية
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-navy-800 text-teal-300 font-bold py-3 rounded-xl hover:bg-navy-900 transition shadow-lg text-sm">
+                    حفظ الملف والتخصيص
+                </button>
+            </form>
+        </div>
     </div>
 
-  </section>
+    <!-- MODAL 2: PRODUCT DETAIL VIEW -->
+    <div id="modal-product-detail" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-center items-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProductDetailModal()" class="absolute left-4 top-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
 
-  <section id="skin" class="page">
-
-    <div class="card">
-
-      <h2>🩹 أساسيات العناية بالجلد</h2>
-
-      <ul>
-
-        <li>التعامل مع الجلد بلطف وتجنب الفرك أو الحك القوي.</li>
-
-        <li>تجنبي الحرارة الزائدة والأنشطة التي تسبب احتكاكًا مؤلمًا.</li>
-
-        <li>استخدمي مستحضرات لطيفة وغير معطرة إذا كانت مناسبة لك.</li>
-
-        <li>لا تستخدمي لاصقًا طبيًا مباشرة على الجلد الهش دون توجيه طبي.</li>
-
-        <li>اتبعي تعليمات الطبيب بشأن تنظيف الجروح وتغيير الضمادات.</li>
-
-      </ul>
-
+            <div id="product-detail-content" class="space-y-3">
+                <!-- Dynamically Inserted -->
+            </div>
+        </div>
     </div>
 
-    <div class="card">
+    <!-- MODAL 3: PRODUCT COMPARISON -->
+    <div id="modal-compare" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-center items-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-lg p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCompareModal()" class="absolute left-4 top-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
 
-      <h2>🧼 النظافة اليومية</h2>
+            <h3 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                <i class="fa-solid fa-code-compare text-teal-500"></i> أداة مقارنة الضمادات والمنتجات
+            </h3>
 
-      <p>استخدمي طريقة تنظيف لطيفة تناسب حالتك، وجففي الجلد بالتربيت الخفيف بدل الفرك. اسألي الطبيب عن درجة حرارة الماء والمنتجات المناسبة لك.</p>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="text-[11px] font-bold text-slate-600 block mb-1">المنتج الأول</label>
+                    <select id="compare-p1" onchange="renderComparison()" class="w-full border rounded-xl p-2 text-xs">
+                        <!-- Populated JS -->
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[11px] font-bold text-slate-600 block mb-1">المنتج الثاني</label>
+                    <select id="compare-p2" onchange="renderComparison()" class="w-full border rounded-xl p-2 text-xs">
+                        <!-- Populated JS -->
+                    </select>
+                </div>
+            </div>
 
-      <div class="warning">لا تفتحي الفقاعات أو تعالجي الجروح بمواد منزلية من دون تعليمات طبية.</div>
-
+            <div id="compare-results" class="border rounded-2xl p-3 bg-slate-50 space-y-3">
+                <!-- Render Comparison Grid -->
+            </div>
+        </div>
     </div>
 
-  </section>
+    <!-- MODAL 4: ADD REMINDER / NOTE -->
+    <div id="modal-add-reminder" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-center items-center p-4 hidden">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl relative">
+            <button onclick="closeAddReminderModal()" class="absolute left-4 top-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
 
-  <section id="clothes" class="page">
+            <h3 class="font-bold text-navy-900 text-base flex items-center gap-2">
+                <i class="fa-solid fa-plus-circle text-teal-500"></i> إضافة تذكير أو ملاحظة رعاية
+            </h3>
 
-    <div class="card">
-
-      <h2>👕 كيف أختار الملابس؟</h2>
-
-      <ul>
-
-        <li>ابحثي عن قماش ناعم وملمس مريح على بشرتك.</li>
-
-        <li>اختاري ملابس مناسبة لا تضغط على المناطق الحساسة.</li>
-
-        <li>انتبهي إلى الدرزات الداخلية والملصقات والحواف الخشنة.</li>
-
-        <li>جربي الملابس الجديدة لفترة قصيرة، وتوقفي عن استخدامها إذا سببت احتكاكًا.</li>
-
-        <li>اختاري خامة ودرجة دفء تناسبان الجو وتقللان التعرق المزعج.</li>
-
-      </ul>
-
-      <div class="notice">القطن الناعم قد يكون مريحًا لبعض الأشخاص، لكن لا توجد خامة مثالية للجميع؛ الراحة الفعلية أهم من اسم القماش.</div>
-
+            <form onsubmit="saveReminder(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">العنوان / الإجراء</label>
+                    <input type="text" id="rem-title" placeholder="مثال: موعد تغيير ضمادة القدم اليمنى" required class="w-full border rounded-xl p-2.5 text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">التاريخ</label>
+                        <input type="date" id="rem-date" required class="w-full border rounded-xl p-2.5 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">الوقت</label>
+                        <input type="time" id="rem-time" required class="w-full border rounded-xl p-2.5 text-xs">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">النوع</label>
+                    <select id="rem-type" class="w-full border rounded-xl p-2.5 text-xs">
+                        <option value="غيار ضمادات">غيار ضمادات</option>
+                        <option value="دواء / فيتامين">دواء / فيتامين</option>
+                        <option value="مراجعة طبيب">مراجعة طبيب</option>
+                        <option value="ملاحظة جلدية">ملاحظة جلدية</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-teal-500 text-white font-bold py-2.5 rounded-xl hover:bg-teal-600 transition text-xs">
+                    إضافة التذكير
+                </button>
+            </form>
+        </div>
     </div>
 
-    <div class="card">
-
-      <h2>قبل شراء أي قطعة</h2>
-
-      <p>تحققي من نعومة القماش، ومكان الدرزات، وسهولة ارتداء القطعة وخلعها، وإمكانية إرجاعها إذا سببت تهيجًا.</p>
-
-    </div>
-
-  </section>
-
-  <section id="products" class="page">
-
-    <div class="card">
-
-      <h2>🧴 المرطبات والمنتجات</h2>
-
-      <p>قد تساعد المرطبات على تقليل الجفاف، لكن اختيار المنتج يعتمد على حالة الجلد وتوصية الطبيب.</p>
-
-      <ul>
-
-        <li>تحققي من قائمة المكونات قبل الاستخدام.</li>
-
-        <li>قد تكون المنتجات الخالية من العطر أقل تسببًا بالتهيج لبعض الأشخاص.</li>
-
-        <li>لا تضعي منتجًا جديدًا على جرح مفتوح إلا إذا أوصى به مختص.</li>
-
-        <li>تجنبي استخدام الأحماض والمقشرات أو الخلطات على الجلد المتضرر دون توجيه طبي.</li>
-
-        <li>أوقفي المنتج واطلبي المشورة إذا سبب تهيجًا جديدًا.</li>
-
-      </ul>
-
-    </div>
-
-    <div class="card">
-
-      <h2>كيف أقيّم المنتج؟</h2>
-
-      <p>اسم المنتج وحده لا يكفي. راجعي المكونات، والغرض من الاستخدام، ومدى ملاءمته لحالتك، واسألي الطبيب أو الصيدلي قبل استخدامه على مناطق مصابة.</p>
-
-      <div class="warning">هذا القسم لا يقدم وصفة علاجية ولا يضمن أن منتجًا معينًا آمن لحالتك.</div>
-
-    </div>
-
-  </section>
-
-  <section id="alerts" class="page">
-
-    <div class="card">
-
-      <h2>🔔 متى أطلب المساعدة؟</h2>
-
-      <p>اطلبي تقييمًا طبيًا عند ظهور علامات جديدة أو تدهور واضح في حالة الجلد.</p>
-
-      <ul>
-
-        <li>زيادة الاحمرار أو السخونة أو التورم حول منطقة مصابة.</li>
-
-        <li>ألم متزايد أو إفرازات غير معتادة أو رائحة جديدة من الجرح.</li>
-
-        <li>حمى أو شعور عام بالتعب مع مشكلة جلدية.</li>
-
-        <li>صعوبة في الأكل أو الشرب أو البلع، أو ظهور أعراض جديدة مقلقة.</li>
-
-      </ul>
-
-      <div class="warning"><b>حالة طارئة:</b> صعوبة التنفس أو النزيف الشديد أو التدهور السريع تستلزم طلب الإسعاف فورًا.</div>
-
-    </div>
-
-    <div class="card">
-
-      <h2>📝 ملاحظاتي</h2>
-
-      <p class="muted">اكتبي أسئلة تودين طرحها على الطبيب. تُحفظ الملاحظات على هذا الجهاز فقط.</p>
-
-      <textarea id="notes" rows="5" style="width:100%;background:#081d32;color:white;border:1px solid var(--border);border-radius:12px;padding:12px" placeholder="اكتبي ملاحظاتك هنا..."></textarea>
-
-      <button class="primary" onclick="saveNotes()">حفظ الملاحظات</button>
-
-      <span id="saveStatus" class="small"></span>
-
-    </div>
-
-  </section>
-
-  <section id="sources" class="page">
-
-    <div class="card">
-
-      <h2>📚 مصادر للتثقيف الصحي</h2>
-
-      <p>يمكنك الرجوع إلى الجهات التالية للقراءة عن انحلال البشرة الفقاعي (EB). المعلومات داخل التطبيق توعوية وليست بديلًا عن التقييم الطبي.</p>
-
-      <ul>
-
-        <li><a href="https://www.debra.org/" target="_blank" rel="noopener">DEBRA International</a> — معلومات ودعم للأشخاص المصابين بـ EB.</li>
-
-        <li><a href="https://www.nhs.uk/conditions/epidermolysis-bullosa/" target="_blank" rel="noopener">NHS: Epidermolysis bullosa</a> — معلومات عامة عن الحالة.</li>
-
-        <li><a href="https://medlineplus.gov/" target="_blank" rel="noopener">MedlinePlus</a> — معلومات صحية مبسطة.</li>
-
-      </ul>
-
-      <div class="notice">تحققي من تاريخ المعلومات، وناقشي التوصيات العلاجية مع الطبيب المختص.</div>
-
-    </div>
-
-  </section>
-
-</div>
-
-</main>
-
-<footer>EB Doc © 2026 — منصة تثقيفية للعناية بالجلد</footer>
-
-<script>
-
-const $ = id => document.getElementById(id);
-
-function login(event){
-
-  event.preventDefault();
-
-  const name = $("username").value.trim();
-
-  const password = $("password").value;
-
-  if(!name || password.length < 4) return;
-
-  localStorage.setItem("ebdoc_name",name);
-
-  localStorage.setItem("ebdoc_demo_login","true");
-
-  startApp();
-
-}
-
-function startApp(){
-
-  const name = localStorage.getItem("ebdoc_name");
-
-  if(!name || localStorage.getItem("ebdoc_demo_login") !== "true") return;
-
-  $("login").style.display = "none";
-
-  $("app").style.display = "block";
-
-  $("logoutBtn").hidden = false;
-
-  $("welcome").textContent = name;
-
-  $("notes").value = localStorage.getItem("ebdoc_notes") || "";
-
-}
-
-function logout(){
-
-  localStorage.removeItem("ebdoc_demo_login");
-
-  $("app").style.display = "none";
-
-  $("login").style.display = "block";
-
-  $("logoutBtn").hidden = true;
-
-}
-
-function showPage(id){
-
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-
-  $(id).classList.add("active");
-
-  window.scrollTo({top:0,behavior:"smooth"});
-
-}
-
-function saveNotes(){
-
-  localStorage.setItem("ebdoc_notes",$("notes").value);
-
-  $("saveStatus").textContent = " — تم الحفظ على هذا الجهاز";
-
-}
-
-startApp();
-
-</script>
-
+    <script>
+        // Data Structures & Mock Data
+        const PRODUCTS = [
+            {
+                id: 'p1',
+                name: 'Mepilex Border Safetac',
+                category: 'dressings',
+                type: 'ضمادة سيليكون رغوية',
+                image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
+                sensitivity: 'شديدة',
+                safeFor: ['Simplex', 'Dystrophic', 'Junctional'],
+                ingredients: 'طبقة سيليكون Safetac لا تلتصق بالرطوبة، رغوة بولي يوريثان ممتصة',
+                description: 'ضمادة رغوية ممتصة مزودة ببروتوكول Safetac المصمم خصيصاً لمنع نزع طبقة الجلد عند الإزالة. مثالية للفقاعات والجروح المفتوحة.',
+                rating: 4.9,
+                advantages: ['لا تسبب ألم عند التغيير', 'تمتص الإفرازات بفعالية', 'مرنة جداً مع حركة المفاصل']
+            },
+            {
+                id: 'p2',
+                name: 'Vaseline Petrolatum Gauze',
+                category: 'dressings',
+                type: 'شاش فازلين غير لاصق',
+                image: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=600&q=80',
+                sensitivity: 'خفيفة',
+                safeFor: ['Simplex', 'Dystrophic'],
+                ingredients: 'شاش ناعم مشبع بفازلين نقاوة 100%',
+                description: 'شاش مسبق التشبيع بالجيل البترولي (الفازلين) يضمن ترطيب الجرح بشكل مستمر ويمنع التصاق الضمادة الثانوية بالجلد.',
+                rating: 4.6,
+                advantages: ['اقتصادي ومتاح', 'يحافظ على رطوبة الجرح', 'سهل التشكيل على الجروح']
+            },
+            {
+                id: 'p3',
+                name: 'Nilocin Silicone Spray',
+                category: 'cleansers',
+                type: 'بخاخ مزيل الواصق',
+                image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80',
+                sensitivity: 'شديدة',
+                safeFor: ['Simplex', 'Dystrophic', 'Junctional'],
+                ingredients: '100% سيليكون طبي طيار خالي من الكحول',
+                description: 'بخاخ طبي مخصص لإزالة الضمادات والشرائط اللاصقة فوراً دون الحاجة للشد أو التسبب بألم أو تمزيق للجلد الرقيق.',
+                rating: 5.0,
+                advantages: ['خالي تماماً من الكحول', 'يبخر بسرعة ولا يترك أثراً', 'يمنع التسلخات أثناء الغيار']
+            },
+            {
+                id: 'p4',
+                name: 'Cetaphil Gentle Skin Cleanser',
+                category: 'cleansers',
+                type: 'منظف لطيف خالي من الصابون',
+                image: 'https://images.unsplash.com/photo-1556228722-d119382898fc?auto=format&fit=crop&w=600&q=80',
+                sensitivity: 'متوسطة',
+                safeFor: ['Simplex', 'Dystrophic'],
+                ingredients: 'ماء، سيتيل الكحول، بروبيلين جليكول، خالي من العطور والصابون',
+                description: 'منظف للبشرة فائقة الحساسية ينظف بفعالية دون تجريد الجلد من زيوت حمايته الطبيعية.',
+                rating: 4.7,
+                advantages: ['لا يسبب حرقة', 'خالي من العطور والمواد العطرية', 'لا يتطلب شطف قوي']
+            },
+            {
+                id: 'p5',
+                name: 'Eucerin Aquaphor Ointment',
+                category: 'creams',
+                type: 'مرهم مرطب ومعالج للتشققات',
+                image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80',
+                sensitivity: 'متوسطة',
+                safeFor: ['Simplex', 'Dystrophic'],
+                ingredients: 'بترولاتوم، بانتينول (فيتامين B5)، جليسرين، بيسابولول',
+                description: 'مرهم حاجز يوفر بيئة مثالية لالتئام الجلد الجاف والمعرض للفقاعات مع تسريع التجدد الطبيعي.',
+                rating: 4.8,
+                advantages: ['يحمي الجلد من الاحتكاك', 'يحتوي على البانتينول المهدئ', 'خالي من العطور والبرابين']
+            }
+        ];
+
+        const FABRICS = [
+            {
+                title: 'القطن الخالص 100% (Organic Cotton)',
+                rating: 'ممتاز جداً',
+                image: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=600&q=80',
+                features: ['ناعم جداً على البشرة', 'يمتص العرق والرطوبة', 'يسمح بتنفس الجلد'],
+                advice: 'تأكد من خياطة ملابس القطن بالمقلوب أو اختيار قطع الخياطة المسطحة (Flat-seams).'
+            },
+            {
+                title: 'الحرير الطبيعي (Pure Silk)',
+                rating: 'مثالي للبشرة الشديدة الحساسية',
+                image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80',
+                features: ['احتكاك شبه معدوم مع الجلد', 'ينظم حرارة الجسم', 'نعومة فائقة تمنع تمزق الفقاعات'],
+                advice: 'استخدم بطانات الحرير تحت الملابس الخارجيّة للحماية القصوى.'
+            },
+            {
+                title: 'أقمشة ألياف البامبو (Bamboo Fiber)',
+                rating: 'جيد جداً',
+                image: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=600&q=80',
+                features: ['مضاد طبيعي للبكتيريا', 'نعومة تماثل الحرير', 'امتصاص عالي للرطوبة'],
+                advice: 'اختيار رائع للملابس الداخلية والجورب بدون مطاط ضاغط.'
+            }
+        ];
+
+        const INGREDIENTS_DATA = {
+            safe: [
+                { name: 'السيليكون الطبي (Medical Silicone)', role: 'يمنع التصاق الضمادات بالجلد' },
+                { name: 'الفازلين النقّي (Pure Petrolatum)', role: 'حاجز حماية مرطب يمنع الاحتكاك' },
+                { name: 'البانتينول (Pro-Vitamin B5)', role: 'يهدئ الجلد ويسرع التئام الجروح' },
+                { name: 'الجليسرين (Glycerin)', role: 'مرطب يجذب الرطوبة للبشرة' }
+            ],
+            harmful: [
+                { name: 'العطور والمواد العطرية (Fragrances)', role: 'تسبب تهيج فوري وحكة شديدة' },
+                { name: 'الكحول الطبي (Alcohol/Ethanol)', role: 'يسبب حرقة جروح شديدة وتجفيف الجلد' },
+                { name: 'الكبريتات (Sulfates - SLS)', role: 'تجرد البشرة من حمايتها الطبيعية' },
+                { name: 'اللاصق الأكريليكي (Acrylic Adhesives)', role: 'يلتصق بقوة ويمزق الطبقة السطحية' }
+            ]
+        };
+
+        const NUTRITION_TIPS = [
+            { title: 'الحديد وفيتامين C', desc: 'بسبب فقدان الدم المستمر مع الجروح، يُنصح بتناول الأطعمة الغنية بالحديد (اللحوم، السبانخ) مع فيتامين C لتعزيز الامتصاص.' },
+            { title: 'البروتين عالي الجودة', desc: 'التئام الجروح والفقاعات يتطلب كميات إضافية من البروتين لبناء الأنسجة (البيض، الدجاج، المكملات البروتينية).' },
+            { title: 'الزنك وفيتامين A', desc: 'ضروريان جداً لتسريع عملية الاستجابة المناعية وتجديد الجلد.' }
+        ];
+
+        const WOUND_CARE_TIPS = [
+            { title: 'تفريع الفقاعات الآمن', desc: 'يجب تفريغ سائل الفقاعات الجديدة بسرعة باستخدام إبرة معقمة من القاعدة دون إزالة الجلد السطحي لأنه يعمل كضمادة طبيعية.' },
+            { title: 'استخدام مزيل اللاصق السيليكوني', desc: 'لا تقم أبداً بشد الضمادة الجافة. رش مزيل اللاصق وانتظر ثواني حتى تسقط الضمادة بنفسها.' },
+            { title: 'الضمادات الثانوية', desc: 'استخدم لفائف الشاش الناعم (Tubular bandages) لتثبيت الضمادات بدلاً من الشرائط اللاصقة على الجلد.' }
+        ];
+
+        // App State
+        let userProfile = {
+            name: 'مريض EB',
+            ebType: 'Simplex',
+            sensitivity: 'متوسطة',
+            areas: ['الذراعين واليدين']
+        };
+
+        let favorites = [];
+        let reminders = [];
+
+        window.onload = function() {
+            loadLocalStorageData();
+            updateProfileUI();
+            renderHomeProducts();
+            renderProductsDirectory();
+            renderFabrics();
+            renderMedicalEncyclopedia();
+            renderFavorites();
+            renderReminders();
+            populateCompareDropdowns();
+        };
+
+        function loadLocalStorageData() {
+            const savedProfile = localStorage.getItem('eb_doc_profile');
+            if(savedProfile) userProfile = JSON.parse(savedProfile);
+
+            const savedFavs = localStorage.getItem('eb_doc_favs');
+            if(savedFavs) favorites = JSON.parse(savedFavs);
+
+            const savedRem = localStorage.getItem('eb_doc_reminders');
+            if(savedRem) reminders = JSON.parse(savedRem);
+        }
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            const sections = ['home', 'products', 'fabrics', 'medical', 'favorites', 'reminders'];
+            sections.forEach(s => {
+                const el = document.getElementById(`sec-${s}`);
+                const navBtn = document.getElementById(`nav-${s}`);
+                if(el) el.classList.add('hidden');
+                if(navBtn) {
+                    navBtn.classList.remove('text-teal-400', 'font-bold');
+                    navBtn.classList.add('text-slate-400');
+                }
+            });
+
+            const activeSec = document.getElementById(`sec-${tabId}`);
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if(activeSec) activeSec.classList.remove('hidden');
+            if(activeNav) {
+                activeNav.classList.add('text-teal-400', 'font-bold');
+                activeNav.classList.remove('text-slate-400');
+            }
+        }
+
+        function openProfileModal() {
+            document.getElementById('user-name-input').value = userProfile.name;
+            document.getElementById('user-eb-type').value = userProfile.ebType;
+            document.getElementById('user-sensitivity-level').value = userProfile.sensitivity;
+            document.getElementById('modal-profile').classList.remove('hidden');
+        }
+
+        function closeProfileModal() {
+            document.getElementById('modal-profile').classList.add('hidden');
+        }
+
+        function saveUserProfile(e) {
+            e.preventDefault();
+            userProfile.name = document.getElementById('user-name-input').value;
+            userProfile.ebType = document.getElementById('user-eb-type').value;
+            userProfile.sensitivity = document.getElementById('user-sensitivity-level').value;
+
+            const checkboxes = document.querySelectorAll('input[name="area"]:checked');
+            userProfile.areas = Array.from(checkboxes).map(cb => cb.value);
+
+            localStorage.setItem('eb_doc_profile', JSON.stringify(userProfile));
+            updateProfileUI();
+            renderHomeProducts();
+            closeProfileModal();
+        }
+
+        function updateProfileUI() {
+            document.getElementById('user-display-name').innerText = userProfile.name;
+            document.getElementById('profile-banner-type').innerText = `نوع الحالة: EB ${userProfile.ebType}`;
+            document.getElementById('profile-banner-level').innerText = `حساسية ${userProfile.sensitivity}`;
+            document.getElementById('profile-banner-desc').innerText = `توصيات مخصصة لدرجة الحساسية (${userProfile.sensitivity}) والأماكن الأكثر تضرراً: ${userProfile.areas.join('، ') || 'عام'}.`;
+        }
+
+        function renderHomeProducts() {
+            const container = document.getElementById('home-recommended-products');
+            container.innerHTML = '';
+
+            // Filter products matching profile sensitivity
+            const recommended = PRODUCTS.filter(p => p.safeFor.includes(userProfile.ebType)).slice(0, 2);
+
+            recommended.forEach(p => {
+                container.innerHTML += createProductCardHTML(p);
+            });
+        }
+
+        function renderProductsDirectory(items = PRODUCTS) {
+            const grid = document.getElementById('products-grid');
+            document.getElementById('products-count').innerText = items.length;
+            grid.innerHTML = '';
+
+            items.forEach(p => {
+                grid.innerHTML += createProductCardHTML(p);
+            });
+        }
+
+        function createProductCardHTML(p) {
+            const isFav = favorites.includes(p.id);
+            return `
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-32 bg-slate-100">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300/1c2541/ffffff?text=EB+Product'">
+                            <button onclick="toggleFavorite('${p.id}')" class="absolute top-2 left-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-slate-400 hover:text-red-500 transition">
+                                <i class="fa-solid fa-heart ${isFav ? 'text-red-500' : ''}"></i>
+                            </button>
+                            <span class="absolute bottom-2 right-2 text-[10px] bg-navy-800/90 text-teal-300 font-bold px-2 py-0.5 rounded-md">
+                                مناسب لـ ${p.sensitivity}
+                            </span>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="font-bold text-xs text-navy-900 leading-snug">${p.name}</h3>
+                            <p class="text-[11px] text-teal-600 font-semibold mt-0.5">${p.type}</p>
+                            <p class="text-[10px] text-slate-500 mt-1 line-clamp-2">${p.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-3 pt-0 flex gap-2">
+                        <button onclick="openProductDetail('${p.id}')" class="flex-1 bg-navy-800 text-white text-[11px] py-1.5 rounded-xl font-semibold hover:bg-navy-900 transition">
+                            التفاصيل
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterProducts(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-navy-800', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-600');
+            });
+            event.target.classList.add('bg-navy-800', 'text-white');
+            event.target.classList.remove('bg-white', 'text-slate-600');
+
+            if(cat === 'all') {
+                renderProductsDirectory(PRODUCTS);
+            } else {
+                const filtered = PRODUCTS.filter(p => p.category === cat);
+                renderProductsDirectory(filtered);
+            }
+        }
+
+        function openProductDetail(id) {
+            const p = PRODUCTS.find(item => item.id === id);
+            if(!p) return;
+
+            const content = document.getElementById('product-detail-content');
+            content.innerHTML = `
+                <div class="rounded-2xl overflow-hidden h-44 bg-slate-100">
+                    <img src="${p.image}" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-2.5 py-1 rounded-full">حساسية ${p.sensitivity}</span>
+                    <h2 class="font-bold text-navy-900 text-lg mt-1">${p.name}</h2>
+                    <p class="text-xs text-teal-600 font-semibold">${p.type}</p>
+                </div>
+
+                <div class="space-y-2 text-xs text-slate-700">
+                    <p><strong>الوصف:</strong> ${p.description}</p>
+                    <p><strong>المكونات الرئيسية:</strong> ${p.ingredients}</p>
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-xl border">
+                    <h4 class="font-bold text-xs text-navy-900 mb-1">المميزات لمرضى EB:</h4>
+                    <ul class="list-disc list-inside text-xs text-slate-600 space-y-0.5">
+                        ${p.advantages.map(adv => `<li>${adv}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            document.getElementById('modal-product-detail').classList.remove('hidden');
+        }
+
+        function closeProductDetailModal() {
+            document.getElementById('modal-product-detail').classList.add('hidden');
+        }
+
+        function renderFabrics() {
+            const container = document.getElementById('fabrics-list');
+            container.innerHTML = '';
+
+            FABRICS.forEach(f => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col sm:flex-row gap-3 items-center">
+                        <img src="${f.image}" class="w-full sm:w-24 h-24 rounded-xl object-cover">
+                        <div class="flex-1 text-right">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-bold text-xs text-navy-900">${f.title}</h3>
+                                <span class="text-[10px] bg-blue-100 text-blue-700 font-bold px-2 py-0.5 rounded-full">${f.rating}</span>
+                            </div>
+                            <ul class="text-[11px] text-slate-600 mt-1 space-y-0.5">
+                                ${f.features.map(feat => `<li>• ${feat}</li>`).join('')}
+                            </ul>
+                            <p class="text-[10px] text-amber-700 bg-amber-50 p-1.5 rounded-lg mt-2 font-medium">💡 نصيحة: ${f.advice}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderMedicalEncyclopedia() {
+            const ingDiv = document.getElementById('med-sub-ingredients');
+            ingDiv.innerHTML = `
+                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-3 space-y-2">
+                    <h3 class="font-bold text-xs text-emerald-800 flex items-center gap-1">
+                        <i class="fa-solid fa-circle-check"></i> مكونات آمنة ومفضلة
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        ${INGREDIENTS_DATA.safe.map(i => `<div class="bg-white p-2 rounded-xl border border-emerald-100"><strong>${i.name}:</strong> ${i.role}</div>`).join('')}
+                    </div>
+                </div>
+
+                <div class="bg-red-50 border border-red-200 rounded-2xl p-3 space-y-2">
+                    <h3 class="font-bold text-xs text-red-800 flex items-center gap-1">
+                        <i class="fa-solid fa-circle-xmark"></i> مكونات ضارة يجب تجنبها فوراً
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        ${INGREDIENTS_DATA.harmful.map(i => `<div class="bg-white p-2 rounded-xl border border-red-100"><strong>${i.name}:</strong> ${i.role}</div>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            const nutDiv = document.getElementById('med-sub-nutrition');
+            nutDiv.innerHTML = NUTRITION_TIPS.map(n => `
+                <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="font-bold text-xs text-navy-900">${n.title}</h3>
+                    <p class="text-xs text-slate-600 mt-1">${n.desc}</p>
+                </div>
+            `).join('');
+
+            const woundDiv = document.getElementById('med-sub-woundcare');
+            woundDiv.innerHTML = WOUND_CARE_TIPS.map(w => `
+                <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="font-bold text-xs text-navy-900">${w.title}</h3>
+                    <p class="text-xs text-slate-600 mt-1">${w.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function switchMedicalTab(tab) {
+            ['ingredients', 'nutrition', 'woundcare'].forEach(t => {
+                document.getElementById(`med-sub-${t}`).classList.add('hidden');
+                document.getElementById(`med-tab-${t}`).classList.remove('active-tab');
+            });
+            document.getElementById(`med-sub-${tab}`).classList.remove('hidden');
+            document.getElementById(`med-tab-${tab}`).classList.add('active-tab');
+        }
+
+        function toggleFavorite(id) {
+            if(favorites.includes(id)) {
+                favorites = favorites.filter(fId => fId !== id);
+            } else {
+                favorites.push(id);
+            }
+            localStorage.setItem('eb_doc_favs', JSON.stringify(favorites));
+            renderHomeProducts();
+            renderProductsDirectory();
+            renderFavorites();
+        }
+
+        function renderFavorites() {
+            const container = document.getElementById('favorites-grid');
+            container.innerHTML = '';
+
+            const favProducts = PRODUCTS.filter(p => favorites.includes(p.id));
+            if(favProducts.length === 0) {
+                container.innerHTML = '<p class="text-xs text-slate-400 text-center col-span-2 py-8">لا توجد منتجات بالمفضلة حالياً</p>';
+                return;
+            }
+
+            favProducts.forEach(p => {
+                container.innerHTML += createProductCardHTML(p);
+            });
+        }
+
+        function openCompareModal() {
+            document.getElementById('modal-compare').classList.remove('hidden');
+        }
+
+        function closeCompareModal() {
+            document.getElementById('modal-compare').classList.add('hidden');
+        }
+
+        function populateCompareDropdowns() {
+            const p1 = document.getElementById('compare-p1');
+            const p2 = document.getElementById('compare-p2');
+
+            p1.innerHTML = PRODUCTS.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+            p2.innerHTML = PRODUCTS.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+
+            if(PRODUCTS.length > 1) p2.value = PRODUCTS[1].id;
+            renderComparison();
+        }
+
+        function renderComparison() {
+            const id1 = document.getElementById('compare-p1').value;
+            const id2 = document.getElementById('compare-p2').value;
+
+            const item1 = PRODUCTS.find(p => p.id === id1);
+            const item2 = PRODUCTS.find(p => p.id === id2);
+
+            const container = document.getElementById('compare-results');
+            if(!item1 || !item2) return;
+
+            container.innerHTML = `
+                <div class="grid grid-cols-2 gap-2 text-center border-b pb-2">
+                    <div class="font-bold text-xs text-navy-900">${item1.name}</div>
+                    <div class="font-bold text-xs text-navy-900">${item2.name}</div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600">
+                    <div><strong>النوع:</strong> ${item1.type}</div>
+                    <div><strong>النوع:</strong> ${item2.type}</div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600 border-t pt-1">
+                    <div><strong>الحساسية:</strong> ${item1.sensitivity}</div>
+                    <div><strong>الحساسية:</strong> ${item2.sensitivity}</div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600 border-t pt-1">
+                    <div><strong>المكونات:</strong> ${item1.ingredients}</div>
+                    <div><strong>المكونات:</strong> ${item2.ingredients}</div>
+                </div>
+            `;
+        }
+
+        function openRemindersModal() {
+            switchTab('reminders');
+        }
+
+        function openAddReminderModal() {
+            document.getElementById('modal-add-reminder').classList.remove('hidden');
+        }
+
+        function closeAddReminderModal() {
+            document.getElementById('modal-add-reminder').classList.add('hidden');
+        }
+
+        function saveReminder(e) {
+            e.preventDefault();
+            const newRem = {
+                id: 'r_' + Date.now(),
+                title: document.getElementById('rem-title').value,
+                date: document.getElementById('rem-date').value,
+                time: document.getElementById('rem-time').value,
+                type: document.getElementById('rem-type').value
+            };
+
+            reminders.push(newRem);
+            localStorage.setItem('eb_doc_reminders', JSON.stringify(reminders));
+            renderReminders();
+            closeAddReminderModal();
+        }
+
+        function deleteReminder(id) {
+            reminders = reminders.filter(r => r.id !== id);
+            localStorage.setItem('eb_doc_reminders', JSON.stringify(reminders));
+            renderReminders();
+        }
+
+        function renderReminders() {
+            const container = document.getElementById('reminders-list');
+            const badge = document.getElementById('reminder-badge');
+            
+            if(reminders.length > 0) {
+                badge.innerText = reminders.length;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            if(reminders.length === 0) {
+                container.innerHTML = '<p class="text-xs text-slate-400 text-center py-8">لا توجد تذكيرات محددة حالياً</p>';
+                return;
+            }
+
+            container.innerHTML = reminders.map(r => `
+                <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex justify-between items-center">
+                    <div>
+                        <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">${r.type}</span>
+                        <h4 class="font-bold text-xs text-navy-900 mt-1">${r.title}</h4>
+                        <p class="text-[11px] text-slate-500 mt-0.5"><i class="fa-regular fa-clock"></i> ${r.date} - ${r.time}</p>
+                    </div>
+                    <button onclick="deleteReminder('${r.id}')" class="text-red-400 hover:text-red-600 p-2">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('global-search').value.toLowerCase().trim();
+            if(!query) {
+                renderProductsDirectory(PRODUCTS);
+                return;
+            }
+
+            switchTab('products');
+            const filtered = PRODUCTS.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.type.toLowerCase().includes(query) || 
+                p.ingredients.toLowerCase().includes(query) ||
+                p.description.toLowerCase().includes(query)
+            );
+
+            renderProductsDirectory(filtered);
+        }
+    </script>
 </body>
-
 </html>
