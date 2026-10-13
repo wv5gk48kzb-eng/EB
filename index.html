@@ -2,116 +2,151 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EB Doc - دليلك للاهتمام بالبشرة الهشة</title>
     <style>
         * {
             box-sizing: border-box;
-            border-radius: 0px; /* زوايا حادة تماماً كما طلبتِ */
-            font-family: Tahoma, Arial, sans-serif;
+            border-radius: 0px; /* زوايا حادة تماماً */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, sans-serif;
         }
         body {
-            background-color: #f0f8ff; /* خلفية هادئة تناسب التطبيق الطبي */
-            color: #333;
+            /* خلفية طبية مهدئة بنمط رمادي سائل ناعم Medical Slate */
+            background-color: #f4f7f6;
+            color: #2c3e50;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
-        .container {
+        .card {
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             background: #ffffff;
-            border: 2px solid #008080; /* إطار تبرويز احترافي */
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.15);
+            border: 2px solid #00a896; /* أزرق تيل طبي ناصع Medical Teal */
+            padding: 35px 30px;
+            box-shadow: 0 4px 20px rgba(0, 168, 150, 0.08);
         }
         h2 {
-            color: #005b5b;
+            color: #028090; /* أزرق طبي عميق */
             text-align: center;
             margin-top: 0;
-            font-size: 22px;
+            font-size: 21px;
+            font-weight: 700;
+        }
+        .subtitle {
+            text-align: center;
+            color: #6c757d;
+            font-size: 13px;
+            margin-bottom: 25px;
         }
         label {
             display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #006666;
-            font-size: 14px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: #028090;
+            font-weight: 600;
         }
-        input, button {
+        input {
             width: 100%;
             padding: 12px;
-            margin-top: 8px;
-            border: 1px solid #008080;
-            background-color: #fff;
-            font-size: 16px;
+            margin-top: 6px;
+            border: 1px solid #00a896;
+            background-color: #f8fbfb;
+            font-size: 15px;
+            color: #2c3e50;
+            outline: none;
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #002b3d 0%, #008080 100%);
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
+        input:focus {
+            background-color: #ffffff;
+            border-color: #028090;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 13px;
             margin-top: 25px;
+            background-color: #028090; /* أزرق طبي علاج للزر الرئيسي */
+            color: white;
             border: none;
-            transition: 0.2s;
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-        .btn-secondary {
-            background-color: #fff;
-            color: #008080;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
-            border: 1px solid #008080;
-        }
-        .btn-secondary:hover {
-            background-color: #f4fcfc;
-        }
-        .app-content {
-            display: none;
+            display: block;
             text-align: center;
+            transition: background 0.2s;
+        }
+        .btn-login:hover, .btn-login:active {
+            background-color: #05668d;
+        }
+        .btn-register {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            background-color: #ffffff;
+            color: #028090;
+            border: 1px solid #028090;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-register:hover {
+            background-color: #f0f7f7;
+        }
+        /* الشاشة الثانية */
+        #dashboardScreen {
+            display: none;
+        }
+        .medical-notice {
+            background-color: #e0f2f1;
+            border-right: 4px solid #00a896;
+            padding: 12px 15px;
+            color: #004d40;
+            font-size: 13px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-<div class="container" id="loginCard">
-    <h2>دليلك للاهتمام بالبشرة الهشة</h2>
-    <p style="text-align: center; color: #666; font-size: 13px;">تطبيق يهتم باحتياجات أبطال البشرة الهشة EB</p>
+    <!-- الشاشة الأولى: تسجيل الدخول -->
+    <div class="card" id="loginScreen">
+        <h2>دليلك للاهتمام بالبشرة الهشة</h2>
+        <div class="subtitle">تطبيق يهتم باحتياجات أبطال البشرة الهشة EB</div>
 
-    <label>اسم المستخدم أو البريد:</label>
-    <input type="text" id="username" value="حلا وليد">
+        <form id="loginForm" onsubmit="event.preventDefault(); navigateToDashboard();">
+            <label>اسم المستخدم أو البريد:</label>
+            <input type="text" id="userInput" value="حلا وليد" required>
 
-    <label>كلمة المرور:</label>
-    <input type="password" id="password" value="12345">
+            <label>كلمة المرور:</label>
+            <input type="password" id="passInput" value="•••••" required>
 
-    <button class="btn-primary" onclick="handleLogin()">تسجيل الدخول ←</button>
-    <button class="btn-secondary" onclick="alert('جاري الانتقال لصفحة إنشاء حساب جديد...')">إإنشاء حساب جديد 👤+</button>
-</div>
+            <button type="submit" class="btn-login">تسجيل الدخول ←</button>
+            <button type="button" class="btn-register" onclick="alert('صفحة إنشاء حساب جديد قيد التطوير')">👤+ إنشاء حساب جديد</button>
+        </form>
+    </div>
 
-<div class="container app-content" id="mainApp">
-    <h2>مرحباً بكِ يا حلا في عالم EB Doc</h2>
-    <p style="color: #555; margin-top: 15px;">تم تسجيل الدخول بنجاح إلى دليلك الطبي المخصص.</p>
-    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
-    
-    <label>اختر القسم المناسب للعناية:</label>
-    <button class="btn-primary" onclick="alert('قسم ترطيب وحماية الجلد')">💧 التوجيهات اليومية للترطيب</button>
-    <button class="btn-primary" onclick="style='margin-top:10px;' ; alert('قسم الاستشارات الطبية السريعة')">📋 استشارة وتوثيق الحالة</button>
-    
-    <button class="btn-secondary" onclick="location.reload()" style="margin-top: 30px;">تسجيل الخروج</button>
-</div>
+    <!-- الشاشة الثانية: الرئيسية بعد الضغط -->
+    <div class="card" id="dashboardScreen">
+        <h2>لوحة العناية الطبية - EB Doc</h2>
+        <div class="medical-notice">أهلاً بكِ حلا! تم الدخول إلى النظام الطبي الجاهز.</div>
+        
+        <p style="font-size: 14px; color: #555;">اختر الخيار المطلوب للبدء:</p>
+        
+        <button class="btn-login" style="margin-top:10px;" onclick="alert('جاري فتح دليل العناية بالضمادات والترطيب...')">🩺 دليل العناية والضمادات اليومية</button>
+        <button class="btn-login" style="margin-top:10px; background-color:#00a896;" onclick="alert('جاري فتح نموذج تقييم حالة البشرة...')">📋 تقييم حالة البشرة الهشة</button>
+        
+        <button class="btn-register" style="margin-top:25px;" onclick="location.reload()">تسجيل الخروج</button>
+    </div>
 
-<script>
-    function handleLogin() {
-        // إخفاء صفحة تسجيل الدخول وإظهار التطبيق الرئيسي مباشرة
-        document.getElementById('loginCard').style.display = 'none';
-        document.getElementById('mainApp').style.display = 'block';
-    }
-</script>
+    <script>
+        function navigateToDashboard() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboardScreen').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
