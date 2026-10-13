@@ -2,159 +2,116 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>EB Doc - دليلك للاهتمام بالبشرة الهشة</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            800: '#0f2027',
-                            900: '#0a192f',
-                            950: '#030c1e',
-                        },
-                        teal: {
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                        },
-                        cyan: {
-                            400: '#22d3ee',
-                            500: '#06b6d4',
-                        }
-                    },
-                    fontFamily: {
-                        cairo: ['Cairo', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        * {
+            box-sizing: border-box;
+            border-radius: 0px; /* زوايا حادة تماماً كما طلبتِ */
+            font-family: Tahoma, Arial, sans-serif;
+        }
         body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: #f0f8ff; /* خلفية هادئة تناسب التطبيق الطبي */
+            color: #333;
             margin: 0;
-            padding: 0;
-            min-height: 100vh;
+            padding: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .app-wrapper {
+        .container {
             width: 100%;
-            max-width: 500px;
-            min-height: 100vh;
-            background-color: #f8fafc;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 25px rgba(0,0,0,0.08);
+            max-width: 450px;
+            background: #ffffff;
+            border: 2px solid #008080; /* إطار تبرويز احترافي */
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.15);
+        }
+        h2 {
+            color: #005b5b;
+            text-align: center;
+            margin-top: 0;
+            font-size: 22px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #006666;
+            font-size: 14px;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #008080;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #002b3d 0%, #008080 100%);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+            border: none;
+            transition: 0.2s;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+        .btn-secondary {
+            background-color: #fff;
+            color: #008080;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            border: 1px solid #008080;
+        }
+        .btn-secondary:hover {
+            background-color: #f4fcfc;
+        }
+        .app-content {
+            display: none;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- App Main Wrapper -->
-    <div class="app-wrapper overflow-hidden">
+<div class="container" id="loginCard">
+    <h2>دليلك للاهتمام بالبشرة الهشة</h2>
+    <p style="text-align: center; color: #666; font-size: 13px;">تطبيق يهتم باحتياجات أبطال البشرة الهشة EB</p>
 
-        <!-- 1. LOGIN SCREEN -->
-        <div id="screen-login" class="flex-1 flex flex-col justify-between p-6 bg-gradient-to-b from-slate-50 via-teal-50/20 to-cyan-50 min-h-screen">
-            <!-- Background Decoration -->
-            <div class="absolute top-0 right-0 w-40 h-40 bg-teal-200/20 rounded-full blur-2xl pointer-events-none"></div>
+    <label>اسم المستخدم أو البريد:</label>
+    <input type="text" id="username" value="حلا وليد">
 
-            <!-- Header Status Bar -->
-            <div class="flex justify-between items-center text-xs text-slate-500 font-sans pt-1 mb-2">
-                <span>9:41</span>
-                <div class="flex items-center gap-1.5">
-                    <i class="fa-solid fa-signal"></i>
-                    <i class="fa-solid fa-wifi"></i>
-                    <i class="fa-solid fa-battery-full text-sm"></i>
-                </div>
-            </div>
+    <label>كلمة المرور:</label>
+    <input type="password" id="password" value="12345">
 
-            <!-- App Brand & Header -->
-            <div class="text-center my-auto py-6">
-                <div class="inline-flex justify-center items-center w-20 h-20 bg-gradient-to-tr from-navy-900 via-teal-600 to-cyan-400 rounded-full shadow-lg shadow-teal-500/20 mb-4 p-1">
-                    <div class="w-full h-full bg-white rounded-full flex justify-center items-center text-teal-600 text-3xl">
-                        <i class="fa-solid fa-hand-holding-heart"></i>
-                    </div>
-                </div>
-                <h1 class="text-3xl font-extrabold text-navy-900 tracking-wide">EB Doc</h1>
-                <p class="text-xs text-teal-700 font-semibold mt-1">معاً لبشرة أكثر أماناً ورعاية</p>
-                <h2 class="text-lg font-bold text-slate-800 mt-6">دليلك للاهتمام بالبشرة الهشة</h2>
-            </div>
+    <button class="btn-primary" onclick="handleLogin()">تسجيل الدخول ←</button>
+    <button class="btn-secondary" onclick="alert('جاري الانتقال لصفحة إنشاء حساب جديد...')">إإنشاء حساب جديد 👤+</button>
+</div>
 
-            <!-- Login Form -->
-            <div class="space-y-3 my-auto w-full">
-                <div class="relative">
-                    <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-teal-600">
-                        <i class="fa-regular fa-envelope"></i>
-                    </span>
-                    <input type="text" id="username-input" placeholder="البريد الإلكتروني أو اسم المستخدم" 
-                        class="w-full py-3.5 pr-11 pl-11 text-sm bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-teal-500 shadow-sm transition text-slate-700 placeholder-slate-400">
-                </div>
+<div class="container app-content" id="mainApp">
+    <h2>مرحباً بكِ يا حلا في عالم EB Doc</h2>
+    <p style="color: #555; margin-top: 15px;">تم تسجيل الدخول بنجاح إلى دليلك الطبي المخصص.</p>
+    <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+    
+    <label>اختر القسم المناسب للعناية:</label>
+    <button class="btn-primary" onclick="alert('قسم ترطيب وحماية الجلد')">💧 التوجيهات اليومية للترطيب</button>
+    <button class="btn-primary" onclick="style='margin-top:10px;' ; alert('قسم الاستشارات الطبية السريعة')">📋 استشارة وتوثيق الحالة</button>
+    
+    <button class="btn-secondary" onclick="location.reload()" style="margin-top: 30px;">تسجيل الخروج</button>
+</div>
 
-                <div class="relative">
-                    <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-teal-600">
-                        <i class="fa-solid fa-lock"></i>
-                    </span>
-                    <input type="password" placeholder="كلمة المرور" 
-                        class="w-full py-3.5 pr-11 pl-11 text-sm bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-teal-500 shadow-sm transition text-slate-700 placeholder-slate-400">
-                </div>
+<script>
+    function handleLogin() {
+        // إخفاء صفحة تسجيل الدخول وإظهار التطبيق الرئيسي مباشرة
+        document.getElementById('loginCard').style.display = 'none';
+        document.getElementById('mainApp').style.display = 'block';
+    }
+</script>
 
-                <button onclick="loginUser()" class="w-full py-3.5 bg-gradient-to-r from-navy-900 via-teal-700 to-teal-600 text-white font-bold rounded-2xl shadow-lg shadow-navy-900/10 hover:opacity-95 transition flex justify-center items-center gap-2 mt-4">
-                    <span>تسجيل الدخول</span>
-                    <i class="fa-solid fa-arrow-left text-xs"></i>
-                </button>
-
-                <button onclick="loginUser()" class="w-full py-3 bg-white text-navy-900 border border-teal-200 font-bold rounded-2xl hover:bg-teal-50 transition flex justify-center items-center gap-2">
-                    <i class="fa-solid fa-user-plus text-teal-600 text-xs"></i>
-                    <span>إنشاء حساب جديد</span>
-                </button>
-
-                <div class="flex items-center my-4">
-                    <div class="flex-1 border-t border-slate-200"></div>
-                    <span class="px-3 text-xs text-slate-400">أو</span>
-                    <div class="flex-1 border-t border-slate-200"></div>
-                </div>
-
-                <!-- Language Selector Buttons -->
-                <div class="grid grid-cols-2 gap-3">
-                    <button class="py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 flex justify-center items-center gap-2">
-                        <i class="fa-solid fa-globe text-teal-600"></i>
-                        <span>العربية</span>
-                    </button>
-                    <button class="py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-500 flex justify-center items-center gap-2">
-                        <i class="fa-solid fa-globe text-slate-400"></i>
-                        <span>English</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Footer Note -->
-            <div class="text-center pt-4 pb-2">
-                <p class="text-[11px] text-slate-400">تطبيق يهتم بااحتياجات أبطال البشرة الهشة EB</p>
-            </div>
-        </div>
-
-        <!-- 2. MAIN APP HOME SCREEN -->
-        <div id="screen-home" class="flex-1 flex-col hidden bg-slate-50 pb-24">
-            <!-- App Header -->
-            
+</body>
+</html>
