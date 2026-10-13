@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EB Doc - تطبيق تقييم البشرة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#FFF0F5',
+                            pink: '#FF69B4',
+                            darkpink: '#DB2777',
+                            soft: '#FCE7F3',
+                            accent: '#EC4899',
+                        }
+                    },
+                    fontFamily: {
+                        tajawal: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #FFF0F5;
+            color: #333333;
+        }
+        .pink-gradient {
+            background: linear-gradient(135deg, #FF69B4 0%, #EC4899 100%);
+        }
+        .soft-card {
+            background: #FFFFFF;
+            border: 2px solid #FCE7F3;
+            box-shadow: 0 10px 25px -5px rgba(255, 105, 180, 0.1);
+        }
+        .option-card {
+            transition: all 0.25s ease;
+            border: 2px solid #FCE7F3;
+        }
+        .option-card:hover, .option-card.selected {
+            border-color: #FF69B4;
+            background-color: #FFF0F5;
+            transform: translateY(-2px);
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <header class="bg-white border-b-2 border-brand-soft sticky top-0 z-50 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showScreen('home')">
+                <div class="w-10 h-10 pink-gradient rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    EB
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-brand-darkpink leading-none">EB Doc</h1>
+                    <span class="text-xs text-gray-500">طبيب بشرتك الخاص</span>
+                </div>
+            </div>
+            
+            <nav class="flex gap-2">
+                <button onclick="showScreen('home')" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-gray-600 hover:text-brand-darkpink hover:bg-brand-light transition">
+                    الرئيسية
+                </button>
+                <button onclick="showScreen('guide')" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-gray-600 hover:text-brand-darkpink hover:bg-brand-light transition">
+                    دليل العناية
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full">
+
+        <!-- 1. PAGE: HOME SCREEN -->
+        <section id="screen-home" class="fade-in space-y-8 text-center">
+            <div class="soft-card p-8 rounded-3xl space-y-6">
+                <div class="w-24 h-24 pink-gradient mx-auto rounded-full flex items-center justify-center text-white text-4xl shadow-lg">
+                    <i class="fa-solid fa-sparkles"></i>
+                </div>
+                <h2 class="text-3xl font-extrabold text-gray-800">مرحباً بك في تطبيق <span class="text-brand-darkpink">EB Doc</span></h2>
+                <p class="text-gray-600 leading-relaxed text-lg max-w-lg mx-auto">
+                    اكتشفي نوع بشرتك واحصلي على تقييم تشخيصي ودقيق لحالتها مع برنامج عناية يومي مخصص لكِ بالكامل خلال دقائق معدودة.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                    <button onclick="startAssessment()" class="pink-gradient text-white font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:opacity-90 transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-clipboard-check ml-2"></i> بدء تقييم البشرة
+                    </button>
+                    <button onclick="showScreen('guide')" class="bg-white border-2 border-brand-pink text-brand-darkpink font-bold px-6 py-4 rounded-xl text-lg hover:bg-brand-light transition">
+                        <i class="fa-solid fa-book-open ml-2"></i> تصفح دليل العناية
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-right">
+                <div class="soft-card p-5 rounded-2xl">
+                    <div class="text-brand-pink text-2xl mb-2"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-1">تقييم شخصي دقيق</h3>
+                    <p class="text-xs text-gray-500">تحليل نوع البشرة واحتياجاتها بناءً على إجاباتك.</p>
+                </div>
+                <div class="soft-card p-5 rounded-2xl">
+                    <div class="text-brand-pink text-2xl mb-2"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-1">روتين صباحي ومسائي</h3>
+                    <p class="text-xs text-gray-500">جدول عناية متكامل ومناسب لطبيعة يومك.</p>
+                </div>
+                <div class="soft-card p-5 rounded-2xl">
+                    <div class="text-brand-pink text-2xl mb-2"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-1">نصائح وإرشادات</h3>
+                    <p class="text-xs text-gray-500">توصيات مخصصة للحفاظ على نضارة وصحة البشرة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PAGE: ASSESSMENT QUESTIONNAIRE SCREEN -->
+        <section id="screen-assessment" class="hidden fade-in space-y-6">
+            <!-- Progress Bar -->
+            <div class="bg-white p-4 rounded-2xl border border-brand-soft shadow-sm">
+                <div class="flex justify-between text-sm font-bold text-gray-600 mb-2">
+                    <span id="step-title">الخطوة 1 من 3</span>
+                    <span id="step-percent" class="text-brand-darkpink">33%</span>
+                </div>
+                <div class="w-full bg-gray-100 h-3 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="pink-gradient h-full w-1/3 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <!-- Questionnaire Card -->
+            <div class="soft-card p-6 md:p-8 rounded-3xl space-y-6">
+                <!-- Question 1 -->
+                <div id="q-1" class="question-step space-y-4">
+                    <h3 class="text-xl font-bold text-gray-800 border-r-4 border-brand-pink pr-3">1. كيف تشعرين ببشرتك بعد غسلها بربع ساعة؟</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <button onclick="selectOption(1, 'oily')" class="option-card o-1 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-droplet text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">لامعة ومشتبكة بالزيوت</div>
+                                <div class="text-xs text-gray-500">بشرة دهنية</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(1, 'dry')" class="option-card o-1 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-sun text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">مشدودة وجافة وقد تقشر</div>
+                                <div class="text-xs text-gray-500">بشرة جافة</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(1, 'combination')" class="option-card o-1 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-sliders text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">دهنية في الجبهة والأنف وجافة في الخدين</div>
+                                <div class="text-xs text-gray-500">بشرة مختلطة</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(1, 'sensitive')" class="option-card o-1 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-shield-heart text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">تتحسس وتتحمر بسهولة</div>
+                                <div class="text-xs text-gray-500">بشرة حساسة</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div id="q-2" class="question-step hidden space-y-4">
+                    <h3 class="text-xl font-bold text-gray-800 border-r-4 border-brand-pink pr-3">2. ما هي المشكلة الرئيسية التي ترغبين في معالجتها؟</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <button onclick="selectOption(2, 'acne')" class="option-card o-2 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-circle-dot text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">حب الشباب والرؤوس السوداء</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(2, 'pigmentation')" class="option-card o-2 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-disease text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">التصبغات والبقع الداكنة</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(2, 'dullness')" class="option-card o-2 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-cloud-sun text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">الجفاف والبهتان</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(2, 'aging')" class="option-card o-2 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-hourglass-half text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">التجاعيد وعلامات التقدم بالعمر</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div id="q-3" class="question-step hidden space-y-4">
+                    <h3 class="text-xl font-bold text-gray-800 border-r-4 border-brand-pink pr-3">3. كم مرة تلتزمين بوضع واقي الشمس يومياً؟</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <button onclick="selectOption(3, 'always')" class="option-card o-3 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-check-double text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">يومياً وبشكل منتظم</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(3, 'sometimes')" class="option-card o-3 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-umbrella text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">أحياناً عند الخروج في الشمس</div>
+                            </div>
+                        </button>
+                        <button onclick="selectOption(3, 'rarely')" class="option-card o-3 p-4 rounded-xl text-right flex items-center gap-3">
+                            <i class="fa-solid fa-xmark text-brand-pink text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-800">نادراً أو لا أستخدمه تماماً</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                    <button id="prev-btn" onclick="prevQuestion()" class="bg-gray-100 text-gray-600 font-bold px-5 py-2.5 rounded-xl hover:bg-gray-200 transition invisible">
+                        <i class="fa-solid fa-arrow-right ml-1"></i> السابق
+                    </button>
+                    <button id="next-btn" onclick="nextQuestion()" disabled class="pink-gradient text-white font-bold px-6 py-2.5 rounded-xl opacity-50 cursor-not-allowed transition">
+                        التالي <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PAGE: RESULTS & RECOMMENDATIONS SCREEN -->
+        <section id="screen-results" class="hidden fade-in space-y-6">
+            <div class="soft-card p-6 md:p-8 rounded-3xl space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="bg-brand-light text-brand-darkpink text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">تقرير EB Doc المخصص</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-800">نتيجة تقييم بشرتك</h2>
+                    <p class="text-sm text-gray-500">تم إعداد التوصيات بناءً على الإجابات المدخلة</p>
+                </div>
+
+                <!-- Summary Box -->
+                <div class="bg-brand-light p-4 rounded-2xl border border-brand-soft flex flex-wrap justify-around text-center gap-4">
+                    <div>
+                        <span class="text-xs text-gray-500 block">نوع البشرة</span>
+                        <span id="res-skin-type" class="font-bold text-brand-darkpink text-lg">-</span>
+                    </div>
+                    <div class="border-r border-brand-soft pr-4">
+                        <span class="text-xs text-gray-500 block">الاهتمام الرئيسي</span>
+                        <span id="res-concern" class="font-bold text-brand-darkpink text-lg">-</span>
+                    </div>
+                </div>
+
+                <!-- Routine Breakdown -->
+                <div class="space-y-4">
+                    <h3 class="font-bold text-lg text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-brand-pink"></i> الروتين اليومي المقترح
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Morning Routine -->
+                        <div class="border border-brand-soft p-4 rounded-2xl bg-white shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-darkpink flex items-center gap-2">
+                                <i class="fa-solid fa-sun text-yellow-500"></i> الروتين الصباحي
+                            </h4>
+                            <ul id="routine-morning" class="text-sm text-gray-600 space-y-2 list-disc list-inside">
+                                <!-- Dynamic items -->
+                            </ul>
+                        </div>
+
+                        <!-- Evening Routine -->
+                        <div class="border border-brand-soft p-4 rounded-2xl bg-white shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-darkpink flex items-center gap-2">
+                                <i class="fa-solid fa-moon text-indigo-400"></i> الروتين المسائي
+                            </h4>
+                            <ul id="routine-evening" class="text-sm text-gray-600 space-y-2 list-disc list-inside">
+                                <!-- Dynamic items -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Tips -->
+                <div class="p-4 rounded-2xl border border-yellow-200 bg-yellow-50 text-sm space-y-1">
+                    <h4 class="font-bold text-yellow-800 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb"></i> نصيحة EB Doc الخاصة لكِ:
+                    </h4>
+                    <p id="res-tip" class="text-yellow-900 leading-relaxed"></p>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="startAssessment()" class="pink-gradient text-white font-bold py-3 px-6 rounded-xl text-center flex-1">
+                        <i class="fa-solid fa-rotate-right ml-2"></i> إعادة التقييم
+                    </button>
+                    <button onclick="window.print()" class="bg-white border border-brand-pink text-brand-darkpink font-bold py-3 px-6 rounded-xl text-center flex-1">
+                        <i class="fa-solid fa-print ml-2"></i> طباعة التقرير
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PAGE: SKINCARE GUIDE SCREEN -->
+        <section id="screen-guide" class="hidden fade-in space-y-6">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl font-extrabold text-gray-800">دليل العناية بالبشرة الشامل</h2>
+                <p class="text-gray-500 text-sm">أهم القواعد الذهبية للحفاظ على صحة ونضارة بشرتك</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="soft-card p-5 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 pink-gradient rounded-lg flex items-center justify-center text-white font-bold">1</div>
+                    <h3 class="font-bold text-lg text-gray-800">الترطيب المستمر</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">الترطيب خطوة أساسية لجميع أنواع البشرة بلا استثناء، حتى البشرة الدهنية تحتاج لمرطب خفيف خالٍ من الزيوت.</p>
+                </div>
+
+                <div class="soft-card p-5 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 pink-gradient rounded-lg flex items-center justify-center text-white font-bold">2</div>
+                    <h3 class="font-bold text-lg text-gray-800">واقي الشمس المباشر</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">الشمس هي المسبب الأول للتجاعيد والتصبغات المبكرة. ضعي واقي الشمس يومياً حتى في الأيام الغائمة.</p>
+                </div>
+
+                <div class="soft-card p-5 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 pink-gradient rounded-lg flex items-center justify-center text-white font-bold">3</div>
+                    <h3 class="font-bold text-lg text-gray-800">تنظيف البشرة بلطف</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">استخدمي غسولاً متوازناً وتجنبي الغسل المفرط بالماء الساخن لأنه يجرد البشرة من زيوتها الطبيعية.</p>
+                </div>
+
+                <div class="soft-card p-5 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 pink-gradient rounded-lg flex items-center justify-center text-white font-bold">4</div>
+                    <h3 class="font-bold text-lg text-gray-800">النوم والتغذية السليمة</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">شرب كميات كافية من الماء والنوم لمدة 7-8 ساعات يعززان نضارة البشرة وتجدد خلاياها تلقائياً.</p>
+                </div>
+            </div>
+
+            <div class="text-center pt-4">
+                <button onclick="startAssessment()" class="pink-gradient text-white font-bold px-8 py-3 rounded-xl shadow-md">
+                    بدء تقييم بشرتك الآن <i class="fa-solid fa-arrow-left mr-2"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-brand-soft py-4 text-center text-xs text-gray-500">
+        <p>جميع الحقوق محفوظة © 2026 - تطبيق <span class="text-brand-darkpink font-bold">EB Doc</span></p>
+    </footer>
+
+    <script>
+        // State variables
+        let currentStep = 1;
+        const answers = {
+            1: null,
+            2: null,
+            3: null
+        };
+
+        // Navigation between main screens
+        function showScreen(screenId) {
+            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(`screen-${screenId}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Start Assessment
+        function startAssessment() {
+            currentStep = 1;
+            answers[1] = null;
+            answers[2] = null;
+            answers[3] = null;
+            updateStepView();
+            showScreen('assessment');
+        }
+
+        // Handle Option Selection
+        function selectOption(qNum, value) {
+            answers[qNum] = value;
+            
+            // Highlight selected option UI
+            document.querySelectorAll(`.o-${qNum}`).forEach(btn => btn.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            // Enable Next Button
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        // Next Question or Finish
+        function nextQuestion() {
+            if (currentStep < 3) {
+                currentStep++;
+                updateStepView();
+            } else {
+                calculateResults();
+                showScreen('results');
+            }
+        }
+
+        // Previous Question
+        function prevQuestion() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepView();
+            }
+        }
+
+        // Update Steps UI
+        function updateStepView() {
+            // Hide all steps
+            document.querySelectorAll('.question-step').forEach(q => q.classList.add('hidden'));
+            document.getElementById(`q-${currentStep}`).classList.remove('hidden');
+
+            // Update Progress Bar
+            const percent = Math.round((currentStep / 3) * 100);
+            document.getElementById('step-title').innerText = `الخطوة ${currentStep} من 3`;
+            document.getElementById('step-percent').innerText = `${percent}%`;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+
+            // Toggle Prev Button
+            const prevBtn = document.getElementById('prev-btn');
+            if (currentStep === 1) {
+                prevBtn.classList.add('invisible');
+            } else {
+                prevBtn.classList.remove('invisible');
+            }
+
+            // Next button state
+            const nextBtn = document.getElementById('next-btn');
+            if (answers[currentStep]) {
+                nextBtn.disabled = false;
+                nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                nextBtn.disabled = true;
+                nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+
+            // Change next button text on final step
+            if (currentStep === 3) {
+                nextBtn.innerHTML = 'عرض النتيجة <i class="fa-solid fa-sparkles mr-1"></i>';
+            } else {
+                nextBtn.innerHTML = 'التالي <i class="fa-solid fa-arrow-left mr-1"></i>';
+            }
+        }
+
+        // Calculate and Render Personalized Results
+        function calculateResults() {
+            const typeMap = {
+                'oily': 'دهنية',
+                'dry': 'جافة',
+                'combination': 'مختلطة',
+                'sensitive': 'حساسة'
+            };
+
+            const concernMap = {
+                'acne': 'حب الشباب والرؤوس السوداء',
+                'pigmentation': 'التصبغات والبقع الداكنة',
+                'dullness': 'الجفاف والبهتان',
+                'aging': 'التجاعيد وعلامات التمدد'
+            };
+
+            document.getElementById('res-skin-type').innerText = typeMap[answers[1]] || '-';
+            document.getElementById('res-concern').innerText = concernMap[answers[2]] || '-';
+
+            // Generate Morning Routine
+            const morningUl = document.getElementById('routine-morning');
+            morningUl.innerHTML = '';
+            
+            let morningSteps = [
+                'غسول لطيف مناسب لبشرتك',
+                'سيروم مرطب (مثل الهيالورونيك اسيد)',
+                'مرطب مناسب مع قوام خفيف',
+                'واقي شمس واسع الطيف (SPF 50)'
+            ];
+
+            if (answers[1] === 'oily') {
+                morningSteps[0] = 'غسول رغوي يحتوي على حمض الساليسليك';
+            } else if (answers[1] === 'dry') {
+                morningSteps[0] = 'غسول كريمي مغذي وخالٍ من الصابون';
+            }
+
+            morningSteps.forEach(step => {
+                morningUl.innerHTML += `<li>${step}</li>`;
+            });
+
+            // Generate Evening Routine
+            const eveningUl = document.getElementById('routine-evening');
+            eveningUl.innerHTML = '';
+
+            let eveningSteps = [
+                'تنظيف مزدوج لإزالة الأوساخ وواقي الشمس',
+                'سيروم معالج بحسب الحاجة',
+                'كريم مرطب عميق لترميم البشرة أثناء النوم'
+            ];
+
+            if (answers[2] === 'acne') {
+                eveningSteps[1] = 'سيروم نياشيناميد أو سيروم معالج للحبوب';
+            } else if (answers[2] === 'pigmentation') {
+                eveningSteps[1] = 'سيروم فيتامين C أو سيروم الفا أربوتين';
+            }
+
+            eveningSteps.forEach(step => {
+                eveningUl.innerHTML += `<li>${step}</li>`;
+            });
+
+            // Special Advice
+            const tipElem = document.getElementById('res-tip');
+            if (answers[3] === 'rarely') {
+                tipElem.innerText = 'لاحظنا أنكِ لا تستخدمين واقي الشمس بشكل منتظم! واقي الشمس هو أهم خطوة لحماية البشرة من التصبغات والتجاعيد، احرصي على وضعه يومياً.';
+            } else {
+                tipElem.innerText = 'استمرارك على الروتين المخصص مع شرب 2 ليتر من الماء يومياً سيمنح بشرتك نضارة ملحوظة خلال 3 أسابيع!';
+            }
+        }
+    </script>
+</body>
+</html>
