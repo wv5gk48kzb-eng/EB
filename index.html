@@ -1,348 +1,290 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EB Doc - منصة العناية بالبشرة والأقمشة الطبية</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts (Cairo) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        medical: {
-                            dark: '#0f2c59',     /* أزرق كحلي طبي داكن */
-                            primary: '#1d5d9b',  /* أزرق طبي أساسي */
-                            accent: '#75c2f6',   /* أزرق سماوي فاتح */
-                            light: '#f4f9f9',    /* خلفية مريحة جداً */
-                            mint: '#e8f1f5'
-                        }
-                    },
-                    fontFamily: {
-                        cairo: ['Cairo', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f4f9f9;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5e5e5">
+<title>EB Doc</title>
+<style>
+:root {
+  --pink:#d9a2ad; --dark:#895966; --pale:#f8ebec;
+  --cream:#f7f0e8; --text:#493c40; --muted:#927f83;
+  --white:#fffdfb; --border:#eee1df;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fcf9f7;color:var(--text);
+font-family:Arial,Tahoma,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:#fffdfbed;
+backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+padding:14px 5%;display:flex;justify-content:space-between;
+align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:21px}
+.logo span{background:var(--pale);padding:12px;border-radius:13px;color:var(--dark)}
+header button,.nav button{border:0;background:transparent;color:var(--dark);padding:9px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+main{max-width:1100px;margin:auto;padding:25px 18px 100px}
+.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(130deg,#f3e3d9,#f7e7eb);
+border-radius:25px;padding:clamp(25px,6vw,65px);margin-bottom:30px}
+.eyebrow{color:var(--dark);font-size:12px;font-weight:bold}
+h1{font-size:clamp(29px,5vw,45px);line-height:1.35;margin:13px 0}
+h2{font-size:25px;margin-top:10px}
+p{line-height:1.9;color:var(--muted)}
+.btn{border:0;border-radius:12px;padding:12px 17px;
+background:var(--dark);color:white;margin:5px 3px}
+.btn.light{background:white;color:var(--dark);border:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{background:var(--white);border:1px solid var(--border);
+border-radius:18px;padding:18px;min-width:0}
+.category{font-size:35px;background:var(--pale);border-radius:14px;
+padding:15px;display:inline-block;margin-bottom:8px}
+.card h3{margin:8px 0;font-size:17px}
+.card p{font-size:13px}
+input,textarea,select{width:100%;border:1px solid var(--border);
+border-radius:11px;padding:12px;background:white;color:var(--text);margin:6px 0 14px}
+label{display:block;font-size:14px;font-weight:bold;margin-top:13px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
+.chip{padding:9px 14px;border-radius:25px;background:white;
+border:1px solid var(--border);color:var(--dark)}
+.chip.selected{background:var(--dark);color:white}
+.product-icon{font-size:42px}
+.notice{background:var(--cream);border-radius:14px;padding:15px;margin-top:18px;font-size:13px;line-height:1.8}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:6;
+background:#fffdfbf5;border-top:1px solid var(--border);
+display:flex;justify-content:space-around;padding:8px 2px}
+.bottom button{border:0;background:none;color:var(--muted);
+font-size:11px;display:flex;flex-direction:column;align-items:center;
+gap:4px;padding:6px 3px}
+.bottom button.active{color:var(--dark);font-weight:bold}
+.result{background:var(--pale);padding:17px;border-radius:14px;margin-top:15px}
+.hidden{display:none!important}
+footer{text-align:center;padding:20px;color:var(--muted);font-size:12px}
+@media(max-width:700px){
+ header{padding:11px 14px}
+ header nav{display:none}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card{padding:13px}
+ .card h3{font-size:14px}
+ main{padding:17px 12px 100px}
+ .hero{padding:25px 20px}
+ .bottom button{font-size:9px}
+}
+@media(min-width:701px){.bottom{display:none}}
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col justify-between">
+<body>
+<header>
+  <div class="logo"><span>EB</span><div>EB Doc<small style="display:block;font-size:10px;color:#927f83">العناية تبدأ بالفهم</small></div></div>
+  <nav>
+    <button onclick="go('home')">الرئيسية</button>
+    <button onclick="go('products')">المنتجات</button>
+    <button onclick="go('assessment')">تقييم البشرة</button>
+    <button onclick="go('tracker')">المتابعة</button>
+    <button onclick="go('library')">المكتبة الطبية</button>
+    <button onclick="go('profile')">حسابي</button>
+  </nav>
+  <button onclick="toggleLanguage()" id="language">English</button>
+</header>
 
-    <!-- Header / Navbar -->
-    <header class="bg-medical-dark text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-medical-dark font-bold text-xl shadow">
-                    <i class="fa-solid font-bold fa-user-doctor"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-extrabold tracking-wide">EB Doc</h1>
-                    <p class="text-xs text-medical-accent font-medium">المرجع الطبي الشامل للتحلل الفقاعي</p>
-                </div>
-            </div>
-            <div class="hidden md:flex items-center space-x-2 space-x-reverse text-xs bg-medical-primary px-3 py-1.5 rounded-full border border-medical-accent/30">
-                <i class="fa-solid fa-shield-halved text-medical-accent"></i>
-                <span>مناسب للأطفال والكبار</span>
-            </div>
-        </div>
-    </header>
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <span class="eyebrow">YOUR SKIN CARE COMPANION</span>
+    <h1 id="heroTitle">رعاية ألطف، ومعلومات أوضح 🌸</h1>
+    <p id="heroText">مساحتك لاكتشاف خيارات الملابس والعناية والحماية للبشرة الهشّة.</p>
+    <button class="btn" onclick="go('products')">اكتشفي المنتجات ←</button>
+    <button class="btn light" onclick="go('assessment')">تقييم احتياجات البشرة</button>
+  </div>
+  <h2>تصفحي حسب القسم</h2>
+  <div class="grid">
+    <button class="card" onclick="filterCategory('clothes')"><span class="category">👕</span><h3>الملابس والأقمشة</h3></button>
+    <button class="card" onclick="filterCategory('skin')"><span class="category">🧴</span><h3>العناية بالبشرة</h3></button>
+    <button class="card" onclick="filterCategory('dressings')"><span class="category">🩹</span><h3>الضمادات والمستلزمات</h3></button>
+    <button class="card" onclick="filterCategory('nutrition')"><span class="category">🥗</span><h3>التغذية</h3></button>
+    <button class="card" onclick="go('protection')"><span class="category">🛡️</span><h3>الحماية والإرشادات</h3></button>
+    <button class="card" onclick="go('library')"><span class="category">📚</span><h3>المكتبة الطبية</h3></button>
+  </div>
+  <div class="notice">المعلومات للتثقيف العام ولا تغني عن استشارة الطبيب.</div>
+</section>
 
-    <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+<section id="products" class="page">
+  <span class="eyebrow">PRODUCT DIRECTORY</span>
+  <h1>دليل المنتجات</h1>
+  <p>ابحثي وصنفي المنتجات، ثم افتحي التفاصيل لمعرفة الاستخدام والاحتياطات.</p>
+  <input id="search" placeholder="🔎 ابحثي عن منتج..." oninput="renderProducts()">
+  <div class="chips" id="filters">
+    <button class="chip selected" onclick="setFilter('all',this)">الكل</button>
+    <button class="chip" onclick="setFilter('clothes',this)">الملابس</button>
+    <button class="chip" onclick="setFilter('skin',this)">العناية</button>
+    <button class="chip" onclick="setFilter('dressings',this)">الضمادات</button>
+    <button class="chip" onclick="setFilter('nutrition',this)">التغذية</button>
+  </div>
+  <div class="grid" id="productList"></div>
+</section>
 
-        <!-- Navigation Tabs -->
-        <div class="flex bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100 mb-6 overflow-x-auto">
-            <button onclick="switchTab('fabrics')" id="btn-fabrics" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse bg-medical-primary text-white shadow-sm">
-                <i class="fa-solid fa-shirt"></i>
-                <span>الأقمشة والملابس</span>
-            </button>
-            <button onclick="switchTab('assessment')" id="btn-assessment" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
-                <i class="fa-solid fa-notes-medical"></i>
-                <span>تقييم البشرة</span>
-            </button>
-            <button onclick="switchTab('care')" id="btn-care" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
-                <i class="fa-solid fa-bandage"></i>
-                <span>الضمادات والعناية</span>
-            </button>
-            <button onclick="switchTab('tracker')" id="btn-tracker" class="tab-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse text-gray-600 hover:text-medical-primary">
-                <i class="fa-solid fa-calendar-check"></i>
-                <span>سجل الراحة</span>
-            </button>
-        </div>
+<section id="assessment" class="page">
+  <span class="eyebrow">PERSONAL CARE GUIDE</span>
+  <h1>تقييم احتياجات البشرة</h1>
+  <p>هذا التقييم إرشادي فقط وليس تشخيصًا طبيًا.</p>
+  <div class="card">
+    <label>مدى حساسية البشرة</label>
+    <select id="sensitivity"><option>خفيفة</option><option selected>متوسطة</option><option>شديدة</option></select>
+    <label>حالة البشرة الآن</label>
+    <select id="condition"><option>هادئة</option><option>جافة</option><option>متهيّجة</option></select>
+    <label>ما الذي تبحثين عنه؟</label>
+    <select id="need"><option>تقليل الاحتكاك</option><option>الترطيب</option><option>ملابس مناسبة</option><option>مستلزمات العناية</option></select>
+    <button class="btn" onclick="assess()">عرض الإرشادات</button>
+    <div id="assessmentResult" class="result hidden"></div>
+  </div>
+</section>
 
-        <!-- TAB 1: FABRICS & CLOTHING -->
-        <section id="tab-fabrics" class="tab-content active space-y-6">
-            <div class="bg-gradient-to-r from-medical-dark to-medical-primary text-white p-6 rounded-2xl shadow-md flex justify-between items-center">
-                <div>
-                    <h2 class="text-xl font-bold mb-1">دليل الأقمشة والملابس الآمنة</h2>
-                    <p class="text-sm text-medical-accent opacity-90">اختيار النسيج المناسب يقلل من الاحتكاك ويحمي طبقات الجلد الرقيقة.</p>
-                </div>
-                <i class="fa-solid fa-feather-pointed text-4xl text-medical-accent opacity-60 hidden sm:block"></i>
-            </div>
+<section id="tracker" class="page">
+  <span class="eyebrow">DAILY CHECK-IN</span>
+  <h1>المتابعة اليومية</h1>
+  <p>سجلي ملاحظاتك لتسهيل مناقشتها مع فريق الرعاية.</p>
+  <div class="card">
+    <label>حالة البشرة اليوم</label>
+    <select id="dailyCondition"><option>مستقرة</option><option>تحتاج متابعة</option><option>تحتاج اهتمامًا</option></select>
+    <label>ملاحظاتك</label>
+    <textarea id="notes" rows="4" placeholder="اكتبي ملاحظاتك هنا..."></textarea>
+    <button class="btn" onclick="saveEntry()">حفظ التسجيل</button>
+  </div>
+  <h2>السجل السابق</h2>
+  <div id="entries"></div>
+</section>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Silk Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
-                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
-                            <i class="fa-solid fa-gem"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-medical-dark">الحرير الطبيعي 100%</h3>
-                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">الخيار الأول للأمان</span>
-                    </div>
-                    <div class="p-5 text-sm space-y-3">
-                        <p class="text-gray-600 leading-relaxed">يمتاز بألياف فائقة النعومة تمنع أي حكة أو احتكاك مباشر مع البثور أو التقرحات.</p>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>خالي من الوبر والألياف الخشنة</span>
-                            </li>
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>يحافظ على رطوبة البشرة الطبيعية</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<section id="library" class="page">
+  <span class="eyebrow">LEARN & UNDERSTAND</span>
+  <h1>المكتبة الطبية</h1>
+  <div class="grid">
+    <article class="card"><span class="category">🛡️</span><h3>تقليل الاحتكاك</h3><p>اختاري ملابس ناعمة وراجعي الحواف والخياطات التي قد تسبب احتكاكًا.</p></article>
+    <article class="card"><span class="category">🩺</span><h3>العناية الطبية</h3><p>ناقشي خيارات التنظيف والضمادات مع فريقك الطبي، خصوصًا عند وجود جروح.</p></article>
+    <article class="card"><span class="category">🥗</span><h3>التغذية</h3><p>تختلف الاحتياجات الغذائية. يمكن لاختصاصي التغذية المساعدة في تقييمها.</p></article>
+    <article class="card"><span class="category">📖</span><h3>مصادر موثوقة</h3><p><a href="https://www.debra.org/" target="_blank" rel="noopener">DEBRA International</a></p><p><a href="https://www.nhs.uk/" target="_blank" rel="noopener">NHS</a></p></article>
+  </div>
+  <div class="notice">راجعي الطبيب عند وجود علامات عدوى أو تدهور سريع أو ألم غير معتاد.</div>
+</section>
 
-                <!-- Bamboo Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
-                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
-                            <i class="fa-solid fa-leaf"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-medical-dark">أقمشة البامبو</h3>
-                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">مضاد بكتيري طبيعي</span>
-                    </div>
-                    <div class="p-5 text-sm space-y-3">
-                        <p class="text-gray-600 leading-relaxed">نسيج ناعم ومسامي وامتصاصه عالٍ جداً للرطوبة، مما يحافظ على جفاف وراحة الجلد.</p>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>تهوية ممتازة وتقليل التعرق</span>
-                            </li>
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>مرونة ممتازة للملابس الداخلية</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<section id="protection" class="page">
+  <span class="eyebrow">SAFETY FIRST</span>
+  <h1>الحماية والإرشادات</h1>
+  <div class="card"><h3>١. الملابس</h3><p>اختاري ملابس ناعمة وتجنبي الحواف أو الخياطات التي تسبب الاحتكاك.</p></div>
+  <div class="card" style="margin-top:12px"><h3>٢. العناية</h3><p>اتبعي خطة العناية والضمادات التي يوصي بها الفريق الطبي.</p></div>
+  <div class="card" style="margin-top:12px"><h3>٣. متى أطلب المساعدة؟</h3><p>اطلبي الرعاية الطبية عند ظهور علامات عدوى أو تدهور سريع أو ألم غير معتاد.</p></div>
+</section>
 
-                <!-- Organic Cotton Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-medical-mint p-4 text-center border-b border-gray-100">
-                        <div class="w-16 h-16 bg-white text-medical-primary rounded-full flex items-center justify-center mx-auto text-2xl shadow-sm mb-2">
-                            <i class="fa-solid fa-cloud"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-medical-dark">القطن العضوي الناعم</h3>
-                        <span class="inline-block bg-blue-100 text-medical-primary text-xs px-2.5 py-0.5 rounded-full font-semibold mt-1">لليوميات والاستخدام العام</span>
-                    </div>
-                    <div class="p-5 text-sm space-y-3">
-                        <p class="text-gray-600 leading-relaxed">خالي تماماً من المواد الكيميائية والأصباغ القاسية، ويفضل دائماً أن تكون الخياطة مقلوبة للخارج.</p>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>بدون خياطة داخلية بارزة</span>
-                            </li>
-                            <li class="flex items-center space-x-2 space-x-reverse">
-                                <i class="fa-solid fa-check text-green-500"></i>
-                                <span>مستدام ومريح للاستعمال اليومي</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<section id="favorites" class="page">
+  <span class="eyebrow">SAVED ITEMS</span><h1>المفضلة ♡</h1>
+  <div id="favoriteList" class="grid"></div>
+</section>
 
-            <!-- Tips Banner -->
-            <div class="bg-white p-5 rounded-2xl border-r-4 border-medical-primary shadow-sm text-sm space-y-2">
-                <h4 class="font-bold text-medical-dark text-base flex items-center space-x-2 space-x-reverse">
-                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
-                    <span>توصيات اختيار الملابس وتجهيزها:</span>
-                </h4>
-                <p class="text-gray-600">• استخدم ملابس ذات درزات مقلوبة (Seams Outside) لمنع الاحتكاك مع الجلد.</p>
-                <p class="text-gray-600">• يفضل اختيار الملابس ذات السحابات الأمامية أو الأزرار بدلاً من الملابس التي تُرتدى عبر الرأس.</p>
-            </div>
-        </section>
+<section id="profile" class="page">
+  <span class="eyebrow">YOUR SPACE</span><h1>حسابي</h1>
+  <div class="card">
+    <p>هذه نسخة تجريبية محلية، وليست نظام حسابات آمنًا.</p>
+    <label>الاسم</label><input id="userName" placeholder="اسمك">
+    <label>البريد الإلكتروني</label><input id="userEmail" type="email" placeholder="name@example.com">
+    <button class="btn" onclick="saveProfile()">حفظ الملف الشخصي</button>
+    <p id="profileMessage"></p>
+  </div>
+</section>
+<footer>EB Doc · العناية تبدأ بالفهم 🌸</footer>
+</main>
 
-        <!-- TAB 2: SKIN ASSESSMENT -->
-        <section id="tab-assessment" class="tab-content space-y-6">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <div class="mb-6">
-                    <h2 class="text-xl font-bold text-medical-dark">استبيان تقييم راحة البشرة</h2>
-                    <p class="text-xs text-gray-500 mt-1">أجب عن الأسئلة التالية للحصول على التوصية الطبية المناسبة لدرجة العناية:</p>
-                </div>
+<div class="bottom">
+  <button class="active" onclick="go('home',this)">⌂<span>الرئيسية</span></button>
+  <button onclick="go('products',this)">✧<span>المنتجات</span></button>
+  <button onclick="go('assessment',this)">♡<span>التقييم</span></button>
+  <button onclick="go('tracker',this)">▤<span>المتابعة</span></button>
+  <button onclick="go('profile',this)">☻<span>حسابي</span></button>
+</div>
 
-                <form id="assessment-form" onsubmit="calculateAssessment(event)" class="space-y-5">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">1. كم درجة الشعور بالحكة أو الألم اليوم؟</label>
-                        <select id="q1" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
-                            <option value="1">خفيف جداً / لا يوجد ألم</option>
-                            <option value="2">متوسط (إزعاج بسيط أثناء الحركة)</option>
-                            <option value="3">شديد (صعوبة في ارتداء الملابس أو النوم)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">2. هل يوجد بثور أو تقرحات جديدة اليوم؟</label>
-                        <select id="q2" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
-                            <option value="1">لا يوجد بثور جديدة</option>
-                            <option value="2">بثرة إلى بثرتين بسيطة</option>
-                            <option value="3">عدة بثور تحتاج إلى عناية وضمادات</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">3. نوع القماش أو الملابس المستعملة حالياً:</label>
-                        <select id="q3" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-medical-primary">
-                            <option value="1">حرير طبيعي / بامبو ناعم</option>
-                            <option value="2">قطن عادي ناعم</option>
-                            <option value="3">أقمشة مصنعة أو تحتوي على خياطة بارزة</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="w-full bg-medical-dark hover:bg-medical-primary text-white font-bold py-3.5 rounded-xl shadow transition duration-200">
-                        عرض النتيجة والتوصية الطبية
-                    </button>
-                </form>
-
-                <!-- Result Box -->
-                <div id="assessment-result" class="hidden mt-6 p-5 rounded-2xl border border-medical-accent/40 bg-medical-mint text-sm">
-                    <h3 id="result-title" class="font-bold text-lg text-medical-dark mb-2"></h3>
-                    <p id="result-desc" class="text-gray-700 leading-relaxed"></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 3: DRESSINGS & CARE -->
-        <section id="tab-care" class="tab-content space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center space-x-3 space-x-reverse mb-4 text-medical-dark">
-                        <i class="fa-solid fa-bandage text-2xl text-medical-primary"></i>
-                        <h3 class="font-bold text-lg">الضمادات غير الالتصاقية</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">استخدام الضمادات المصنوعة من السليكون الناعم التي لا تلتصق بالجروح وتسمح بإزالتها بدون ألم.</p>
-                    <ul class="text-xs space-y-2 text-gray-700">
-                        <li class="bg-gray-50 p-2.5 rounded-lg border border-gray-100">✔ ضمادات السيليكون اللينة (Soft Silicone Mesh)</li>
-                        <li class="bg-gray-50 p-2.5 rounded-lg border border-gray-100">✔ تجنب الشاش العادي والمواد اللاصقة المباشرة</li>
-                    </ul>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center space-x-3 space-x-reverse mb-4 text-medical-dark">
-                        <i class="fa-solid fa-pump-medical text-2xl text-medical-primary"></i>
-                        <h3 class="font-bold text-lg">المطريات والكريمات الواقية</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">ترطيب البشرة بشكل مستمر يقلل من تشقق الجلد واحتكاكه بالملابس.</p>
-                    <ul class="text-xs space-y-2 text-gray-700">
-                        <li class="bg-gray-50 p-2.5 rounded-lg border border-gray-100">✔ الفازلين الطبي المرطب والخالي من العطور</li>
-                        <li class="bg-gray-50 p-2.5 rounded-lg border border-gray-100">✔ مراهم أكسيد الزنك لتطفيح البشرة وحمايتها</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 4: TRACKER -->
-        <section id="tab-tracker" class="tab-content space-y-6">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-xl font-bold text-medical-dark mb-4">سجل اليوميات والراحة</h2>
-                <div class="flex gap-2 mb-4">
-                    <input type="text" id="log-input" placeholder="اكتب ملاحظة يومية (مثال: ارتديت ملابس حريرية اليوم وكان الشعور ممتاز)..." class="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medical-primary">
-                    <button onclick="addLog()" class="bg-medical-primary hover:bg-medical-dark text-white font-bold px-5 py-2.5 rounded-xl text-sm transition">إضافة</button>
-                </div>
-                <div id="log-list" class="space-y-2">
-                    <!-- Logs dynamically added here -->
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-4 text-center text-xs text-gray-500">
-        <p>تطبيق EB Doc - دليل العناية بالبشرة والأقمشة الطبية | مصمم لراحة الأطفال والكبار</p>
-    </footer>
-
-    <!-- JavaScript logic -->
-    <script>
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-medical-primary', 'text-white', 'shadow-sm');
-                btn.classList.add('text-gray-600');
-            });
-
-            document.getElementById('tab-' + tabName).classList.add('active');
-            const activeBtn = document.getElementById('btn-' + tabName);
-            activeBtn.classList.add('bg-medical-primary', 'text-white', 'shadow-sm');
-            activeBtn.classList.remove('text-gray-600');
-        }
-
-        function calculateAssessment(event) {
-            event.preventDefault();
-            const q1 = parseInt(document.getElementById('q1').value);
-            const q2 = parseInt(document.getElementById('q2').value);
-            const q3 = parseInt(document.getElementById('q3').value);
-
-            const score = q1 + q2 + q3;
-            const resultBox = document.getElementById('assessment-result');
-            const resultTitle = document.getElementById('result-title');
-            const resultDesc = document.getElementById('result-desc');
-
-            resultBox.classList.remove('hidden');
-
-            if (score <= 4) {
-                resultTitle.innerText = "الحالة: ممتازة ومستقرة جداً 🌟";
-                resultDesc.innerText = "بشرتك في حالة إرتياح ممتازة. استمر في استخدام الملابس الحريرية أو أقمشة البامبو الناعمة مع الترطيب اليومي المعتاد.";
-            } else if (score <= 7) {
-                resultTitle.innerText = "الحالة: تحتاج إلى عناية وترطيب متوسط ⚠️";
-                resultDesc.innerText = "يُنصح بتغيير الملابس إلى أقمشة الحرير الخالص الملساء، واستخدام كريمات السليكون والترطيب الفازليني لتخفيف الاحتكاك.";
-            } else {
-                resultTitle.innerText = "الحالة: تهيج وتأثر يتطلب عناية فائقة 🩺";
-                resultDesc.innerText = "يرجى تطبيق ضمادات السليكون غير الالتصاقية على الأماكن المتأثرة فوراً، وارتداء أقمشة الحرير الطبيعي مع المتابعة الطبية.";
-            }
-        }
-
-        function addLog() {
-            const input = document.getElementById('log-input');
-            const text = input.value.trim();
-            if(!text) return;
-
-            const list = document.getElementById('log-list');
-            const date = new Date().toLocaleDateString('ar-SA');
-
-            const item = document.createElement('div');
-            item.className = "p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm flex justify-between items-center";
-            item.innerHTML = `
-                <div>
-                    <span class="text-xs text-medical-primary font-bold block mb-0.5">${date}</span>
-                    <span class="text-gray-700">${text}</span>
-                </div>
-                <button onclick="this.parentElement.remove()" class="text-red-400 hover:text-red-600 text-xs px-2"><i class="fa-solid fa-trash"></i></button>
-            `;
-
-            list.prepend(item);
-            input.value = '';
-        }
-    </script>
+<script>
+const products=[
+{id:1,name:'مرطّب لطيف خالٍ من العطر',cat:'skin',icon:'🧴',desc:'مثال لفئة المرطبات. تحققي من المكونات وملاءمتها لك.',use:'للترطيب وفق توصية المختص.',material:'تختلف المكونات حسب المنتج الفعلي.',warning:'أوقفي الاستخدام واطلبي المشورة عند ظهور تفاعل غير معتاد.'},
+{id:2,name:'ملابس قطنية ناعمة',cat:'clothes',icon:'👕',desc:'فئة ملابس ذات ملمس ناعم، تختلف خاماتها وتصميماتها.',use:'قد تساعد الخامات الناعمة في تقليل الاحتكاك.',material:'تحققي من الملصق والخياطات والحواف.',warning:'لا توجد خامة واحدة تناسب الجميع.'},
+{id:3,name:'ضمادات غير لاصقة',cat:'dressings',icon:'🩹',desc:'مستلزمات قد يوصي بها الفريق الطبي لبعض الحالات.',use:'تستخدم وفق خطة العناية الفردية.',material:'تختلف الطبقات والمواد حسب النوع.',warning:'اسألي المختص عن النوع وطريقة الاستخدام.'},
+{id:4,name:'منظف لطيف',cat:'skin',icon:'🫧',desc:'مثال لفئة المنظفات اللطيفة.',use:'للتنظيف وفق الإرشادات المناسبة.',material:'تختلف المكونات والعطور والمواد الحافظة.',warning:'لا تستخدميه على مناطق متضررة إلا بتوجيه طبي.'},
+{id:5,name:'أفكار وجبات متوازنة',cat:'nutrition',icon:'🥗',desc:'معلومات عامة حول تنوع المجموعات الغذائية.',use:'للتثقيف الغذائي العام.',material:'تختلف الاحتياجات حسب الشخص.',warning:'راجعي اختصاصي تغذية عند الحاجة.'},
+{id:6,name:'جوارب ناعمة',cat:'clothes',icon:'🧦',desc:'اختيار الجوارب يعتمد على الراحة والخامة والملاءمة.',use:'اختاري ما يقلل الاحتكاك بحسب حالتك.',material:'تحققي من الخياطات والمطاط.',warning:'أوقفي الاستخدام إذا سببت القطعة تهيجًا.'}
+];
+let currentFilter='all';
+let favorites=JSON.parse(localStorage.getItem('eb-favorites')||'[]');
+let entries=JSON.parse(localStorage.getItem('eb-entries')||'[]');
+function go(id,btn){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.bottom button').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ if(id==='favorites')renderFavorites();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function setFilter(cat,btn){
+ currentFilter=cat;
+ document.querySelectorAll('.chip').forEach(b=>b.classList.remove('selected'));
+ btn.classList.add('selected');renderProducts();go('products');
+}
+function filterCategory(cat){
+ currentFilter=cat;
+ document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('selected',b.textContent.trim()==={clothes:'الملابس',skin:'العناية',dressings:'الضمادات',nutrition:'التغذية'}[cat]));
+ renderProducts();go('products');
+}
+function productCard(p){
+ const saved=favorites.includes(p.id);
+ return `<article class="card"><div class="product-icon">${p.icon}</div><h3>${p.name}</h3><p>${p.desc}</p><button class="btn light" onclick="details(${p.id})">التفاصيل</button><button class="btn" onclick="toggleFavorite(${p.id})">${saved?'♥ محفوظ':'♡ المفضلة'}</button></article>`;
+}
+function renderProducts(){
+ const q=(document.getElementById('search')?.value||'').trim().toLowerCase();
+ const list=products.filter(p=>(currentFilter==='all'||p.cat===currentFilter)&&p.name.toLowerCase().includes(q));
+ document.getElementById('productList').innerHTML=list.length?list.map(productCard).join(''):'<p>لا توجد نتائج مطابقة.</p>';
+}
+function details(id){
+ const p=products.find(x=>x.id===id);
+ alert(p.name+'\\n\\nالاستخدام: '+p.use+'\\n\\nالخامة/المكونات: '+p.material+'\\n\\nاحتياطات: '+p.warning+'\\n\\nالمعلومات عامة ولا تغني عن الطبيب.');
+}
+function toggleFavorite(id){
+ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ localStorage.setItem('eb-favorites',JSON.stringify(favorites));
+ renderProducts();renderFavorites();
+}
+function renderFavorites(){
+ const list=products.filter(p=>favorites.includes(p.id));
+ document.getElementById('favoriteList').innerHTML=list.length?list.map(productCard).join(''):'<p>لم تضيفي منتجات للمفضلة بعد.</p>';
+}
+function assess(){
+ const sensitivity=document.getElementById('sensitivity').value;
+ const condition=document.getElementById('condition').value;
+ const need=document.getElementById('need').value;
+ const box=document.getElementById('assessmentResult');
+ box.classList.remove('hidden');
+ box.innerHTML='<b>إرشادات عامة لك</b><p>الحساسية: '+sensitivity+' · الحالة: '+condition+' · الاحتياج: '+need+'</p><p>اختاري المنتجات بحذر وراجعي مختصًا قبل تغيير خطة العناية، خصوصًا عند وجود جروح أو فقاعات أو تهيّج مستمر.</p>';
+}
+function saveEntry(){
+ const entry={date:new Date().toLocaleDateString('ar-SA'),condition:document.getElementById('dailyCondition').value,notes:document.getElementById('notes').value};
+ entries.unshift(entry);localStorage.setItem('eb-entries',JSON.stringify(entries));
+ document.getElementById('notes').value='';renderEntries();alert('تم حفظ التسجيل على هذا الجهاز.');
+}
+function renderEntries(){
+ document.getElementById('entries').innerHTML=entries.length?entries.map(e=>`<article class="card" style="margin:10px 0"><small>${e.date}</small><h3>${e.condition}</h3><p>${escapeHTML(e.notes)}</p></article>`).join(''):'<p>لا توجد تسجيلات بعد.</p>';
+}
+function escapeHTML(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function saveProfile(){
+ const name=document.getElementById('userName').value.trim();
+ const email=document.getElementById('userEmail').value.trim();
+ localStorage.setItem('eb-profile',JSON.stringify({name,email}));
+ document.getElementById('profileMessage').textContent='تم حفظ المعلومات على هذا الجهاز فقط.';
+}
+function toggleLanguage(){
+ const english=document.documentElement.lang==='ar';
+ document.documentElement.lang=english?'en':'ar';
+ document.documentElement.dir=english?'ltr':'rtl';
+ document.getElementById('language').textContent=english?'العربية':'English';
+ document.getElementById('heroTitle').textContent=english?'Gentler care, clearer information 🌸':'رعاية ألطف، ومعلومات أوضح 🌸';
+ document.getElementById('heroText').textContent=english?'Explore clothing, care and protection options for fragile skin.':'مساحتك لاكتشاف خيارات الملابس والعناية والحماية للبشرة الهشّة.';
+}
+renderProducts();renderEntries();
+</script>
 </body>
 </html>
