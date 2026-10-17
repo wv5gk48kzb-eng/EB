@@ -1,14 +1,188 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EB Doc — تطبيق الجلد الفقاعي</title>
-    <!-- تحميل مكتبة Tailwind CSS والتصميم جاهز -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EB Doc — تطبيق العناية بمرض الجلد الفقاعي</title>
+    <!-- تحميل مكتبة Tailwind CSS و React -->
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-[#FFF8F6] text-[#2C1820]">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#FFF8F6] text-[#2C1820] font-sans">
     <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function App() {
+            const [currentScreen, setCurrentScreen] = useState('login');
+            const [language, setLanguage] = useState('ar');
+            const [searchTerm, setSearchTerm] = useState('');
+            const [painLevel, setPainLevel] = useState(3);
+            const [journalNote, setJournalNote] = useState('');
+            const [savedLogs, setSavedLogs] = useState([]);
+
+            const fabrics = [
+                {
+                    id: 'silk',
+                    nameAr: 'الحرير الطبيعي',
+                    shortDesc: 'ينزلق بسلاسة فائقة دون سحب أو احتكاك ميكانيكي بالجلد الهش.',
+                    icon: '🧵',
+                    frictionRisk: 'منخفض جداً'
+                }
+            ];
+
+            return (
+                <div className="min-h-screen bg-[#FFF8F6] flex justify-center items-center p-0 sm:p-4" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+                    <div className="w-full max-w-md bg-white min-h-screen sm:min-h-[844px] sm:rounded-[40px] shadow-2xl flex flex-col justify-between overflow-hidden relative border-8 border-[#3A1C28]">
+                        
+                        {/* Top Bar */}
+                        <div className="bg-[#FFF3F0] px-6 pt-4 pb-3 flex justify-between items-center border-b border-[#F5E2DC]">
+                            <div className="flex items-center gap-2">
+                                <span className="font-black text-sm text-[#4A2031]">🩺 EB Doc</span>
+                            </div>
+                            <button 
+                                onClick={() => setLanguage(l => l === 'ar' ? 'en' : 'ar')} 
+                                className="text-xs font-semibold text-[#8C3A53] bg-white px-3 py-1 rounded-full border border-[#F0C2CF]"
+                            >
+                                {language === 'ar' ? 'English' : 'العربية'}
+                            </button>
+                        </div>
+
+                        {/* Login Screen */}
+                        {currentScreen === 'login' && (
+                            <div className="flex-1 p-6 flex flex-col justify-between bg-gradient-to-b from-[#FFF3F0] to-white">
+                                <div className="text-center my-auto space-y-4">
+                                    <div className="w-20 h-20 bg-[#FCE8ED] rounded-full flex items-center justify-center mx-auto border-2 border-[#F0B8C8]">
+                                        <span className="text-3xl">❤️</span>
+                                    </div>
+                                    <h1 className="text-2xl font-black text-[#4A2031]">EB Doc</h1>
+                                    <p className="text-sm font-medium text-[#7A4053]">دليلك الشامل للاهتمام بالبشرة الهشة والعناية المتخصصة</p>
+
+                                    <div className="space-y-3 pt-4 text-right">
+                                        <input type="email" placeholder="البريد الإلكتروني أو اسم المستخدم" className="w-full p-3.5 bg-[#FFF8F6] border border-[#F0D0D8] rounded-2xl text-xs outline-none" />
+                                        <input type="password" placeholder="كلمة المرور" className="w-full p-3.5 bg-[#FFF8F6] border border-[#F0D0D8] rounded-2xl text-xs outline-none" />
+                                    </div>
+
+                                    <button 
+                                        onClick={() => setCurrentScreen('main')} 
+                                        className="w-full bg-[#C85274] text-white py-3.5 rounded-2xl font-bold text-sm shadow-md mt-2 hover:bg-[#B03E60]"
+                                    >
+                                        تسجيل الدخول
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Main Dashboard Screen */}
+                        {currentScreen === 'main' && (
+                            <div className="flex-1 p-5 space-y-4 overflow-y-auto">
+                                <div>
+                                    <h2 className="text-lg font-bold text-[#4A2031]">مرحباً بك في EB Doc 👋</h2>
+                                    <p className="text-xs text-[#8C5869]">نحن هنا لمساعدتك في العناية ببشرتك بأفضل الطرق</p>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                    <button onClick={() => setCurrentScreen('recommendations')} className="bg-[#FFF5F7] p-4 rounded-2xl border border-[#F3C2D0] text-right space-y-2">
+                                        <span className="text-xl">👕</span>
+                                        <h3 className="font-bold text-xs text-[#4A2031]">الملابس المناسبة</h3>
+                                    </button>
+                                    <button onClick={() => setCurrentScreen('journal')} className="bg-[#FFF5F7] p-4 rounded-2xl border border-[#F3C2D0] text-right space-y-2">
+                                        <span className="text-xl">📅</span>
+                                        <h3 className="font-bold text-xs text-[#4A2031]">المتابعة اليومية</h3>
+                                    </button>
+                                </div>
+
+                                <button 
+                                    onClick={() => setCurrentScreen('recommendations')} 
+                                    className="w-full bg-[#C85274] text-white p-3.5 rounded-2xl font-bold text-xs flex justify-between items-center shadow-sm"
+                                >
+                                    <span>تصفح كل التوصيات والمنتجات</span>
+                                    <span>←</span>
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Recommendations Screen */}
+                        {currentScreen === 'recommendations' && (
+                            <div className="flex-1 p-5 space-y-4 overflow-y-auto">
+                                <div className="flex justify-between items-center">
+                                    <h2 className="text-lg font-bold text-[#4A2031]">دليل التوصيات والملابس</h2>
+                                    <button onClick={() => setCurrentScreen('main')} className="text-xs text-[#C85274] font-bold">الرئيسية</button>
+                                </div>
+
+                                <input 
+                                    type="text" 
+                                    placeholder="ابحث عن قماش أو منتج..." 
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    className="w-full p-3 bg-[#FFF8F6] border border-[#F0D0D8] rounded-2xl text-xs outline-none" 
+                                />
+
+                                <div className="space-y-3">
+                                    {fabrics.map(item => (
+                                        <div key={item.id} className="bg-white p-3.5 rounded-2xl border border-[#F5E0E6] shadow-sm flex items-center justify-between">
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-2xl bg-[#FFF0F4] p-2 rounded-xl">{item.icon}</span>
+                                                <div>
+                                                    <h4 className="font-bold text-xs text-[#4A2031]">{item.nameAr}</h4>
+                                                    <p className="text-[10px] text-[#7A4053]">{item.shortDesc}</p>
+                                                    <span className="inline-block mt-1 text-[9px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold">الاحتكاك: {item.frictionRisk}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Daily Journal Screen */}
+                        {currentScreen === 'journal' && (
+                            <div className="flex-1 p-5 space-y-4 overflow-y-auto">
+                                <div className="flex justify-between items-center">
+                                    <h2 className="text-lg font-bold text-[#4A2031]">سجل المتابعة اليومية</h2>
+                                    <button onClick={() => setCurrentScreen('main')} className="text-xs text-[#C85274] font-bold">الرئيسية</button>
+                                </div>
+                                <div className="bg-[#FFF8F6] p-4 rounded-2xl border border-[#F0D0D8] space-y-2">
+                                    <label className="text-xs font-bold text-[#4A2031] block">مستوى الألم / الاحتكاك (0 - 10): {painLevel}</label>
+                                    <input type="range" min="0" max="10" value={painLevel} onChange={(e) => setPainLevel(Number(e.target.value))} className="w-full accent-[#C85274]" />
+                                </div>
+                                <textarea 
+                                    rows={3} 
+                                    placeholder="اكتب ملاحظات اليوم عن حالة البشرة والملابس..." 
+                                    value={journalNote}
+                                    onChange={(e) => setJournalNote(e.target.value)}
+                                    className="w-full p-3 bg-white border border-[#F0D0D8] rounded-2xl text-xs outline-none"
+                                ></textarea>
+                                <button 
+                                    onClick={() => { if(journalNote.trim()) { setSavedLogs([journalNote, ...savedLogs]); setJournalNote(''); } }}
+                                    className="w-full bg-[#C85274] text-white py-3 rounded-2xl font-bold text-xs"
+                                >
+                                    حفظ الملاحظة اليومية
+                                </button>
+                                {savedLogs.map((log, i) => (
+                                    <div key={i} className="bg-white p-3 rounded-xl border border-[#F5E0E6] text-[11px] text-[#5A3040]">{log}</div>
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Bottom Navigation */}
+                        {currentScreen !== 'login' && (
+                            <nav className="bg-white border-t border-[#F5E0E6] p-2 flex justify-around items-center text-[10px] font-bold text-[#8C5869]">
+                                <button onClick={() => setCurrentScreen('main')} className="flex flex-col items-center gap-1 p-1"><span>🏠 الرئيسية</span></button>
+                                <button onClick={() => setCurrentScreen('recommendations')} className="flex flex-col items-center gap-1 p-1"><span>✨ التوصيات</span></button>
+                                <button onClick={() => setCurrentScreen('journal')} className="flex flex-col items-center gap-1 p-1"><span>📅 المتابعة</span></button>
+                            </nav>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
 </html>
