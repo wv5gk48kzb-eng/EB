@@ -1,290 +1,339 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f5e5e5">
-<title>EB Doc</title>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="theme-color" content="#12264d">
+
+<title>EB Doc | دليل العناية بمرضى الجلد الفقاعي</title>
+
 <style>
-:root {
-  --pink:#d9a2ad; --dark:#895966; --pale:#f8ebec;
-  --cream:#f7f0e8; --text:#493c40; --muted:#927f83;
-  --white:#fffdfb; --border:#eee1df;
+
+:root{
+
+--navy:#12264d;--navy2:#1e3a68;--pink:#e7b7c6;
+
+--cream:#fff8f3;--paper:#fff;--ink:#253044;
+
+--muted:#697386;--line:#e7eaf0;--soft:#f4f6fa;
+
+--good:#e8f5ef;--warn:#fff3dc;--radius:20px
+
 }
+
 *{box-sizing:border-box}
-body{margin:0;background:#fcf9f7;color:var(--text);
-font-family:Arial,Tahoma,sans-serif}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-header{position:sticky;top:0;z-index:5;background:#fffdfbed;
-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
-padding:14px 5%;display:flex;justify-content:space-between;
-align-items:center;gap:12px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:21px}
-.logo span{background:var(--pale);padding:12px;border-radius:13px;color:var(--dark)}
-header button,.nav button{border:0;background:transparent;color:var(--dark);padding:9px}
-nav{display:flex;gap:4px;flex-wrap:wrap}
-main{max-width:1100px;margin:auto;padding:25px 18px 100px}
-.page{display:none}.page.active{display:block}
-.hero{background:linear-gradient(130deg,#f3e3d9,#f7e7eb);
-border-radius:25px;padding:clamp(25px,6vw,65px);margin-bottom:30px}
-.eyebrow{color:var(--dark);font-size:12px;font-weight:bold}
-h1{font-size:clamp(29px,5vw,45px);line-height:1.35;margin:13px 0}
-h2{font-size:25px;margin-top:10px}
-p{line-height:1.9;color:var(--muted)}
-.btn{border:0;border-radius:12px;padding:12px 17px;
-background:var(--dark);color:white;margin:5px 3px}
-.btn.light{background:white;color:var(--dark);border:1px solid var(--border)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.card{background:var(--white);border:1px solid var(--border);
-border-radius:18px;padding:18px;min-width:0}
-.category{font-size:35px;background:var(--pale);border-radius:14px;
-padding:15px;display:inline-block;margin-bottom:8px}
-.card h3{margin:8px 0;font-size:17px}
-.card p{font-size:13px}
-input,textarea,select{width:100%;border:1px solid var(--border);
-border-radius:11px;padding:12px;background:white;color:var(--text);margin:6px 0 14px}
-label{display:block;font-size:14px;font-weight:bold;margin-top:13px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
-.chip{padding:9px 14px;border-radius:25px;background:white;
-border:1px solid var(--border);color:var(--dark)}
-.chip.selected{background:var(--dark);color:white}
-.product-icon{font-size:42px}
-.notice{background:var(--cream);border-radius:14px;padding:15px;margin-top:18px;font-size:13px;line-height:1.8}
-.bottom{position:fixed;bottom:0;left:0;right:0;z-index:6;
-background:#fffdfbf5;border-top:1px solid var(--border);
-display:flex;justify-content:space-around;padding:8px 2px}
-.bottom button{border:0;background:none;color:var(--muted);
-font-size:11px;display:flex;flex-direction:column;align-items:center;
-gap:4px;padding:6px 3px}
-.bottom button.active{color:var(--dark);font-weight:bold}
-.result{background:var(--pale);padding:17px;border-radius:14px;margin-top:15px}
-.hidden{display:none!important}
-footer{text-align:center;padding:20px;color:var(--muted);font-size:12px}
-@media(max-width:700px){
- header{padding:11px 14px}
- header nav{display:none}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .card{padding:13px}
- .card h3{font-size:14px}
- main{padding:17px 12px 100px}
- .hero{padding:25px 20px}
- .bottom button{font-size:9px}
+
+body{
+
+margin:0;background:var(--cream);color:var(--ink);
+
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
+
+line-height:1.65
+
 }
-@media(min-width:701px){.bottom{display:none}}
+
+button,input,select,textarea{font:inherit}
+
+button{cursor:pointer}
+
+a{color:var(--navy2)}
+
+.hidden{display:none!important}
+
+header{
+
+background:linear-gradient(135deg,var(--navy),#254875);
+
+color:white;padding:18px max(16px,calc((100vw - 1100px)/2));
+
+position:sticky;top:0;z-index:5;box-shadow:0 4px 18px #10244822
+
+}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem}
+
+.logo{
+
+width:42px;height:42px;border-radius:14px;background:#fff;
+
+color:var(--navy);display:grid;place-items:center;font-weight:900
+
+}
+
+.subbrand{font-size:.78rem;color:#dce5f5;font-weight:400}
+
+.header-actions{display:flex;gap:8px;align-items:center}
+
+.pillbtn{border:1px solid #ffffff55;background:#ffffff15;color:white;padding:8px 12px;border-radius:999px}
+
+.wrap{max-width:1100px;margin:auto;padding:20px 16px 100px}
+
+.hero{
+
+background:linear-gradient(125deg,#e9eff9,#fff0f4);
+
+border:1px solid #e0e7f3;border-radius:26px;padding:24px;margin:16px 0 22px
+
+}
+
+.hero h1{font-size:clamp(1.55rem,4vw,2.5rem);line-height:1.25;color:var(--navy);margin:0 0 10px}
+
+.hero p{margin:0;color:#4c5870;max-width:720px}
+
+.notice{background:var(--warn);border:1px solid #f1d9a5;border-radius:16px;padding:12px 14px;font-size:.9rem;margin:14px 0}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:17px;box-shadow:0 5px 18px #12264d08}
+
+.card h3,.card h2{color:var(--navy);margin:0 0 8px}
+
+.card p{margin:6px 0;color:#536074}
+
+.tile{display:flex;gap:13px;align-items:flex-start;text-align:right;width:100%;border:1px solid var(--line);background:white;border-radius:18px;padding:16px;color:var(--ink);transition:.15s}
+
+.tile:hover{transform:translateY(-2px);border-color:#b9c7dd}
+
+.tile .emoji{font-size:1.6rem;background:#f1f4fa;border-radius:13px;width:48px;height:48px;display:grid;place-items:center;flex-shrink:0}
+
+.tile strong{display:block;color:var(--navy);font-size:1rem}
+
+.tile small{display:block;color:var(--muted);margin-top:4px}
+
+h2.section-title{color:var(--navy);margin:24px 0 12px;font-size:1.3rem}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+
+.field{width:100%;padding:12px 13px;border:1px solid #d8deea;border-radius:13px;background:white;color:var(--ink)}
+
+.toolbar .field{flex:1;min-width:180px}
+
+.btn{border:0;background:var(--navy);color:white;border-radius:13px;padding:11px 16px;font-weight:700}
+
+.btn.secondary{background:#edf1f8;color:var(--navy);border:1px solid #dbe2ee}
+
+.btn.pink{background:#f5e2e9;color:#5c2d40}
+
+.btn.danger{background:#8c2938}
+
+.btn:disabled{opacity:.5}
+
+.badge{display:inline-block;border-radius:999px;padding:4px 9px;background:#edf1f8;color:var(--navy);font-size:.78rem;margin:2px}
+
+.muted{color:var(--muted)}
+
+.detail{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+
+.item-list{display:grid;gap:12px}
+
+.item{background:white;border:1px solid var(--line);border-radius:18px;padding:16px}
+
+.item h3{margin:0;color:var(--navy)}
+
+.item .meta{font-size:.83rem;color:var(--muted);margin:4px 0 8px}
+
+.item ul{padding-right:22px;margin:8px 0}
+
+.item li{margin:4px 0}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+nav.bottom{
+
+position:fixed;bottom:0;left:0;right:0;background:#ffffffef;
+
+backdrop-filter:blur(12px);border-top:1px solid var(--line);
+
+display:flex;justify-content:center;gap:4px;
+
+padding:8px 6px calc(8px + env(safe-area-inset-bottom));z-index:10
+
+}
+
+nav.bottom button{border:0;background:transparent;color:#657087;border-radius:12px;padding:8px 10px;min-width:54px;font-size:.76rem}
+
+nav.bottom button span{display:block;font-size:1.15rem}
+
+nav.bottom button.active{background:#eaf0fa;color:var(--navy);font-weight:800}
+
+.screen{display:none}
+
+.screen.active{display:block}
+
+.auth-shell{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(140deg,#12264d,#254875)}
+
+.auth-card{width:min(100%,460px);background:white;border-radius:26px;padding:24px;box-shadow:0 20px 60px #0002}
+
+.auth-card h1{color:var(--navy);margin:0}
+
+.auth-card .logo{background:var(--navy);color:white;margin-bottom:12px}
+
+.auth-card label{display:block;font-weight:700;margin:12px 0 6px}
+
+.auth-card .btn{width:100%;margin-top:12px}
+
+.auth-card .field{margin-bottom:3px}
+
+.auth-msg{padding:10px;border-radius:12px;margin-top:10px;background:#edf7f1;color:#22563d}
+
+.auth-msg.error{background:#fff0f0;color:#8c2938}
+
+.progress{height:8px;background:#edf0f5;border-radius:99px;overflow:hidden}
+
+.progress span{display:block;height:100%;background:#7195c9;width:0}
+
+.checkrow{display:flex;gap:9px;align-items:flex-start;margin:8px 0}
+
+.checkrow input{margin-top:7px}
+
+.stat{font-size:1.6rem;color:var(--navy);font-weight:800}
+
+.empty{padding:28px;text-align:center;color:var(--muted);background:white;border:1px dashed #cfd7e4;border-radius:18px}
+
+footer{margin-top:28px;text-align:center;font-size:.8rem;color:var(--muted)}
+
+.small{font-size:.86rem}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+@media(max-width:600px){
+
+.wrap{padding:12px 12px 100px}
+
+.hero{padding:19px}
+
+.two-col{grid-template-columns:1fr}
+
+.top .subbrand{display:none}
+
+.header-actions .pillbtn{padding:7px 9px}
+
+nav.bottom button{padding:7px 5px;min-width:0;flex:1;font-size:.69rem}
+
+.card{padding:14px}
+
+}
+
 </style>
+
 </head>
+
 <body>
+
+<section id="auth" class="auth-shell">
+
+  <div class="auth-card">
+
+    <div class="logo">EB</div>
+
+    <div class="muted small">دليل توعوي للعناية بالبشرة الهشّة</div>
+
+    <h1 id="authTitle">مرحبًا بك في EB Doc</h1>
+
+    <p class="muted">معلومات مرتبة تساعدك على الاستعداد للعناية اليومية ومناقشة الخيارات مع الفريق الطبي.</p>
+
+    <form id="authForm">
+
+      <label for="email">البريد الإلكتروني</label>
+
+      <input id="email" class="field" type="email" autocomplete="email" required placeholder="name@example.com">
+
+      <label for="password">كلمة المرور</label>
+
+      <input id="password" class="field" type="password" autocomplete="current-password" minlength="6" required placeholder="6 أحرف على الأقل">
+
+      <div id="nameWrap" class="hidden">
+
+        <label for="displayName">الاسم الذي تفضلينه (اختياري)</label>
+
+        <input id="displayName" class="field" autocomplete="name" placeholder="الاسم">
+
+      </div>
+
+      <div id="authMsg" class="hidden"></div>
+
+      <button id="authSubmit" class="btn" type="submit">دخول إلى التطبيق</button>
+
+    </form>
+
+    <button id="toggleAuth" class="btn secondary" style="width:100%;margin-top:9px">إنشاء حساب تجريبي</button>
+
+    <button id="guestBtn" class="btn pink" style="width:100%;margin-top:9px">استكشاف النسخة التجريبية</button>
+
+    <p class="muted small">ملاحظة: هذا الإصدار الثابت لا ينشئ حسابات آمنة على الإنترنت. تسجيل الدخول فيه محاكاة محلية للتجربة فقط، ولا تحفظي فيه معلومات صحية حساسة.</p>
+
+  </div>
+
+</section>
+
+<div id="app" class="hidden">
+
 <header>
-  <div class="logo"><span>EB</span><div>EB Doc<small style="display:block;font-size:10px;color:#927f83">العناية تبدأ بالفهم</small></div></div>
-  <nav>
-    <button onclick="go('home')">الرئيسية</button>
-    <button onclick="go('products')">المنتجات</button>
-    <button onclick="go('assessment')">تقييم البشرة</button>
-    <button onclick="go('tracker')">المتابعة</button>
-    <button onclick="go('library')">المكتبة الطبية</button>
-    <button onclick="go('profile')">حسابي</button>
-  </nav>
-  <button onclick="toggleLanguage()" id="language">English</button>
+
+  <div class="top">
+
+    <div class="brand">
+
+      <div class="logo">EB</div>
+
+      <div>EB Doc<div class="subbrand">دليل العناية بالبشرة الهشّة</div></div>
+
+    </div>
+
+    <div class="header-actions">
+
+      <button class="pillbtn" id="profileTop">ملفي</button>
+
+      <button class="pillbtn" id="logout">خروج</button>
+
+    </div>
+
+  </div>
+
 </header>
 
-<main>
-<section id="home" class="page active">
-  <div class="hero">
-    <span class="eyebrow">YOUR SKIN CARE COMPANION</span>
-    <h1 id="heroTitle">رعاية ألطف، ومعلومات أوضح 🌸</h1>
-    <p id="heroText">مساحتك لاكتشاف خيارات الملابس والعناية والحماية للبشرة الهشّة.</p>
-    <button class="btn" onclick="go('products')">اكتشفي المنتجات ←</button>
-    <button class="btn light" onclick="go('assessment')">تقييم احتياجات البشرة</button>
-  </div>
-  <h2>تصفحي حسب القسم</h2>
-  <div class="grid">
-    <button class="card" onclick="filterCategory('clothes')"><span class="category">👕</span><h3>الملابس والأقمشة</h3></button>
-    <button class="card" onclick="filterCategory('skin')"><span class="category">🧴</span><h3>العناية بالبشرة</h3></button>
-    <button class="card" onclick="filterCategory('dressings')"><span class="category">🩹</span><h3>الضمادات والمستلزمات</h3></button>
-    <button class="card" onclick="filterCategory('nutrition')"><span class="category">🥗</span><h3>التغذية</h3></button>
-    <button class="card" onclick="go('protection')"><span class="category">🛡️</span><h3>الحماية والإرشادات</h3></button>
-    <button class="card" onclick="go('library')"><span class="category">📚</span><h3>المكتبة الطبية</h3></button>
-  </div>
-  <div class="notice">المعلومات للتثقيف العام ولا تغني عن استشارة الطبيب.</div>
-</section>
+<main class="wrap">
 
-<section id="products" class="page">
-  <span class="eyebrow">PRODUCT DIRECTORY</span>
-  <h1>دليل المنتجات</h1>
-  <p>ابحثي وصنفي المنتجات، ثم افتحي التفاصيل لمعرفة الاستخدام والاحتياطات.</p>
-  <input id="search" placeholder="🔎 ابحثي عن منتج..." oninput="renderProducts()">
-  <div class="chips" id="filters">
-    <button class="chip selected" onclick="setFilter('all',this)">الكل</button>
-    <button class="chip" onclick="setFilter('clothes',this)">الملابس</button>
-    <button class="chip" onclick="setFilter('skin',this)">العناية</button>
-    <button class="chip" onclick="setFilter('dressings',this)">الضمادات</button>
-    <button class="chip" onclick="setFilter('nutrition',this)">التغذية</button>
-  </div>
-  <div class="grid" id="productList"></div>
-</section>
+<section id="home" class="screen active">
 
-<section id="assessment" class="page">
-  <span class="eyebrow">PERSONAL CARE GUIDE</span>
-  <h1>تقييم احتياجات البشرة</h1>
-  <p>هذا التقييم إرشادي فقط وليس تشخيصًا طبيًا.</p>
-  <div class="card">
-    <label>مدى حساسية البشرة</label>
-    <select id="sensitivity"><option>خفيفة</option><option selected>متوسطة</option><option>شديدة</option></select>
-    <label>حالة البشرة الآن</label>
-    <select id="condition"><option>هادئة</option><option>جافة</option><option>متهيّجة</option></select>
-    <label>ما الذي تبحثين عنه؟</label>
-    <select id="need"><option>تقليل الاحتكاك</option><option>الترطيب</option><option>ملابس مناسبة</option><option>مستلزمات العناية</option></select>
-    <button class="btn" onclick="assess()">عرض الإرشادات</button>
-    <div id="assessmentResult" class="result hidden"></div>
-  </div>
-</section>
+<div class="hero">
 
-<section id="tracker" class="page">
-  <span class="eyebrow">DAILY CHECK-IN</span>
-  <h1>المتابعة اليومية</h1>
-  <p>سجلي ملاحظاتك لتسهيل مناقشتها مع فريق الرعاية.</p>
-  <div class="card">
-    <label>حالة البشرة اليوم</label>
-    <select id="dailyCondition"><option>مستقرة</option><option>تحتاج متابعة</option><option>تحتاج اهتمامًا</option></select>
-    <label>ملاحظاتك</label>
-    <textarea id="notes" rows="4" placeholder="اكتبي ملاحظاتك هنا..."></textarea>
-    <button class="btn" onclick="saveEntry()">حفظ التسجيل</button>
-  </div>
-  <h2>السجل السابق</h2>
-  <div id="entries"></div>
-</section>
+<h1>العناية تبدأ بالمعلومة 💙</h1>
 
-<section id="library" class="page">
-  <span class="eyebrow">LEARN & UNDERSTAND</span>
-  <h1>المكتبة الطبية</h1>
-  <div class="grid">
-    <article class="card"><span class="category">🛡️</span><h3>تقليل الاحتكاك</h3><p>اختاري ملابس ناعمة وراجعي الحواف والخياطات التي قد تسبب احتكاكًا.</p></article>
-    <article class="card"><span class="category">🩺</span><h3>العناية الطبية</h3><p>ناقشي خيارات التنظيف والضمادات مع فريقك الطبي، خصوصًا عند وجود جروح.</p></article>
-    <article class="card"><span class="category">🥗</span><h3>التغذية</h3><p>تختلف الاحتياجات الغذائية. يمكن لاختصاصي التغذية المساعدة في تقييمها.</p></article>
-    <article class="card"><span class="category">📖</span><h3>مصادر موثوقة</h3><p><a href="https://www.debra.org/" target="_blank" rel="noopener">DEBRA International</a></p><p><a href="https://www.nhs.uk/" target="_blank" rel="noopener">NHS</a></p></article>
-  </div>
-  <div class="notice">راجعي الطبيب عند وجود علامات عدوى أو تدهور سريع أو ألم غير معتاد.</div>
-</section>
+<p>دليل عربي منظم للأقمشة والمنتجات والضمادات والتغذية، مع أدوات لتسجيل الملاحظات وتجهيز الأسئلة للطبيب.</p>
 
-<section id="protection" class="page">
-  <span class="eyebrow">SAFETY FIRST</span>
-  <h1>الحماية والإرشادات</h1>
-  <div class="card"><h3>١. الملابس</h3><p>اختاري ملابس ناعمة وتجنبي الحواف أو الخياطات التي تسبب الاحتكاك.</p></div>
-  <div class="card" style="margin-top:12px"><h3>٢. العناية</h3><p>اتبعي خطة العناية والضمادات التي يوصي بها الفريق الطبي.</p></div>
-  <div class="card" style="margin-top:12px"><h3>٣. متى أطلب المساعدة؟</h3><p>اطلبي الرعاية الطبية عند ظهور علامات عدوى أو تدهور سريع أو ألم غير معتاد.</p></div>
-</section>
+<div class="notice">هذا التطبيق للتثقيف فقط ولا يشخّص الحالة أو يحدد علاجًا. اتبعي خطة فريقك الطبي، واطلبي المساعدة عند تدهور الأعراض أو الاشتباه بالعدوى.</div>
 
-<section id="favorites" class="page">
-  <span class="eyebrow">SAVED ITEMS</span><h1>المفضلة ♡</h1>
-  <div id="favoriteList" class="grid"></div>
-</section>
-
-<section id="profile" class="page">
-  <span class="eyebrow">YOUR SPACE</span><h1>حسابي</h1>
-  <div class="card">
-    <p>هذه نسخة تجريبية محلية، وليست نظام حسابات آمنًا.</p>
-    <label>الاسم</label><input id="userName" placeholder="اسمك">
-    <label>البريد الإلكتروني</label><input id="userEmail" type="email" placeholder="name@example.com">
-    <button class="btn" onclick="saveProfile()">حفظ الملف الشخصي</button>
-    <p id="profileMessage"></p>
-  </div>
-</section>
-<footer>EB Doc · العناية تبدأ بالفهم 🌸</footer>
-</main>
-
-<div class="bottom">
-  <button class="active" onclick="go('home',this)">⌂<span>الرئيسية</span></button>
-  <button onclick="go('products',this)">✧<span>المنتجات</span></button>
-  <button onclick="go('assessment',this)">♡<span>التقييم</span></button>
-  <button onclick="go('tracker',this)">▤<span>المتابعة</span></button>
-  <button onclick="go('profile',this)">☻<span>حسابي</span></button>
 </div>
 
-<script>
-const products=[
-{id:1,name:'مرطّب لطيف خالٍ من العطر',cat:'skin',icon:'🧴',desc:'مثال لفئة المرطبات. تحققي من المكونات وملاءمتها لك.',use:'للترطيب وفق توصية المختص.',material:'تختلف المكونات حسب المنتج الفعلي.',warning:'أوقفي الاستخدام واطلبي المشورة عند ظهور تفاعل غير معتاد.'},
-{id:2,name:'ملابس قطنية ناعمة',cat:'clothes',icon:'👕',desc:'فئة ملابس ذات ملمس ناعم، تختلف خاماتها وتصميماتها.',use:'قد تساعد الخامات الناعمة في تقليل الاحتكاك.',material:'تحققي من الملصق والخياطات والحواف.',warning:'لا توجد خامة واحدة تناسب الجميع.'},
-{id:3,name:'ضمادات غير لاصقة',cat:'dressings',icon:'🩹',desc:'مستلزمات قد يوصي بها الفريق الطبي لبعض الحالات.',use:'تستخدم وفق خطة العناية الفردية.',material:'تختلف الطبقات والمواد حسب النوع.',warning:'اسألي المختص عن النوع وطريقة الاستخدام.'},
-{id:4,name:'منظف لطيف',cat:'skin',icon:'🫧',desc:'مثال لفئة المنظفات اللطيفة.',use:'للتنظيف وفق الإرشادات المناسبة.',material:'تختلف المكونات والعطور والمواد الحافظة.',warning:'لا تستخدميه على مناطق متضررة إلا بتوجيه طبي.'},
-{id:5,name:'أفكار وجبات متوازنة',cat:'nutrition',icon:'🥗',desc:'معلومات عامة حول تنوع المجموعات الغذائية.',use:'للتثقيف الغذائي العام.',material:'تختلف الاحتياجات حسب الشخص.',warning:'راجعي اختصاصي تغذية عند الحاجة.'},
-{id:6,name:'جوارب ناعمة',cat:'clothes',icon:'🧦',desc:'اختيار الجوارب يعتمد على الراحة والخامة والملاءمة.',use:'اختاري ما يقلل الاحتكاك بحسب حالتك.',material:'تحققي من الخياطات والمطاط.',warning:'أوقفي الاستخدام إذا سببت القطعة تهيجًا.'}
-];
-let currentFilter='all';
-let favorites=JSON.parse(localStorage.getItem('eb-favorites')||'[]');
-let entries=JSON.parse(localStorage.getItem('eb-entries')||'[]');
-function go(id,btn){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- document.querySelectorAll('.bottom button').forEach(b=>b.classList.remove('active'));
- if(btn)btn.classList.add('active');
- if(id==='favorites')renderFavorites();
- window.scrollTo({top:0,behavior:'smooth'});
-}
-function setFilter(cat,btn){
- currentFilter=cat;
- document.querySelectorAll('.chip').forEach(b=>b.classList.remove('selected'));
- btn.classList.add('selected');renderProducts();go('products');
-}
-function filterCategory(cat){
- currentFilter=cat;
- document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('selected',b.textContent.trim()==={clothes:'الملابس',skin:'العناية',dressings:'الضمادات',nutrition:'التغذية'}[cat]));
- renderProducts();go('products');
-}
-function productCard(p){
- const saved=favorites.includes(p.id);
- return `<article class="card"><div class="product-icon">${p.icon}</div><h3>${p.name}</h3><p>${p.desc}</p><button class="btn light" onclick="details(${p.id})">التفاصيل</button><button class="btn" onclick="toggleFavorite(${p.id})">${saved?'♥ محفوظ':'♡ المفضلة'}</button></article>`;
-}
-function renderProducts(){
- const q=(document.getElementById('search')?.value||'').trim().toLowerCase();
- const list=products.filter(p=>(currentFilter==='all'||p.cat===currentFilter)&&p.name.toLowerCase().includes(q));
- document.getElementById('productList').innerHTML=list.length?list.map(productCard).join(''):'<p>لا توجد نتائج مطابقة.</p>';
-}
-function details(id){
- const p=products.find(x=>x.id===id);
- alert(p.name+'\\n\\nالاستخدام: '+p.use+'\\n\\nالخامة/المكونات: '+p.material+'\\n\\nاحتياطات: '+p.warning+'\\n\\nالمعلومات عامة ولا تغني عن الطبيب.');
-}
-function toggleFavorite(id){
- favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
- localStorage.setItem('eb-favorites',JSON.stringify(favorites));
- renderProducts();renderFavorites();
-}
-function renderFavorites(){
- const list=products.filter(p=>favorites.includes(p.id));
- document.getElementById('favoriteList').innerHTML=list.length?list.map(productCard).join(''):'<p>لم تضيفي منتجات للمفضلة بعد.</p>';
-}
-function assess(){
- const sensitivity=document.getElementById('sensitivity').value;
- const condition=document.getElementById('condition').value;
- const need=document.getElementById('need').value;
- const box=document.getElementById('assessmentResult');
- box.classList.remove('hidden');
- box.innerHTML='<b>إرشادات عامة لك</b><p>الحساسية: '+sensitivity+' · الحالة: '+condition+' · الاحتياج: '+need+'</p><p>اختاري المنتجات بحذر وراجعي مختصًا قبل تغيير خطة العناية، خصوصًا عند وجود جروح أو فقاعات أو تهيّج مستمر.</p>';
-}
-function saveEntry(){
- const entry={date:new Date().toLocaleDateString('ar-SA'),condition:document.getElementById('dailyCondition').value,notes:document.getElementById('notes').value};
- entries.unshift(entry);localStorage.setItem('eb-entries',JSON.stringify(entries));
- document.getElementById('notes').value='';renderEntries();alert('تم حفظ التسجيل على هذا الجهاز.');
-}
-function renderEntries(){
- document.getElementById('entries').innerHTML=entries.length?entries.map(e=>`<article class="card" style="margin:10px 0"><small>${e.date}</small><h3>${e.condition}</h3><p>${escapeHTML(e.notes)}</p></article>`).join(''):'<p>لا توجد تسجيلات بعد.</p>';
-}
-function escapeHTML(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function saveProfile(){
- const name=document.getElementById('userName').value.trim();
- const email=document.getElementById('userEmail').value.trim();
- localStorage.setItem('eb-profile',JSON.stringify({name,email}));
- document.getElementById('profileMessage').textContent='تم حفظ المعلومات على هذا الجهاز فقط.';
-}
-function toggleLanguage(){
- const english=document.documentElement.lang==='ar';
- document.documentElement.lang=english?'en':'ar';
- document.documentElement.dir=english?'ltr':'rtl';
- document.getElementById('language').textContent=english?'العربية':'English';
- document.getElementById('heroTitle').textContent=english?'Gentler care, clearer information 🌸':'رعاية ألطف، ومعلومات أوضح 🌸';
- document.getElementById('heroText').textContent=english?'Explore clothing, care and protection options for fragile skin.':'مساحتك لاكتشاف خيارات الملابس والعناية والحماية للبشرة الهشّة.';
-}
-renderProducts();renderEntries();
-</script>
-</body>
-</html>
+<div class="toolbar">
+
+<input id="globalSearch" class="field" placeholder="ابحثي في الأقسام والمعلومات…">
+
+<button class="btn" id="searchBtn">بحث</button>
+
+</div>
+
+<h2 class="section-title">استكشفي الأقسام</h2>
+
+<div class="grid" id="homeTiles"></div>
+
+<h2 class="section-title">تذكير مهم</h2>
+
+<div class="card">
+
+<h3>كل حالة تختلف عن الأخرى</h3>
+
+<p>حتى المنتجات أو الأقمشة التي تناسب شخصًا قد لا تناسب غيره. راجعي المكونات والملصقات، وسجّلي ما تلاحظينه لمناقشته مع الفريق الطبي.</p>
+
+</div>
+
+</section>
