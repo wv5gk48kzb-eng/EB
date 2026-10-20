@@ -1,61 +1,9 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FDEFF2">
-<meta name="color-scheme" content="light">
-<meta name="format-detection" content="telephone=no">
-<meta name="description" content="My Pet Care: نموذج تجريبي لحجز مواعيد العيادات البيطرية">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23FDEFF2'/%3E%3Cg fill='%23C9547F'%3E%3Cpath d='M50 54c-13 0-22 9-22 18 0 8 6 11 13 9 4-1 6-2 9-2s5 1 9 2c7 2 13-1 13-9 0-9-9-18-22-18z'/%3E%3Cellipse cx='22' cy='44' rx='8.5' ry='11'/%3E%3Cellipse cx='39' cy='26' rx='9' ry='12'/%3E%3Cellipse cx='61' cy='26' rx='9' ry='12'/%3E%3Cellipse cx='78' cy='44' rx='8.5' ry='11'/%3E%3C/g%3E%3C/svg%3E">
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>html{padding:0}body{margin:0}[hidden]{display:none!important}</style></head><body>
 <title>My Pet Care</title>
-<script>
-/* Early safety net (plain ES5): shows a readable error instead of a blank page, and loads fonts without blocking. */
-(function () {
-  var W = window, errs = [];
-  W.__mpcErrors = errs;
-  W.addEventListener('error', function (e) {
-    if (e && e.message) errs.push(e.message + (e.lineno ? ' (line ' + e.lineno + ')' : ''));
-  });
-  W.__mpcFail = function (detail, force) {
-    try {
-      if ((W.__mpcReady && !force)  document.getElementById('mpc-fail')  !document.body) return;
-      var d = document.createElement('div');
-      d.id = 'mpc-fail';
-      d.setAttribute('dir', 'rtl');
-      d.style.cssText = 'position:fixed;top:0;right:0;bottom:0;left:0;z-index:99999;background:#FDEFF2;color:#6B1D3F;font:16px/1.7 Tahoma,Arial,sans-serif;padding:24px 20px;overflow:auto;text-align:right';
-      var btn = 'display:block;width:100%;min-height:50px;margin:0 0 10px;border:0;border-radius:14px;font:700 16px Tahoma,Arial,sans-serif;cursor:pointer;';
-      d.innerHTML = '<h2 style="margin:0 0 8px;font-size:22px">تعذّر تشغيل My Pet Care</h2>' +
-        '<p style="margin:0 0 10px">حدث خطأ أثناء تشغيل التطبيق على هذا الجهاز. جرّب الخطوات التالية:</p>' +
-        '<ol style="margin:0 0 16px;padding:0 20px 0 0"><li>أعد تحميل الصفحة.</li><li>إن استمرت المشكلة فامسح بيانات التطبيق المحفوظة ثم أعد المحاولة.</li><li>تأكد أن المتصفح محدّث، أو جرّب Chrome أو Safari.</li></ol>' +
-        '<button id="mpc-reload" style="' + btn + 'background:#C9547F;color:#fff">إعادة تحميل الصفحة</button>' +
-        '<button id="mpc-clear" style="' + btn + 'background:#F9D5DF;color:#6B1D3F">مسح البيانات المحفوظة وإعادة التشغيل</button>' +
-        '<p style="margin:14px 0 4px;font-size:13px;color:#8A4A63">تفاصيل تقنية (أرسلها لمن يساعدك):</p>' +
-        '<pre id="mpc-detail" dir="ltr" style="margin:0;white-space:pre-wrap;word-break:break-word;font:12px/1.5 monospace;background:#fff;border-radius:10px;padding:10px;text-align:left"></pre>';
-      document.body.appendChild(d);
-      document.getElementById('mpc-detail').textContent = String(detail  errs.join(' | ')  'unknown error') + '\n' + (navigator.userAgent || '');
-      document.getElementById('mpc-reload').onclick = function () { location.reload(); };
-      document.getElementById('mpc-clear').onclick = function () {
-        try { localStorage.removeItem('mypetcare.v1'); } catch (e) {}
-        location.reload();
-      };
-    } catch (e2) { /* nothing else we can do */ }
-  };
-  /* If the main script never reports ready (syntax error on an old browser, blocked script...), say so. */
-  setTimeout(function () { if (!W.mpcReady) W.mpcFail(errs.join(' | ')); }, 5000);
-  /* Fonts load after first paint, so a slow or blocked font host can never block the page. */
-  function addFonts() {
-    try {
-      var l = document.createElement('link');
-      l.rel = 'stylesheet';
-      l.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,700&display=swap';
-     document.head.appendChild(l);
-    } catch (e) {}
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(addFonts, 0); });
-  else setTimeout(addFonts, 0);
-})();
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,700&display=swap">
 <style>
 /* Layout: one fixed phone-sized column (top bar, scrolling screen, bottom bar), centered on wide screens. */
 :root {
@@ -78,7 +26,7 @@
   --ok: #2F9E62;
   --danger: #B3263E;
   --stage: #F6D9E1;
-  --font-ar: "Cairo", "Segoe UI", Tahoma, "Geeza Pro", "Noto Sans Arabic", "Noto Naskh Arabic", system-ui, -apple-system, sans-serif;
+  --font-ar: "Cairo", "Segoe UI", Tahoma, system-ui, sans-serif;
   --font-brand: "Fraunces", Georgia, "Times New Roman", serif;
   color-scheme: light;
 }
@@ -101,8 +49,6 @@ button { cursor: pointer; }
   position: relative;
   height: 100%;
   max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
   margin-inline: auto;
   background-color: var(--bg);
   background-size: 140px 140px;
@@ -151,7 +97,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
 }
 .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--btn-press); }
 .btn.ghost { background: var(--pink); color: var(--ink); box-shadow: 0 4px 0 var(--pink-line); }
- .btn.ghost:active { box-shadow: 0 2px 0 var(--pink-line); }
+.btn.ghost:active { box-shadow: 0 2px 0 var(--pink-line); }
 .btn.danger { background: #fff; color: var(--danger); border: 1.5px solid #E9B3BD; box-shadow: none; }
 .btn.small { min-height: 44px; font-size: 15px; width: auto; }
 .link { background: none; border: 0; color: var(--btn-press); font-weight: 700; font-size: 15px; padding: 8px 6px; text-decoration: underline; text-underline-offset: 3px; }
@@ -170,8 +116,8 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
 /* login */
 .hero-art { position: relative; height: 150px; display: flex; justify-content: center; align-items: flex-end; margin-top: 4px; }
 .hero-art .a { width: 112px; height: 112px; }
-.hero-art .a.cat { margin-right: -22px; margin-inline-start: -22px; transform: translateY(6px); }
-.hero-art .heart { position: absolute; top: 6px; left: 24%; inset-inline-end: 24%; color: var(--btn); }
+.hero-art .a.cat { margin-inline-start: -22px; transform: translateY(6px); }
+.hero-art .heart { position: absolute; top: 6px; inset-inline-end: 24%; color: var(--btn); }
 .brand { text-align: center; margin: 2px 0 2px; }
 .brand b { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-brand); font-size: 38px; line-height: 1.1; color: var(--ink); direction: ltr; }
 .brand b svg { color: var(--btn); }
@@ -182,10 +128,10 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   background: var(--paper); color: var(--ink); font-size: 16px; text-align: start;
 }
 .field input::placeholder { color: #B58497; }
-.field .lead { position: absolute; right: 14px; inset-inline-start: 14px; top: 15px; color: var(--btn); pointer-events: none; }
-.field .trail { position: absolute; left: 4px; inset-inline-end: 4px; top: 5px; width: 44px; height: 44px; border: 0; background: none; color: var(--ink-soft); display: grid; place-items: center; }
+.field .lead { position: absolute; inset-inline-start: 14px; top: 15px; color: var(--btn); pointer-events: none; }
+.field .trail { position: absolute; inset-inline-end: 4px; top: 5px; width: 44px; height: 44px; border: 0; background: none; color: var(--ink-soft); display: grid; place-items: center; }
 .field input:focus { border-color: var(--btn); outline: none; box-shadow: 0 0 0 3px var(--pink); }
-.field.has-trail input { padding-left: 50px; padding-inline-end: 50px; }
+.field.has-trail input { padding-inline-end: 50px; }
 .form-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2px 6px; font-size: 15px; color: var(--ink-soft); }
 .chip { display: inline-flex; align-items: center; gap: 6px; background: var(--blue); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600; }
 .chip.pink { background: var(--pink); }
@@ -202,14 +148,15 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   transition: transform .15s, background .15s, border-color .15s;
 }
 .pet .a { width: 92px; height: 92px; }
-.pet .tick { position: absolute; top: 10px; right: 10px; inset-inline-start: 10px; width: 28px; height: 28px; border-radius: 50%; background: var(--c-d); color: #fff; display: none; place-items: center; }
+.pet .tick { position: absolute; top: 10px; inset-inline-start: 10px; width: 28px; height: 28px; border-radius: 50%; background: var(--c-d); color: #fff; display: none; place-items: center; }
 .pet[aria-pressed="true"] { background: var(--c); border-color: var(--c-d); transform: scale(1.03); box-shadow: 0 6px 0 var(--c-d); }
 .pet[aria-pressed="true"] .tick { display: grid; }
 .t-lav { --c: var(--lav); --c-d: var(--lav-d); }
 .t-blue { --c: var(--blue); --c-d: var(--blue-d); }
 .t-green { --c: var(--green); --c-d: var(--green-d); }
 .t-peach { --c: var(--peach); --c-d: var(--peach-d); }
- /* vets */
+
+/* vets */
 .vet {
   width: 100%; text-align: start; display: grid; grid-template-columns: 60px 1fr 28px; gap: 12px; align-items: center;
   background: var(--paper); border: 2px solid var(--pink-line); border-radius: 22px; padding: 12px; color: var(--ink);
@@ -252,14 +199,14 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
 .row:last-child { border-bottom: 0; }
 .row .ic { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; background: var(--pink); color: var(--btn-press); flex: none; }
 .row .k { color: var(--ink-soft); font-size: 14px; font-weight: 600; white-space: nowrap; }
-.row .v { margin-right: auto; margin-inline-start: auto; font-weight: 700; text-align: end; min-width: 0; overflow-wrap: anywhere; }
+.row .v { margin-inline-start: auto; font-weight: 700; text-align: end; min-width: 0; overflow-wrap: anywhere; }
 .row .edit { flex: none; border: 0; background: none; color: var(--btn-press); font-weight: 700; font-size: 13px; padding: 8px 4px; min-width: 44px; min-height: 44px; }
 .price-row .v { font-size: 22px; color: var(--btn-press); }
 
 /* done */
 .done { text-align: center; }
 .check { width: 112px; height: 112px; border-radius: 50%; background: var(--ok); color: #fff; display: grid; place-items: center; margin: 8px auto 12px; box-shadow: 0 0 0 10px #D7F0E1; animation: pop .5s cubic-bezier(.2,1.4,.4,1); }
- @keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
 .done h2 { margin: 0; font-size: 24px; font-weight: 800; }
 .refbox { display: inline-block; margin: 6px 0 14px; padding: 8px 28px; border-radius: 16px; background: var(--pink); font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: 2px; direction: ltr; }
 .done .rows { text-align: start; }
@@ -272,9 +219,9 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
 .banner { position: relative; overflow: hidden; border-radius: 26px; background: linear-gradient(135deg, #F9D5DF, #FDE6E0); border: 1.5px solid var(--pink-line); padding: 18px; min-height: 164px; }
 .banner h2 { margin: 0 0 4px; font-size: 20px; font-weight: 800; max-width: 62%; line-height: 1.35; }
 .banner p { margin: 0 0 12px; font-size: 13.5px; color: var(--ink-soft); max-width: 62%; }
-.banner .pair { position: absolute; left: 6px; inset-inline-end: 6px; bottom: 6px; width: 40%; display: flex; align-items: flex-end; }
+.banner .pair { position: absolute; inset-inline-end: 6px; bottom: 6px; width: 40%; display: flex; align-items: flex-end; }
 .banner .pair .a { width: 56%; }
-.banner .pair .a + .a { margin-right: -14%; margin-inline-start: -14%; }
+.banner .pair .a + .a { margin-inline-start: -14%; }
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .tile { border: 0; border-radius: 22px; padding: 14px; text-align: start; color: var(--ink); display: flex; flex-direction: column; gap: 8px; min-height: 112px; }
 .tile .ic { width: 40px; height: 40px; border-radius: 13px; background: rgba(255,255,255,.7); display: grid; place-items: center; }
@@ -303,13 +250,14 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
 .nav { flex: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 8px 12px 10px; background: var(--paper); border-top: 1.5px solid var(--pink-line); }
 .nav button { border: 0; background: none; color: var(--ink-soft); min-height: 54px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12.5px; font-weight: 700; }
 .nav button[aria-current="page"] { background: var(--pink); color: var(--ink); }
- /* modal and toast */
-#modal { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 30; background: rgba(107, 29, 63, .45); display: none; align-items: flex-end; justify-content: center; padding: 16px; }
+
+/* modal and toast */
+#modal { position: absolute; inset: 0; z-index: 30; background: rgba(107, 29, 63, .45); display: none; align-items: flex-end; justify-content: center; padding: 16px; }
 #modal.open { display: flex; }
 .sheet { width: 100%; background: var(--paper); border-radius: 26px; padding: 22px 18px 18px; display: flex; flex-direction: column; gap: 10px; animation: fade .2s ease; }
 .sheet h2 { margin: 0; font-size: 20px; font-weight: 800; }
 .sheet p { margin: 0 0 6px; color: var(--ink-soft); font-size: 15px; }
-#toast { position: absolute; z-index: 40; left: 16px; right: 16px; bottom: 96px; display: flex; justify-content: center; pointer-events: none; }
+#toast { position: absolute; z-index: 40; inset-inline: 16px; bottom: 96px; display: flex; justify-content: center; pointer-events: none; }
 #toast div { background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 14.5px; font-weight: 700; box-shadow: 0 8px 24px rgba(107,29,63,.3); animation: fade .2s ease; max-width: 100%; text-align: center; }
 .paw-deco { position: absolute; color: var(--pink-line); opacity: .7; pointer-events: none; }
 
@@ -322,10 +270,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   .brand b { font-size: 32px; }
 }
 </style>
-<style>body{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}</style>
-</head>
-<body>
-<noscript><div dir="rtl" style="padding:24px;font:16px/1.7 Tahoma,Arial,sans-serif;color:#6B1D3F;text-align:right">يحتاج تطبيق My Pet Care إلى تفعيل JavaScript في المتصفح.</div></noscript>
+
 <div id="shell">
   <div id="screen"></div>
   <div id="toast" aria-live="polite"></div>
@@ -341,7 +286,6 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   var KEY = 'mypetcare.v1';
   var PRICE = 150;
   var $ = function (s) { return document.querySelector(s); };
-  var num = function (n) { try { return Number(n).toLocaleString(AR); } catch (e) { return String(n); } };
   var esc = function (s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -361,7 +305,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
     calCheck: '<rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/>',
     clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
     building: '<rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/>',
-   steth: '<path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/>',
+    steth: '<path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/>',
     cash: '<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
     list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
     gear: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
@@ -389,7 +333,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   /* ---------- illustrations ---------- */
   var ART = {
     dog: '<svg class="a" viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="20" cy="50" rx="13" ry="25" fill="#C98748" transform="rotate(12 20 50)"/><ellipse cx="80" cy="50" rx="13" ry="25" fill="#C98748" transform="rotate(-12 80 50)"/><circle cx="50" cy="53" r="31" fill="#F2BA7E"/><ellipse cx="50" cy="66" rx="18" ry="14" fill="#FFF5E8"/><circle cx="36" cy="48" r="4.2" fill="#4A2B2B"/><circle cx="64" cy="48" r="4.2" fill="#4A2B2B"/><circle cx="37.4" cy="46.6" r="1.4" fill="#fff"/><circle cx="65.4" cy="46.6" r="1.4" fill="#fff"/><circle cx="28" cy="60" r="5" fill="#F7A5B5" opacity=".6"/><circle cx="72" cy="60" r="5" fill="#F7A5B5" opacity=".6"/><path d="M45 74q5 12 10 0z" fill="#F08AA6"/><ellipse cx="50" cy="59" rx="6.5" ry="4.5" fill="#4A2B2B"/><path d="M50 63v5M50 68c-3 4-9 3-10-1M50 68c3 4 9 3 10-1" stroke="#4A2B2B" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
-   cat: '<svg class="a" viewBox="0 0 100 100" aria-hidden="true"><path d="M17 44 22 10 47 28Z" fill="#9A9AA8"/><path d="M83 44 78 10 53 28Z" fill="#9A9AA8"/><path d="M25 33 27 19 39 28Z" fill="#F6B8C8"/><path d="M75 33 73 19 61 28Z" fill="#F6B8C8"/><ellipse cx="50" cy="57" rx="34" ry="30" fill="#B7B7C3"/><path d="M50 28v9M42 29l2 8M58 29l-2 8" stroke="#8E8E9C" stroke-width="3" stroke-linecap="round"/><ellipse cx="50" cy="68" rx="17" ry="12" fill="#fff"/><ellipse cx="36" cy="54" rx="4.4" ry="5.4" fill="#3B3347"/><ellipse cx="64" cy="54" rx="4.4" ry="5.4" fill="#3B3347"/><circle cx="37.4" cy="52" r="1.5" fill="#fff"/><circle cx="65.4" cy="52" r="1.5" fill="#fff"/><path d="M46 62h8l-4 4.5z" fill="#F08AA6"/><path d="M50 66.5c-2 5-8 4-10 1M50 66.5c2 5 8 4 10 1" stroke="#3B3347" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M24 62h-12M24 67l-11 4M76 62h12M76 67l11 4" stroke="#8E8E9C" stroke-width="1.8" stroke-linecap="round"/><circle cx="27" cy="64" r="5" fill="#F7A5B5" opacity=".55"/><circle cx="73" cy="64" r="5" fill="#F7A5B5" opacity=".55"/></svg>',
+    cat: '<svg class="a" viewBox="0 0 100 100" aria-hidden="true"><path d="M17 44 22 10 47 28Z" fill="#9A9AA8"/><path d="M83 44 78 10 53 28Z" fill="#9A9AA8"/><path d="M25 33 27 19 39 28Z" fill="#F6B8C8"/><path d="M75 33 73 19 61 28Z" fill="#F6B8C8"/><ellipse cx="50" cy="57" rx="34" ry="30" fill="#B7B7C3"/><path d="M50 28v9M42 29l2 8M58 29l-2 8" stroke="#8E8E9C" stroke-width="3" stroke-linecap="round"/><ellipse cx="50" cy="68" rx="17" ry="12" fill="#fff"/><ellipse cx="36" cy="54" rx="4.4" ry="5.4" fill="#3B3347"/><ellipse cx="64" cy="54" rx="4.4" ry="5.4" fill="#3B3347"/><circle cx="37.4" cy="52" r="1.5" fill="#fff"/><circle cx="65.4" cy="52" r="1.5" fill="#fff"/><path d="M46 62h8l-4 4.5z" fill="#F08AA6"/><path d="M50 66.5c-2 5-8 4-10 1M50 66.5c2 5 8 4 10 1" stroke="#3B3347" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M24 62h-12M24 67l-11 4M76 62h12M76 67l11 4" stroke="#8E8E9C" stroke-width="1.8" stroke-linecap="round"/><circle cx="27" cy="64" r="5" fill="#F7A5B5" opacity=".55"/><circle cx="73" cy="64" r="5" fill="#F7A5B5" opacity=".55"/></svg>',
     rabbit: '<svg class="a" viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="36" cy="26" rx="9.5" ry="23" fill="#fff" stroke="#E4CBD5" stroke-width="2"/><ellipse cx="64" cy="26" rx="9.5" ry="23" fill="#fff" stroke="#E4CBD5" stroke-width="2" transform="rotate(8 64 26)"/><ellipse cx="36" cy="28" rx="4.5" ry="15" fill="#F8C6D4"/><ellipse cx="64.5" cy="28" rx="4.5" ry="15" fill="#F8C6D4" transform="rotate(8 64 28)"/><circle cx="50" cy="64" r="29" fill="#fff" stroke="#E4CBD5" stroke-width="2"/><circle cx="38" cy="60" r="4" fill="#4A3340"/><circle cx="62" cy="60" r="4" fill="#4A3340"/><circle cx="39.3" cy="58.6" r="1.4" fill="#fff"/><circle cx="63.3" cy="58.6" r="1.4" fill="#fff"/><circle cx="29" cy="71" r="5" fill="#F7A5B5" opacity=".55"/><circle cx="71" cy="71" r="5" fill="#F7A5B5" opacity=".55"/><path d="M46 68h8l-4 4z" fill="#F08AA6"/><path d="M50 72c-2 5-7 4-9 1M50 72c2 5 7 4 9 1" stroke="#4A3340" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
     bird: '<svg class="a" viewBox="0 0 100 100" aria-hidden="true"><path d="M32 78 16 96l26-6z" fill="#4FA3D9"/><ellipse cx="52" cy="56" rx="30" ry="33" fill="#8ACB6F"/><ellipse cx="57" cy="68" rx="18" ry="20" fill="#F7E58B"/><path d="M46 26c-3-12 7-16 14-12-5 2-5 7-4 13z" fill="#5FAE53"/><circle cx="42" cy="42" r="5" fill="#2F3A2A"/><circle cx="43.6" cy="40.4" r="1.6" fill="#fff"/><circle cx="33" cy="52" r="5" fill="#F7A5B5" opacity=".6"/><path d="M26 46 10 52l17 6z" fill="#F4A140"/><path d="M62 48q24 4 17 32-20-4-17-32z" fill="#5FAE53"/><path d="M44 88v6M56 88v6" stroke="#F4A140" stroke-width="3" stroke-linecap="round"/></svg>'
   };
@@ -411,7 +355,8 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
       '<circle cx="28.5" cy="30" r="1.3" fill="#4A2B2B"/><circle cx="35.5" cy="30" r="1.3" fill="#4A2B2B"/><path d="M29 34q3 2.5 6 0" stroke="#B4574D" stroke-width="1.4" fill="none" stroke-linecap="round"/>' +
       '<path d="M22 46v5a6 6 0 0 0 12 0" stroke="#6B1D3F" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
   }
- var VETS = [
+
+  var VETS = [
     { id: 'v1', name: 'د. أحمد علي', title: 'طبيب بيطري', spec: 'الكلاب والقطط', clinic: 'عيادة الحيوانات الأليفة', av: avatar('#DAEDFB', '#3D2B2B', false) },
     { id: 'v2', name: 'د. سارة محمد', title: 'طبيبة بيطرية', spec: 'الأرانب والطيور', clinic: 'عيادة الأليف السعيد', av: avatar('#DDF1D6', '#5A3326', true) },
     { id: 'v3', name: 'د. خالد ناصر', title: 'طبيب بيطري', spec: 'التطعيمات والفحص العام', clinic: 'مركز رعاية الحيوانات', av: avatar('#E7E0F8', '#2E2A3A', false) }
@@ -440,27 +385,18 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
       if (!raw) return;
       var d = JSON.parse(raw);
       if (d && typeof d === 'object') {
-        if (d.users && typeof d.users === 'object') {
-          var cleanUsers = {};
-          Object.keys(d.users).forEach(function (k) {
-            var r = d.users[k];
-            if (r && typeof r.name === 'string' && typeof r.pass === 'string') cleanUsers[k] = r;
-          });
-          db.users = cleanUsers;
-        }
+        db.users = d.users && typeof d.users === 'object' ? d.users : db.users;
         if (!db.users.demo) db.users.demo = defaults().users.demo;
         db.session = d.session && db.users[d.session] ? d.session : null;
-        db.bookings = Array.isArray(d.bookings) ? d.bookings.filter(function (b) {
-          return b && typeof b === 'object' && PET[b.pet] && b.id && typeof b.date === 'string' && slotById(b.time) && b.vetName && typeof b.price === 'number' && (b.status === 'active' || b.status === 'cancelled');
-        }) : [];
-        db.draft = d.draft && typeof d.draft === 'object' && !Array.isArray(d.draft) ? d.draft : {};
+        db.bookings = Array.isArray(d.bookings) ? d.bookings : [];
+        db.draft = d.draft && typeof d.draft === 'object' ? d.draft : {};
       }
     } catch (e) { /* storage unavailable: keep in-memory state */ }
   })();
   function save() { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { /* ignore */ } }
 
   /* ---------- dates ---------- */
-  function two(n) { return (n < 10 ? '0' : '') + n; }
+  function two(n) { return String(n).padStart(2, '0'); }
   function keyOf(d) { return d.getFullYear() + '-' + two(d.getMonth() + 1) + '-' + two(d.getDate()); }
   function fromKey(k) { var p = k.split('-').map(Number); return new Date(p[0], p[1] - 1, p[2]); }
   function addDays(d, n) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); return x; }
@@ -479,7 +415,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   function slotState(dateKey, slotId, vetId) {
     var s = slotById(slotId), now = new Date();
     if (dateKey < todayKey()) return 'past';
-   if (dateKey === todayKey() && s.h * 60 <= now.getHours() * 60 + now.getMinutes()) return 'past';
+    if (dateKey === todayKey() && s.h * 60 <= now.getHours() * 60 + now.getMinutes()) return 'past';
     if (hash(dateKey + '|' + vetId + '|' + slotId) % 4 === 0) return 'taken';
     var clash = db.bookings.some(function (b) { return b.status === 'active' && b.vet === vetId && b.date === dateKey && b.time === slotId; });
     return clash ? 'taken' : 'free';
@@ -504,7 +440,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
       for (var i = 1; i <= 4; i++) {
         segs += '<i class="' + (i <= step ? 'on ' : '') + (i === step ? 'cur' : '') + '" style="' + (i <= step ? 'background:' + STEP_COLORS[i - 1] : '') + '"></i>';
       }
-      h += '<div class="steps" aria-hidden="true">' + segs + '</div><p class="step-label">الخطوة ' + num(step) + ' من ' + num(4) + '</p>';
+      h += '<div class="steps" aria-hidden="true">' + segs + '</div><p class="step-label">الخطوة ' + step.toLocaleString(AR) + ' من ٤'.replace('٤', (4).toLocaleString(AR)) + '</p>';
     }
     return h;
   }
@@ -532,7 +468,8 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
       '<div class="note green">' + icon('info', 18) + '<span>نموذج تجريبي. الحسابات تُحفظ على هذا الجهاز فقط، فلا تستخدم كلمة مرور حقيقية. للتجربة السريعة: <button class="link" data-act="fillDemo" style="padding:0;font-size:inherit">استخدم الحساب التجريبي</button></span></div>' +
       '</div></main>';
   }
- function vRegister() {
+
+  function vRegister() {
     return top('إنشاء حساب') + '<main><div class="stack">' +
       '<div class="hero-art" style="height:110px">' + ART.rabbit + '</div>' +
       '<form data-form="register" class="stack" novalidate>' +
@@ -560,7 +497,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
       '<div class="pair">' + ART.dog + ART.cat + '</div></section>' +
       '<div class="tiles">' +
       '<button class="tile lav" data-act="startBooking"><span class="ic">' + icon('calendar', 22) + '</span><b>حجز جديد</b><span>ابدأ حجز موعد</span></button>' +
-      '<button class="tile blue" data-act="go" data-to="bookings"><span class="ic">' + icon('list', 22) + '</span><b>حجوزاتي</b><span>' + num(act.length) + ' حجز نشط</span></button>' +
+      '<button class="tile blue" data-act="go" data-to="bookings"><span class="ic">' + icon('list', 22) + '</span><b>حجوزاتي</b><span>' + act.length.toLocaleString(AR) + ' حجز نشط</span></button>' +
       '</div>' + nextHtml +
       demoNote('نموذج تجريبي: الأطباء والمواعيد والأسعار بيانات توضيحية، ولا تُرسل الحجوزات إلى عيادات حقيقية.') +
       '</div></main>' + nav('home');
@@ -580,7 +517,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
       VETS.map(function (v) {
         return '<button class="vet" data-act="pickVet" data-id="' + v.id + '" aria-pressed="' + (d.vet === v.id) + '">' +
           '<span class="av">' + v.av + '</span><span><h3>' + v.name + '</h3><p class="sub">' + v.title + ' · ' + v.spec + '</p>' +
-         '<span class="clinic">' + icon('building', 16) + v.clinic + '</span></span><span class="radio">' + icon('check', 16, 3) + '</span></button>';
+          '<span class="clinic">' + icon('building', 16) + v.clinic + '</span></span><span class="radio">' + icon('check', 16, 3) + '</span></button>';
       }).join('') + '</div></main>' + bar('اختيار الطبيب', 'nextVet');
   }
 
@@ -589,7 +526,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
     if (d.date && d.date < todayKey()) { d.date = null; d.time = null; }
     var dayHtml = days.map(function (dt, i) {
       var k = keyOf(dt);
-      return '<button class="day" data-act="pickDate" data-id="' + k + '" aria-pressed="' + (d.date === k) + '"><small>' + fmt(dt, { weekday: 'long' }) + '</small><strong>' + num(dt.getDate()) + '</strong><small>' + fmt(dt, { month: 'long' }) + '</small>' + (i === 0 ? '<em>اليوم</em>' : '') + '</button>';
+      return '<button class="day" data-act="pickDate" data-id="' + k + '" aria-pressed="' + (d.date === k) + '"><small>' + fmt(dt, { weekday: 'long' }) + '</small><strong>' + dt.getDate().toLocaleString(AR) + '</strong><small>' + fmt(dt, { month: 'long' }) + '</small>' + (i === 0 ? '<em>اليوم</em>' : '') + '</button>';
     }).join('');
     function slotGroup(part, title, ic) {
       var html = SLOTS.filter(function (s) { return s.part === part; }).map(function (s) {
@@ -614,11 +551,11 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
 
   function vSummary() {
     var d = draft(), v = vetById(d.vet), s = slotById(d.time), p = PET[d.pet];
-    if (!v  !s  !p || !d.date) return '<main><div class="empty"><h3>بيانات الحجز غير مكتملة</h3><button class="btn" data-act="startBooking">ابدأ من جديد</button></div></main>';
+    if (!v || !s || !p || !d.date) return '<main><div class="empty"><h3>بيانات الحجز غير مكتملة</h3><button class="btn" data-act="startBooking">ابدأ من جديد</button></div></main>';
     return top('تفاصيل الحجز', 4) + '<main><div class="stack"><div class="card"><div class="rows">' +
       row('heart', 'نوع الحيوان', p.ar, 'pet') + row('steth', 'الطبيب', v.name, 'vet') + row('building', 'العيادة', v.clinic, 'vet') +
       row('calendar', 'التاريخ', longDate(d.date), 'time') + row('clock', 'الوقت', s.label, 'time') +
-      row('cash', 'المبلغ', num(PRICE) + ' ريال', null, 'price-row') +
+      row('cash', 'المبلغ', PRICE.toLocaleString(AR) + ' ريال', null, 'price-row') +
       '</div><span class="chip peach">السعر تجريبي</span></div>' +
       demoNote('هذا نموذج تجريبي. تأكيد الحجز يحفظه في متصفحك فقط، ولا يُرسل إلى أي عيادة حقيقية.') +
       '</div></main><footer class="bar"><p class="msg" id="msg" role="alert"></p><button class="btn" data-act="confirm">تأكيد الحجز</button><button class="btn ghost" data-act="go" data-to="time">تعديل الموعد</button></footer>';
@@ -627,9 +564,10 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   function detailRows(b) {
     return row('ticket', 'رقم الحجز', '<span dir="ltr">#' + b.id + '</span>') + row('heart', 'نوع الحيوان', PET[b.pet].ar) + row('steth', 'الطبيب', esc(b.vetName)) +
       row('building', 'العيادة', esc(b.clinic)) + row('calendar', 'التاريخ', longDate(b.date)) + row('clock', 'الوقت', b.timeLabel) +
-      row('cash', 'المبلغ', num(b.price) + ' ريال (تجريبي)');
+      row('cash', 'المبلغ', b.price.toLocaleString(AR) + ' ريال (تجريبي)');
   }
- function vDone() {
+
+  function vDone() {
     var b = db.bookings.filter(function (x) { return x.id === params.id; })[0];
     if (!b) return '<main><div class="empty"><h3>لم يتم العثور على الحجز</h3><button class="btn" data-act="go" data-to="home">العودة إلى الصفحة الرئيسية</button></div></main>';
     return '<main class="done"><div class="check">' + icon('check', 64, 3) + '</div><h2>تم حجز موعدك بنجاح!</h2><p style="margin:2px 0 0;color:var(--ink-soft)">رقم الحجز</p>' +
@@ -679,57 +617,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
     var u = me();
     return top('الإعدادات') + '<main><div class="stack">' +
       '<div class="card" style="display:flex;align-items:center;gap:12px"><div class="avatar-paw">' + paw(28) + '</div><div style="min-width:0"><b style="font-size:18px">' + esc(u.name) + '</b><br><span style="color:var(--ink-soft);font-size:14px" dir="ltr">@' + esc(db.session) + '</span></div></div>' +
-     function vDone() {
-    var b = db.bookings.filter(function (x) { return x.id === params.id; })[0];
-    if (!b) return '<main><div class="empty"><h3>لم يتم العثور على الحجز</h3><button class="btn" data-act="go" data-to="home">العودة إلى الصفحة الرئيسية</button></div></main>';
-    return '<main class="done"><div class="check">' + icon('check', 64, 3) + '</div><h2>تم حجز موعدك بنجاح!</h2><p style="margin:2px 0 0;color:var(--ink-soft)">رقم الحجز</p>' +
-      '<div class="refbox">' + b.id + '</div>' +
-      '<div class="card" style="margin-bottom:12px"><div class="rows">' + row('calendar', 'التاريخ', shortDate(b.date)) + row('clock', 'الوقت', b.timeLabel) + row('steth', 'الطبيب', esc(b.vetName)) + row('heart', 'نوع الحيوان', PET[b.pet].ar) + '</div></div>' +
-      '<div class="stack"><button class="btn" data-act="go" data-to="home">العودة إلى الصفحة الرئيسية</button><button class="btn ghost" data-act="go" data-to="bookings">' + icon('list', 20) + 'حجوزاتي</button>' +
-      demoNote('حجز تجريبي محفوظ في هذا المتصفح فقط، ولم يُرسل إلى أي عيادة.') + '</div></main>';
-  }
-
-  function badge(b) {
-    return b.status === 'active' ? '<span class="chip green">مؤكد</span>' : '<span class="chip red">ملغي</span>';
-  }
-  function bookingCard(b) {
-    var p = PET[b.pet];
-    return '<button class="bk ' + (b.status === 'cancelled' ? 'cancelled' : '') + '" data-act="openBooking" data-id="' + b.id + '"><span class="pic ' + p.tint + '">' + ART[b.pet] + '</span>' +
-      '<span><h3>' + esc(b.vetName) + '</h3><p>' + shortDate(b.date) + ' · ' + b.timeLabel + '</p><span class="meta">' + badge(b) + '<span class="chip pink" dir="ltr">#' + b.id + '</span></span></span>' +
-      '<span style="color:var(--ink-soft)">' + icon('chevron', 20) + '</span></button>';
-  }
-
-  function vBookings() {
-    var all = myBookings().sort(function (a, b) { return b.createdAt - a.createdAt; });
-    var list = all.filter(function (b) { return bFilter === 'all' || (bFilter === 'active' ? b.status === 'active' : b.status === 'cancelled'); });
-    var seg = [['all', 'الكل'], ['active', 'مؤكدة'], ['cancelled', 'ملغية']].map(function (s) {
-      return '<button data-act="filter" data-id="' + s[0] + '" aria-pressed="' + (bFilter === s[0]) + '">' + s[1] + '</button>';
-    }).join('');
-    var body;
-    if (!list.length) {
-      body = '<div class="empty">' + ART.cat + '<h3>' + (all.length ? 'لا توجد حجوزات في هذا التصنيف' : 'لا توجد حجوزات بعد') + '</h3><p>' + (all.length ? 'جرّب تصنيفاً آخر.' : 'احجز موعدك الأول مع طبيب بيطري.') + '</p><button class="btn small" data-act="startBooking">احجز موعداً</button></div>';
-    } else {
-      body = '<div class="stack">' + list.map(bookingCard).join('') + '</div>';
-    }
-    return top('حجوزاتي') + '<main><div class="seg" role="group" aria-label="تصفية الحجوزات">' + seg + '</div>' + body + '</main>' + nav('bookings');
-  }
-
-  function vDetail() {
-    var b = db.bookings.filter(function (x) { return x.id === params.id; })[0];
-    if (!b) return top('تفاصيل الحجز') + '<main><div class="empty"><h3>لم يتم العثور على الحجز</h3></div></main>';
-    return top('تفاصيل الحجز') + '<main><div class="stack"><div style="display:flex;justify-content:center">' + badge(b) + '</div>' +
-      '<div class="card"><div class="rows">' + detailRows(b) + '</div></div>' +
-      (b.status === 'active'
-        ? '<button class="btn danger" data-act="cancelAsk" data-id="' + b.id + '">' + icon('trash', 20) + 'إلغاء الحجز</button>'
-        : demoNote('تم إلغاء هذا الحجز، وأصبح الموعد متاحاً مرة أخرى.')) +
-      demoNote('حجز تجريبي محفوظ في هذا المتصفح فقط.') + '</div></main>';
-  }
-
-  function vSettings() {
-    var u = me();
-    return top('الإعدادات') + '<main><div class="stack">' +
-      '<div class="card" style="display:flex;align-items:center;gap:12px"><div class="avatar-paw">' + paw(28) + '</div><div style="min-width:0"><b style="font-size:18px">' + esc(u.name) + '</b><br><span style="color:var(--ink-soft);font-size:14px" dir="ltr">@' + esc(db.session) + '</span></div></div>' +
-     '<div class="card"><h3 style="margin:0 0 6px;font-size:16px">عن هذا النموذج</h3><p style="margin:0;color:var(--ink-soft);font-size:14.5px">My Pet Care نموذج تجريبي لمشروع مدرسي. الأطباء والعيادات والمواعيد والأسعار بيانات توضيحية. الحسابات والحجوزات تُحفظ في متصفح هذا الجهاز فقط ولا تتشارك بين المستخدمين أو الأجهزة.</p></div>' +
+      '<div class="card"><h3 style="margin:0 0 6px;font-size:16px">عن هذا النموذج</h3><p style="margin:0;color:var(--ink-soft);font-size:14.5px">My Pet Care نموذج تجريبي لمشروع مدرسي. الأطباء والعيادات والمواعيد والأسعار بيانات توضيحية. الحسابات والحجوزات تُحفظ في متصفح هذا الجهاز فقط ولا تتشارك بين المستخدمين أو الأجهزة.</p></div>' +
       '<button class="btn ghost" data-act="logout">' + icon('out', 20) + 'تسجيل الخروج</button>' +
       '<button class="btn danger" data-act="resetAsk">' + icon('trash', 20) + 'إعادة ضبط بيانات العرض</button>' +
       '</div></main>' + nav('settings');
@@ -739,9 +627,6 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
 
   /* ---------- render ---------- */
   function render() {
-    try { renderInner(); } catch (e) { if (window.mpcFail) window.mpcFail(e && e.stack ? e.stack : String(e), true); }
-  }
-  function renderInner() {
     var s = $('#screen'), m = $('main'), keep = m ? m.scrollTop : 0, same = s.dataset.route === route;
     s.innerHTML = VIEWS[route]();
     s.dataset.route = route;
@@ -810,14 +695,14 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
       var u = g('username').trim().toLowerCase(), p = g('password');
       if (!u || !p) return setMsg('يرجى إدخال اسم المستخدم وكلمة المرور');
       var rec = db.users[u];
-     if (!rec) return setMsg('اسم المستخدم غير موجود. أنشئ حساباً جديداً');
+      if (!rec) return setMsg('اسم المستخدم غير موجود. أنشئ حساباً جديداً');
       if (rec.pass !== p) return setMsg('كلمة المرور غير صحيحة');
       login(u, rec.name);
     } else if (kind === 'register') {
       var nm = g('name').trim(), un = g('username').trim().toLowerCase(), pw = g('password'), cf = g('confirm');
-      if (!nm  !un  !pw || !cf) return setMsg('يرجى تعبئة جميع الحقول');
+      if (!nm || !un || !pw || !cf) return setMsg('يرجى تعبئة جميع الحقول');
       if (un.length < 3) return setMsg('اسم المستخدم يجب أن يكون ٣ أحرف على الأقل');
-      if (/[\s<>"'&\\\/]/.test(un)) return setMsg('اسم المستخدم لا يقبل المسافات ولا الرموز < > " \' & \\ /');
+      if (!/^[\p{L}\p{N}_.-]+$/u.test(un)) return setMsg('اسم المستخدم يقبل الحروف والأرقام والرموز _ . - فقط');
       if (pw.length < 4) return setMsg('كلمة المرور يجب أن تكون ٤ أحرف على الأقل');
       if (pw !== cf) return setMsg('كلمتا المرور غير متطابقتين');
       if (db.users[un]) return setMsg('اسم المستخدم مستخدم من قبل، اختر اسماً آخر');
@@ -872,17 +757,14 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
         } }); break;
     }
   }
-   /* ---------- events ---------- */
+
+  /* ---------- events ---------- */
   var shell = $('#shell');
   shell.addEventListener('click', function (e) {
     var el = e.target.closest('[data-act]');
-    if (!el || el.disabled) return;
-    try { act(el.dataset.act, el.dataset, el); } catch (err) { if (window.console) console.error(err); toast('حدث خطأ غير متوقع، حاول مرة أخرى'); }
+    if (el && !el.disabled) act(el.dataset.act, el.dataset, el);
   });
-  shell.addEventListener('submit', function (e) {
-    e.preventDefault();
-    try { onSubmit(e.target); } catch (err) { if (window.console) console.error(err); setMsg('حدث خطأ غير متوقع، حاول مرة أخرى'); }
-  });
+  shell.addEventListener('submit', function (e) { e.preventDefault(); onSubmit(e.target); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
   $('#modal').addEventListener('click', function (e) { if (e.target.id === 'modal') closeModal(); });
 
@@ -893,8 +775,7 @@ main { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 8p
   shell.style.backgroundImage = 'url("data:image/svg+xml,' + encodeURIComponent(tile) + '")';
   route = db.session ? 'home' : 'login';
   render();
-  if ($('#screen') && $('#screen').children.length) window.__mpcReady = true;
 })();
 </script>
-</body>
-</html>
+
+</body></html>
